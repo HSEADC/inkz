@@ -1,24 +1,25 @@
-# README
+# Медиа-сервис про тату
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Клонируйте репозиторий
 
-Things you may want to cover:
+```bash
+git clone https://github.com/HSEADC/B21DZ09-L3-Project-03.git
+```
 
-* Ruby version
+2. Зайдите в папку проекта
 
-* System dependencies
+```bash
+cd B21DZ09-L3-Project-03
+```
 
-* Configuration
+3. Установите зависимости (gems)
 
-* Database creation
+```bash
+bundle install
+```
 
-* Database initialization
+4. Запустите сервер разработки
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+rails s
+```
