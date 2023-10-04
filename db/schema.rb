@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_04_020933) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_04_055940) do
   create_table "masters", force: :cascade do |t|
     t.string "name"
     t.string "nickname"
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_020933) do
     t.integer "master_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "tattoo_image"
     t.index ["master_id"], name: "index_tattoos_on_master_id"
   end
 

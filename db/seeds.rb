@@ -66,6 +66,12 @@ def reset_db
   Rake::Task['db:migrate'].invoke
 end
 
+def upload_random_image
+  uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
+  uploader
+end
+
 def create_masters(data)
   data.shuffle.each do |master_data|
     master = Master.create(name: master_data[:name], nickname: master_data[:nickname], specialization: master_data[:specialization])
@@ -76,7 +82,7 @@ end
 def create_tattoos(data)
   data.shuffle.each do |tattoo_data|
     master_id = tattoo_data[:master_id] || Master.pluck(:id).sample
-    tattoo = Tattoo.create(title: tattoo_data[:title], specialization: tattoo_data[:specialization], master_id: master_id)
+    tattoo = Tattoo.create(title: tattoo_data[:title], specialization: tattoo_data[:specialization], master_id: master_id, tattoo_image: upload_random_image)
     puts "Tattoo with id #{tattoo.id} for master with id #{tattoo.master.id} just created"
   end
 end
