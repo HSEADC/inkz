@@ -1,0 +1,8 @@
+.nav_group {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav_group a:hover {
+  text-decoration: underline;
+}
