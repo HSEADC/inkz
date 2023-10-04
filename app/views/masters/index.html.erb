@@ -1,0 +1,13 @@
+<h1>Masters</h1>
+
+<p style="color: green"><%= notice %></p>
+
+<div id="masters">
+  <% @masters.each do |master| %>
+    <%= link_to master, class: 'master-card' do %>
+      <%= render master %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New master", new_master_path %>
