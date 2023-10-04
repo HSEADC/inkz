@@ -1,19 +1,10 @@
 <div id="<%= dom_id tattoo %>">
   <article>
    <%= image_tag tattoo.tattoo_image.url %>
-    <p>
-      <strong>Title:</strong>
+    <h4>
       <%= tattoo.title %>
-    </p>
-
+    </h4>
     <p>
-      <strong>Specialization:</strong>
-      <%= tattoo.specialization %>
-    </p>
-
-    <p>
-      <strong>Master:</strong>
-      <%= tattoo.master_id %>
-    </p>
+      <mark><%= tattoo.specialization %></mark>
   </article>
 </div>

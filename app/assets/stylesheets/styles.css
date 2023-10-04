@@ -10,3 +10,29 @@
 .master-card {
   text-decoration: none;
 }
+
+mark {
+  padding: 0.25rem 0.5rem;
+  background-color: #19b3e6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 1rem;
+}
+
+img {
+  margin-bottom: 1rem;
+}
+
+.main-text {
+  font-size: 7rem;
+  margin-top: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+}
