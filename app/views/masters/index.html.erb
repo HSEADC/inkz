@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Masters</h1>
+
+<div id="masters">
+  <% @masters.each do |master| %>
+    <%= render master %>
+    <p>
+      <%= link_to "Show this master", master %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New master", new_master_path %>
