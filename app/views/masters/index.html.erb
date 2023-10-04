@@ -4,10 +4,9 @@
 
 <div id="masters">
   <% @masters.each do |master| %>
-    <%= render master %>
-    <p>
-      <%= link_to "Show this master", master %>
-    </p>
+    <%= link_to master, class: 'master-card' do %>
+      <%= render master %>
+    <% end %>
   <% end %>
 </div>
 
