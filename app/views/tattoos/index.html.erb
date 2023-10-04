@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tattoos</h1>
+
+<div id="tattoos">
+  <% @tattoos.each do |tattoo| %>
+    <%= render tattoo %>
+    <p>
+      <%= link_to "Show this tattoo", tattoo %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New tattoo", new_tattoo_path %>

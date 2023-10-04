@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tattoo %>
+
+<div>
+  <%= link_to "Edit this tattoo", edit_tattoo_path(@tattoo) %> |
+  <%= link_to "Back to tattoos", tattoos_path %>
+
+  <%= button_to "Destroy this tattoo", @tattoo, method: :delete %>
+</div>

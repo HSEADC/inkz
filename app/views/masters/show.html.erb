@@ -2,6 +2,8 @@
 
 <%= render @master %>
 
+<%= render @master.tattoos %>
+
 <div>
   <%= link_to "Edit this master", edit_master_path(@master) %> |
   <%= link_to "Back to masters", masters_path %>

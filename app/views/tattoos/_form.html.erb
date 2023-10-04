@@ -1,0 +1,32 @@
+<%= form_with(model: tattoo) do |form| %>
+  <% if tattoo.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tattoo.errors.count, "error") %> prohibited this tattoo from being saved:</h2>
+
+      <ul>
+        <% tattoo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :specialization, style: "display: block" %>
+    <%= form.text_field :specialization %>
+  </div>
+
+  <div>
+    <%= form.label :master_id, style: "display: block" %>
+    <%= form.text_field :master_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

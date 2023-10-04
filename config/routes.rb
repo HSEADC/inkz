@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tattoos
   resources :masters
   get 'welcome/index'
   get 'welcome/about'
