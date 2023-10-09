@@ -4,7 +4,7 @@ class TattoosController < ApplicationController
   # GET /tattoos or /tattoos.json
   def index
     @tattoos = Tattoo.all
-    
+
     @display_master = true
   end
 
@@ -25,8 +25,23 @@ class TattoosController < ApplicationController
   # POST /tattoos or /tattoos.json
   def create
     @tattoo = Tattoo.new(tattoo_params)
+    master_info = params[:tattoo][:master_info]
 
     respond_to do |format|
+      if master_info.present?
+        if master_info.to_i.to_s == master_info # Check if master_info is numeric (ID)
+          master = Master.find_by(id: master_info)
+        else
+          master = Master.find_by(nickname: master_info)
+        end
+
+        if master.present?
+          @tattoo.master = master # Set the master for the tattoo
+        else
+          @tattoo.errors.add(:master_info, "Master not found") # Add an error message
+        end
+      end
+
       if @tattoo.save
         format.html { redirect_to tattoo_url(@tattoo), notice: "Tattoo was successfully created." }
         format.json { render :show, status: :created, location: @tattoo }
