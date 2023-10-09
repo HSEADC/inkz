@@ -10,5 +10,8 @@
     <% end %>
     
     <mark><%= tattoo.specialization %></mark>
+
+    <%= link_to "Edit this tattoo", edit_master_tattoo_path(master, tattoo) %>
+    <%= button_to "Destroy this tattoo", tattoo, method: :delete %>
   </article>
 </div>

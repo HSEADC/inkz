@@ -15,16 +15,21 @@ class TattoosController < ApplicationController
 
   # GET /tattoos/new
   def new
+    @master = Master.find(params[:master_id])
     @tattoo = Tattoo.new
   end
 
   # GET /tattoos/1/edit
   def edit
+    @master = @tattoo.master
   end
 
   # POST /tattoos or /tattoos.json
   def create
-    @tattoo = Tattoo.new(tattoo_params)
+    @master = Master.find(params[:master_id])
+    @tattoo = Tattoo.new(title: params[:tattoo][:title], specialization: params[:tattoo][:specialization], master_id: @master.id)
+    puts @tattoo
+
 
     if params[:tattoo][:tattoo_image].present?
       @tattoo.tattoo_image = params[:tattoo][:tattoo_image]
@@ -34,7 +39,7 @@ class TattoosController < ApplicationController
 
     respond_to do |format|
       if @tattoo.save
-        format.html { redirect_to tattoo_url(@tattoo), notice: "Tattoo was successfully created." }
+        format.html { redirect_to master_url(@master), notice: "Tattoo was successfully created." }
         format.json { render :show, status: :created, location: @tattoo }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,9 +50,11 @@ class TattoosController < ApplicationController
 
   # PATCH/PUT /tattoos/1 or /tattoos/1.json
   def update
+    @master = @tattoo.master
+
     respond_to do |format|
       if @tattoo.update(tattoo_params)
-        format.html { redirect_to tattoo_url(@tattoo), notice: "Tattoo was successfully updated." }
+        format.html { redirect_to master_url(@master), notice: "Tattoo was successfully updated." }
         format.json { render :show, status: :ok, location: @tattoo }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,10 +65,11 @@ class TattoosController < ApplicationController
 
   # DELETE /tattoos/1 or /tattoos/1.json
   def destroy
+    @master = @tattoo.master
     @tattoo.destroy
 
     respond_to do |format|
-      format.html { redirect_to tattoos_url, notice: "Tattoo was successfully destroyed." }
+      format.html { redirect_to master_url(@master), notice: "Tattoo was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -74,6 +82,6 @@ class TattoosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tattoo_params
-      params.require(:tattoo).permit(:title, :specialization, :master_id)
+      params.require(:tattoo).permit(:title, :specialization)
     end
 end

@@ -1,4 +1,4 @@
-<%= form_with(model: tattoo) do |form| %>
+<%= form_with(model: [master, tattoo]) do |form| %>
   <% if tattoo.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(tattoo.errors.count, "error") %> prohibited this tattoo from being saved:</h2>
@@ -19,11 +19,6 @@
   <div>
     <%= form.label :specialization, style: "display: block" %>
     <%= form.text_field :specialization %>
-  </div>
-
-  <div>
-    <%= form.label :master_id, style: "display: block" %>
-    <%= form.text_field :master_id %>
   </div>
 
   <!-- Add a file input field for the tattoo image -->
