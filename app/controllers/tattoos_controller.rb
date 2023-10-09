@@ -11,6 +11,7 @@ class TattoosController < ApplicationController
   # GET /tattoos/1 or /tattoos/1.json
   def show
     @display_master = true
+    @master = @tattoo.master
   end
 
   # GET /tattoos/new

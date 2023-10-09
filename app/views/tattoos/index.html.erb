@@ -4,9 +4,9 @@
 
 <div id="tattoos card">
   <% @tattoos.each do |tattoo| %>
+    <% master = tattoo.master %>
     <%= link_to tattoo do %>
-      <%= render tattoo %>
+      <%= render partial: 'tattoos/tattoo', locals: { master: master, tattoo: tattoo } %>
     <% end %>
   <% end %>
 </div>
-
