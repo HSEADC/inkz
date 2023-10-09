@@ -4,10 +4,13 @@ class TattoosController < ApplicationController
   # GET /tattoos or /tattoos.json
   def index
     @tattoos = Tattoo.all
+    
+    @display_master = true
   end
 
   # GET /tattoos/1 or /tattoos/1.json
   def show
+    @display_master = true
   end
 
   # GET /tattoos/new
