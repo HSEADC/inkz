@@ -4,13 +4,10 @@
 
 <div id="tattoos card">
   <% @tattoos.each do |tattoo| %>
-    <%= render tattoo %>
-    <p>
-      <%= link_to "Show this tattoo", tattoo %>
-    </p>
+    <%= link_to tattoo do %>
+      <%= render tattoo %>
+    <% end %>
   <% end %>
 </div>
 
 <%= link_to "New tattoo", new_tattoo_path %>
-
-

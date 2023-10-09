@@ -1,14 +1,14 @@
 @masters_data = [
-  { name: 'Макс', nickname: 'MaksInk', specialization: 'Реализм' },
-  { name: 'Мария', nickname: 'MashaTattoo', specialization: 'Минимализм' },
-  { name: 'Иван', nickname: 'IvanMaster', specialization: 'Традиционный' },
-  { name: 'Олег', nickname: 'OlegInk', specialization: 'Новая школа' },
-  { name: 'Екатерина', nickname: 'KateTribal', specialization: 'Татуировки в стиле трайбл' },
-  { name: 'Сергей', nickname: 'SergeiInk', specialization: 'Японский' },
-  { name: 'Павел', nickname: 'PaulGeometric', specialization: 'Геометрический' },
-  { name: 'Андрей', nickname: 'AndreiGrey', specialization: 'Черно-серый' },
-  { name: 'Денис', nickname: 'DenisTattoo', specialization: 'Минимализм' },
-  { name: 'Елена', nickname: 'ElenaBio', specialization: 'Биомеханика' },
+  { name: 'Максим Максимович', nickname: 'MaksInk' },
+  { name: 'Ярослав Ярославович', nickname: 'YaroslavTattoo' },
+  { name: 'Игорь Игоревич', nickname: 'IgorMaster' },
+  { name: 'Владимир Владимирович', nickname: 'VladInk' },
+  { name: 'Анна Андреевна', nickname: 'AnnaTribal' },
+  { name: 'Борис Борисович', nickname: 'BorisInkkk' },
+  { name: 'Святослав Святославович', nickname: 'SvetGeometric', },
+  { name: 'Святополк Святополкович', nickname: 'PolkGrey', },
+  { name: 'Мстислав Мстиславович', nickname: 'MstTattoo', },
+  { name: 'Вячеслав Вячеславович', nickname: 'SlavBio', },
 ]
 
 @tattoos_data = [
