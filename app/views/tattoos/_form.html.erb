@@ -26,6 +26,11 @@
     <%= form.text_field :master_info %>
   </div>
 
+  <!-- Add a file input field for the tattoo image -->
+  <div>
+    <%= form.label :tattoo_image %>
+    <%= form.file_field :tattoo_image, class: "form-control" %>
+  </div>
 
   <div>
     <%= form.submit %>
