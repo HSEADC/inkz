@@ -25,22 +25,11 @@ class TattoosController < ApplicationController
   # POST /tattoos or /tattoos.json
   def create
     @tattoo = Tattoo.new(tattoo_params)
-    master_info = params[:tattoo][:master_info]
 
     if params[:tattoo][:tattoo_image].present?
       @tattoo.tattoo_image = params[:tattoo][:tattoo_image]
     else
       @tattoo.tattoo_image = ''
-    end
-
-    if master_info.present?
-      master = Master.find_by(id: master_info) || Master.find_by(nickname: master_info)
-
-      if master
-        @tattoo.master = master
-      else
-        @tattoo.errors.add(:master_info, "Master not found")
-      end
     end
 
     respond_to do |format|
