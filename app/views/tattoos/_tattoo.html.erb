@@ -1,6 +1,6 @@
 <div id="<%= dom_id tattoo %>">
   <article>
-    <%= image_tag tattoo.tattoo_image.url %>
+    <%= image_tag tattoo.tattoo_image.url if tattoo.tattoo_image.url %>
     <h4>
       <%= tattoo.title %>
     </h4>

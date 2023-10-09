@@ -1,5 +1,5 @@
 @masters_data = [
-  { name: 'Максим Максимович', nickname: 'MaksInk' },
+  { name: 'Максим Максимович', nickname: 'bozzhik' },
   { name: 'Ярослав Ярославович', nickname: 'YaroslavTattoo' },
   { name: 'Игорь Игоревич', nickname: 'IgorMaster' },
   { name: 'Владимир Владимирович', nickname: 'VladInk' },

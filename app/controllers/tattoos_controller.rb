@@ -25,13 +25,6 @@ class TattoosController < ApplicationController
   # POST /tattoos or /tattoos.json
   def create
     @tattoo = Tattoo.new(tattoo_params)
-
-    if params[:tattoo][:tattoo_image].present?
-      @tattoo.tattoo_image = params[:tattoo][:tattoo_image]
-    else
-      @tattoo.tattoo_image = upload_random_image
-    end
-
     master_info = params[:tattoo][:master_info]
 
     if master_info.present?
@@ -53,14 +46,6 @@ class TattoosController < ApplicationController
         format.json { render json: @tattoo.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  private
-
-  def upload_random_image
-    uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
-    uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
-    uploader
   end
 
   # PATCH/PUT /tattoos/1 or /tattoos/1.json
