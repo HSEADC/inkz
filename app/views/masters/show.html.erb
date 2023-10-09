@@ -5,7 +5,15 @@
 <hr>
 <h2>Tattoos:</h2>
 
-<%= render @master.tattoos %>
+<%= link_to "New tattoo", new_master_tattoo_path(@master) %>
+
+<div id="tattoos card">
+  <% @master.tattoos.each do |tattoo| %>
+    <%= link_to tattoo_path(tattoo) do %>
+      <%= render @master.tattoos, master: @master %>
+    <% end %>
+  <% end %>
+</div>
 
 <div>
   <%= link_to "Edit this master", edit_master_path(@master) %> |

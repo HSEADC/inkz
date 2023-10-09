@@ -2,6 +2,8 @@
 
 <p style="color: green"><%= notice %></p>
 
+<%= link_to "New master", new_master_path %>
+
 <div id="masters">
   <% @masters.each do |master| %>
     <%= link_to master, class: 'master-card' do %>
@@ -9,5 +11,3 @@
     <% end %>
   <% end %>
 </div>
-
-<%= link_to "New master", new_master_path %>
