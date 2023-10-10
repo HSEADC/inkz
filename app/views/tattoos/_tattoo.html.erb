@@ -1,5 +1,6 @@
 <div id="<%= dom_id tattoo %>">
   <article>
+    <%= tattoo.user.email %>
     <%= image_tag tattoo.tattoo_image.url if tattoo.tattoo_image.url %>
     <h4>
       <%= tattoo.title %>
@@ -11,7 +12,11 @@
     
     <mark><%= tattoo.specialization %></mark>
 
-    <%= link_to "Edit this tattoo", edit_master_tattoo_path(master, tattoo) %>
-    <%= button_to "Destroy this tattoo", tattoo, method: :delete %>
+    <% if can? :manage, tattoo %>
+      <div>
+        <%= link_to "Edit this tattoo", edit_master_tattoo_path(master, tattoo) %>
+        <%= button_to "Destroy this tattoo", tattoo, method: :delete %>
+      </div>
+    <% end %>
   </article>
 </div>

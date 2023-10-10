@@ -8,4 +8,13 @@
     <%= link_to "Master", masters_url %>
     <%= link_to "Tattoos", tattoos_url %>
   </ul>
+  <ul class="nav_group">
+  <% if user_signed_in? %>
+    <%= link_to current_user.email, edit_user_registration_path %>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Log in", new_user_session_path %>
+    <%= link_to "Register", new_user_registration_path %>
+  <% end %>
+</ul>
 </nav>

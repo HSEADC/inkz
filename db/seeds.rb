@@ -56,6 +56,7 @@
 
 def seed
   reset_db
+  create_users(10)
   create_masters(@masters_data)
   create_tattoos(@tattoos_data)
 end
@@ -66,6 +67,20 @@ def reset_db
   Rake::Task['db:migrate'].invoke
 end
 
+def create_users(num_users)
+  (0...num_users).map do |i|
+    user_data = {
+      email: "user#{i}@bozzhik.md",
+      password: 'bozzhik'
+    }
+
+    User.create!(user_data).tap do |user|
+      puts "User with #{user.email} created with id #{user.id}"
+    end
+  end
+end
+
+# ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
 def upload_random_image
   uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
   uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
@@ -74,15 +89,17 @@ end
 
 def create_masters(data)
   data.shuffle.each do |master_data|
-    master = Master.create(name: master_data[:name], nickname: master_data[:nickname], specialization: master_data[:specialization])
+    user = User.all.sample
+    master = Master.create(name: master_data[:name], nickname: master_data[:nickname], specialization: master_data[:specialization], user_id: user.id)
     puts "Master with id #{master.id} just created"
   end
 end
 
 def create_tattoos(data)
   data.shuffle.each do |tattoo_data|
+    user = User.all.sample
     master_id = tattoo_data[:master_id] || Master.pluck(:id).sample
-    tattoo = Tattoo.create(title: tattoo_data[:title], specialization: tattoo_data[:specialization], master_id: master_id, tattoo_image: upload_random_image)
+    tattoo = Tattoo.create(title: tattoo_data[:title], specialization: tattoo_data[:specialization], master_id: master_id, tattoo_image: upload_random_image, user_id: user.id)
     puts "Tattoo with id #{tattoo.id} for master with id #{tattoo.master.id} just created"
   end
 end

@@ -1,4 +1,5 @@
 class MastersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_master, only: %i[ show edit update destroy ]
 
   # GET /masters or /masters.json
