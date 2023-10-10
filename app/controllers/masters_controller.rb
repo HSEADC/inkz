@@ -1,4 +1,5 @@
 class MastersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_master, only: %i[ show edit update destroy ]
 
   # GET /masters or /masters.json
