@@ -66,6 +66,7 @@ def reset_db
   Rake::Task['db:migrate'].invoke
 end
 
+# ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
 def upload_random_image
   uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
   uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
