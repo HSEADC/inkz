@@ -2,6 +2,13 @@
 
 <%= render @master %>
 
+<% if can? :manage, @master %>
+  <div>
+    <%= link_to "Edit this master", edit_master_path(@master) %>
+    <%= button_to "Destroy this master", @master, method: :delete %>
+  </div>
+<% end %>
+
 <hr>
 <h2>Tattoos:</h2>
 
@@ -13,11 +20,4 @@
       <%= render @master.tattoos, master: @master %>
     <% end %>
   <% end %>
-</div>
-
-<div>
-  <%= link_to "Edit this master", edit_master_path(@master) %> |
-  <%= link_to "Back to masters", masters_path %>
-
-  <%= button_to "Destroy this master", @master, method: :delete %>
 </div>

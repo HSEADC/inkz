@@ -2,7 +2,9 @@
 
 <p style="color: green"><%= notice %></p>
 
-<%= link_to "New master", new_master_path %>
+<% if can? :create, Master %>
+  <%= link_to "New master", new_master_path %>
+<% end %>
 
 <div id="masters">
   <% @masters.each do |master| %>
