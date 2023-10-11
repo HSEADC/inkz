@@ -23,6 +23,7 @@ class MastersController < ApplicationController
   # POST /masters or /masters.json
   def create
     @master = Master.new(master_params)
+    @master.user = current_user # Set the user for this master
 
     respond_to do |format|
       if @master.save
