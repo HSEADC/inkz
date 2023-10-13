@@ -4,7 +4,10 @@ class MastersController < ApplicationController
 
   # GET /masters or /masters.json
   def index
-    @masters = Master.all
+    @all_masters = Master.all
+    @user_masters = @all_masters.where(user: current_user)
+    @other_masters = @all_masters.where.not(user: current_user)
+    @masters = @user_masters + @other_masters
   end
 
   # GET /masters/1 or /masters/1.json

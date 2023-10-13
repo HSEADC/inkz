@@ -88,12 +88,14 @@ def upload_random_image
 end
 
 def create_masters(data)
-  data.shuffle.each do |master_data|
-    user = User.all.sample
+  users = User.all.to_a.shuffle
+  data.each do |master_data|
+    user = users.pop
     master = Master.create(name: master_data[:name], nickname: master_data[:nickname], specialization: master_data[:specialization], user_id: user.id)
     puts "Master with id #{master.id} just created"
   end
 end
+
 
 def create_tattoos(data)
   data.shuffle.each do |tattoo_data|
