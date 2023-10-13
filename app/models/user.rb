@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one :master
+  has_many :tattoos
 
   def is_master?
     is_master
