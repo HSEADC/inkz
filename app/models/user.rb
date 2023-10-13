@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one :master
+
+  def is_master?
+    is_master
+  end
 end
