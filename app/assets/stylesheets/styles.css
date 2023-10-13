@@ -36,3 +36,10 @@ img {
   text-align: center;
   text-transform: uppercase;
 }
+
+hr {
+  height: 0;
+  border: 0;
+  border-top: 3px solid var(--muted-border-color);
+  color: inherit;
+}

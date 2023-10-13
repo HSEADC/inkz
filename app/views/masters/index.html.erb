@@ -2,26 +2,24 @@
 
 <p style="color: green"><%= notice %></p>
 
-<% if can? :create, Master %>
+<% if can? :create, Master && current_user.is_master? %>
   <%= link_to "New master", new_master_path %>
 <% end %>
 
-<% if @user_masters.any? %>
+<% if current_user.is_master? && @user_masters.any? %>
+  <hr>
   <div id="user_masters">
-    <h2>Your Master</h2>
+    <p>Your Master</p>
     <% @user_masters.each do |master| %>
-      <%= link_to master_path(master) do %>
-        <%= render master %>
-      <% end %>
+      <%= render master %>
     <% end %>
   </div>
 <% end %>
 
 <div id="other_masters">
-  <h2>All Masters</h2>
+  <hr>
+  <p>All Masters</p>
   <% @other_masters.each do |master| %>
-    <%= link_to master_path(master) do %>
-      <%= render master %>
-    <% end %>
+    <%= render master %>
   <% end %>
 </div>

@@ -71,7 +71,8 @@ def create_users(num_users)
   (0...num_users).map do |i|
     user_data = {
       email: "user#{i}@bozzhik.md",
-      password: 'bozzhik'
+      password: 'bozzhik',
+      is_master: (i < 5)
     }
 
     User.create!(user_data).tap do |user|
@@ -79,6 +80,7 @@ def create_users(num_users)
     end
   end
 end
+
 
 # ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
 def upload_random_image
