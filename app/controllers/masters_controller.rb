@@ -1,23 +1,20 @@
 class MastersController < ApplicationController
   load_and_authorize_resource
-  before_action :authenticate_user!
-  before_action :set_master, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: [:index, :show]  # Allow unauthenticated access to index and show
 
   # GET /masters or /masters.json
   def index
-    if current_user.is_master?
+    if current_user&.is_master?
       # User has master privileges, display all masters
       @user_masters = Master.where(user: current_user)
       @other_masters = Master.where.not(user: current_user)
     else
       # User does not have master privileges, display only their master if it exists
-      @user_masters = [current_user.master].compact
+      @user_masters = [current_user&.master].compact
       @other_masters = Master.where.not(user: current_user)
     end
     @masters = @user_masters + @other_masters
   end
-
-
 
   # GET /masters/1 or /masters/1.json
   def show

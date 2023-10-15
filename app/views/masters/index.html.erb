@@ -2,11 +2,12 @@
 
 <p style="color: green"><%= notice %></p>
 
-<% if can? :create, Master && current_user.is_master? %>
+<% if current_user && current_user.is_master? && can?(:create, Master) %>
   <%= link_to "New master", new_master_path %>
 <% end %>
 
-<% if current_user.is_master? && @user_masters.any? %>
+
+<% if current_user && current_user.is_master? && @user_masters.present? %>
   <hr>
   <div id="user_masters">
     <p>Your Master</p>
