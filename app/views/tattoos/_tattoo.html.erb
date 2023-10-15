@@ -13,7 +13,7 @@
     <mark><%= tattoo.specialization %></mark>
     
 
-    <% if can? :manage, tattoo %>
+    <% if can?(:manage, @master) %>
       <div>
         <%= link_to "Edit this tattoo", edit_master_tattoo_path(master, tattoo) %>
         <%= button_to "Destroy this tattoo", tattoo, method: :delete %>

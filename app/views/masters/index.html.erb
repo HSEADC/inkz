@@ -11,7 +11,7 @@
   <div id="user_masters">
     <p>Your Master</p>
     <% @user_masters.each do |master| %>
-      <%= render master %>
+      <%= link_to render(master), master_path(master) %>
     <% end %>
   </div>
 <% end %>
@@ -20,6 +20,6 @@
   <hr>
   <p>All Masters</p>
   <% @other_masters.each do |master| %>
-    <%= render master %>
+    <%= link_to render(master), master_path(master) %>
   <% end %>
 </div>

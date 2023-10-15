@@ -4,6 +4,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new
+
+    if user.is_master?
+      can :manage, Tattoo 
+    end
+
     can :read, Master
     can :read, Tattoo
     

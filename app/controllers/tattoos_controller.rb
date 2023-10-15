@@ -5,14 +5,11 @@ class TattoosController < ApplicationController
   # GET /tattoos or /tattoos.json
   def index
     @tattoos = Tattoo.all
-
     @display_master = true
-
-
+    
+    # # Debugging
     @tattooos = current_user.tattoos
-  
-    # Debugging
-    puts "Current user's tattoos: #{@tattooos.pluck(:id).inspect}"
+    # puts "Current user's tattoos: #{@tattooos.pluck(:id).inspect}"
   end
 
   # GET /tattoos/1 or /tattoos/1.json
