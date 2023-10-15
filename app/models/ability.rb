@@ -4,6 +4,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new
+
+    if user.is_master?
+      can :manage, Tattoo 
+    end
+
     can :read, Master
     can :read, Tattoo
     
@@ -13,6 +19,12 @@ class Ability
     
     can :create, Tattoo
     can :manage, Tattoo, user_id: user.id
+
+    # Define abilities for unauthenticated users (without an account)
+    if user.nil?
+      can :read, Master
+      can :read, Tattoo
+    end
 
     # Define abilities for the user here. For example:
     #

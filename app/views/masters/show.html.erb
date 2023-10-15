@@ -12,7 +12,11 @@
 <hr>
 <h2>Tattoos:</h2>
 
-<%= link_to "New tattoo", new_master_tattoo_path(@master) %>
+<% if current_user && @master.user == current_user %>
+  <%= link_to "New tattoo", new_master_tattoo_path(@master) %>
+<% end %>
+
+
 
 <div id="tattoos card">
   <% @master.tattoos.each do |tattoo| %>

@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_many :masters
+  has_one :master
   has_many :tattoos
+
+  def is_master?
+    is_master
+  end
 end

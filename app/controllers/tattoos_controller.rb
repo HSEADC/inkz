@@ -5,8 +5,14 @@ class TattoosController < ApplicationController
   # GET /tattoos or /tattoos.json
   def index
     @tattoos = Tattoo.all
-
     @display_master = true
+
+    if user_signed_in?  # Check if the user is signed in using your authentication logic
+      @tattooos = current_user.tattoos
+    else
+      # Handle the case where the user is not authenticated
+      # For example, you can display public content or a message
+    end
   end
 
   # GET /tattoos/1 or /tattoos/1.json
