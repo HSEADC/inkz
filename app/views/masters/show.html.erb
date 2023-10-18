@@ -16,12 +16,14 @@
   <%= link_to "New tattoo", new_master_tattoo_path(@master) %>
 <% end %>
 
-
-
-<div id="tattoos card">
-  <% @master.tattoos.each do |tattoo| %>
-    <%= link_to tattoo_path(tattoo) do %>
-      <%= render @master.tattoos, master: @master %>
-    <% end %>
+<div id="tattoos-card">
+  <% @tattoos.each do |tattoo| %>
+    <div class="tattoo-card">
+      <%= link_to tattoo_path(tattoo) do %>
+        <%= render partial: "tattoos/tattoo", locals: { master: @master, tattoo: tattoo } %>
+      <% end %>
+    </div>
   <% end %>
 </div>
+
+

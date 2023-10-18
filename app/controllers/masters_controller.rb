@@ -18,6 +18,7 @@ class MastersController < ApplicationController
 
   # GET /masters/1 or /masters/1.json
   def show
+    @tattoos = @master.tattoos
   end
 
   # GET /masters/new
