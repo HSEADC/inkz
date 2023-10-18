@@ -47,7 +47,7 @@ class TattoosController < ApplicationController
 
     respond_to do |format|
       if @tattoo.save
-        format.html { redirect_to master_url(@master), notice: "Tattoo was successfully created." }
+        format.html { redirect_to tattoo_url(@tattoo), notice: "Tattoo was successfully created." }
         format.json { render :show, status: :created, location: @tattoo }
       else
         format.html { render :new, status: :unprocessable_entity }
