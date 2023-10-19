@@ -33,7 +33,7 @@ class MastersController < ApplicationController
   # POST /masters or /masters.json
   def create
     @master = Master.new(master_params)
-    @master.user = current_user # Set the user for this master
+    # @master.user = current_user # Set the user for this master
 
     respond_to do |format|
       if @master.save
@@ -77,6 +77,6 @@ class MastersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def master_params
-      params.require(:master).permit(:name, :nickname, :specialization)
+      params.require(:master).permit(:name, :nickname, :specialization).merge(user_id: current_user.id)
     end
 end
