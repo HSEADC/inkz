@@ -56,7 +56,7 @@
 
 def seed
   reset_db
-  create_users(13)
+  create_users(14)
   create_masters(@masters_data)
   create_tattoos(@tattoos_data)
 end
@@ -68,8 +68,8 @@ def reset_db
 end
 
 def create_users(num_users)
-  (0...num_users).map do |i|
-    is_master = (i < 10)
+  (1...num_users).map do |i|
+    is_master = (i <= 10)
     user_data = {
       email: "user#{i}@bozzhik.md",
       password: 'bozzhik',
@@ -89,19 +89,19 @@ def upload_random_image
 end
 
 def create_masters(data)
-  users = User.where(is_master: true).to_a.shuffle
-  data.each do |master_data|
-    user = users.pop
+  users = User.where(is_master: true).to_a
+  data.each_with_index do |master_data, index|
+    user = users[index]
     master = Master.create(name: master_data[:name], nickname: master_data[:nickname], specialization: master_data[:specialization], user_id: user.id)
     puts "Master with id #{master.id} just created"
   end
 end
 
 def create_tattoos(data)
-  data.shuffle.each do |tattoo_data|
-    user = User.where(is_master: true).sample
-    master_id = user.id
-    tattoo = Tattoo.create(title: tattoo_data[:title], specialization: tattoo_data[:specialization], master_id: master_id, tattoo_image: upload_random_image, user_id: user.id)
+  masters = Master.all
+  data.each do |tattoo_data|
+    master = masters.sample
+    tattoo = Tattoo.create(title: tattoo_data[:title], specialization: tattoo_data[:specialization], master_id: master.id, tattoo_image: upload_random_image, user_id: master.user.id)
     puts "Tattoo with id #{tattoo.id} for master with id #{tattoo.master.id} just created"
   end
 end
