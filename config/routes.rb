@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subscriptions
   devise_for :users
   resources :tattoos
   
