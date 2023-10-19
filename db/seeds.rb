@@ -56,6 +56,7 @@
 
 def seed
   reset_db
+  create_admin
   create_users(14)
   create_masters(@masters_data)
   create_tattoos(@tattoos_data)
@@ -65,6 +66,11 @@ def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].invoke
+end
+
+def create_admin
+  user = User.create!(email: "admin@bozzhik.md", password: 'bozzhik', is_admin: true)
+  puts "Admin with #{user.email} created with id #{user.id}"
 end
 
 def create_users(num_users)
