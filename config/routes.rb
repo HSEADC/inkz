@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :subscriptions
+  namespace :admin do
+    resources :subscriptions
+  end
+  
   devise_for :users
+
+  resources :subscriptions, only: [:create, :show]
   resources :tattoos
   
   resources :masters do
