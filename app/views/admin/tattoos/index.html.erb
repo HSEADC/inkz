@@ -5,8 +5,8 @@
 <div id="tattoos card">
   <% @tattoos.each do |tattoo| %>
     <% master = tattoo.master %>
-    <%= link_to tattoo do %>
-      <%= render partial: 'tattoos/tattoo', locals: { master: master, tattoo: tattoo } %>
+    <%= link_to [:admin, tattoo]  do %>
+      <%= render partial: 'admin/tattoos/tattoo', locals: { master: master, tattoo: tattoo } %>
     <% end %>
   <% end %>
 </div>

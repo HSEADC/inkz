@@ -62,7 +62,7 @@ class TattoosController < ApplicationController
 
     respond_to do |format|
       if @tattoo.update(tattoo_params)
-        format.html { redirect_to master_url(@master), notice: "Tattoo was successfully updated." }
+        format.html { redirect_to tattoo_url(@tattoo), notice: "Tattoo was successfully updated." }
         format.json { render :show, status: :ok, location: @tattoo }
       else
         format.html { render :edit, status: :unprocessable_entity }

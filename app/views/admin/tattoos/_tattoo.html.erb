@@ -6,17 +6,19 @@
     </h4>
     
     <% if @display_master == true %>
-      <h4><%= link_to master.user.email, master_path(tattoo.master) %></h4>
-      <%# <h4><%= link_to tattoo.master.nickname, master_path(tattoo.master) %>
+      <h4><%= link_to tattoo.master.user.email, master_path(tattoo.master) %></h4>
     <% end %>
-    
-    <mark><%= tattoo.specialization %></mark>
-    
 
-    <% if can?(:manage, @master) %>
+    <p><strong>Specialization:</strong> <%= tattoo.specialization %></p>
+    <p><strong>Master:</strong> <%= tattoo.master.name %></p>
+    <p><strong>User:</strong> <%= tattoo.user.email if tattoo.user %></p>
+    <p><strong>Created at:</strong> <%= tattoo.created_at %></p>
+    <p><strong>Updated at:</strong> <%= tattoo.updated_at %></p>
+
+    <% if can?(:manage, tattoo) %>
       <div>
-        <%= link_to "Edit this tattoo", edit_master_tattoo_path(master, tattoo) %>
-        <%= button_to "Destroy this tattoo", tattoo, method: :delete %>
+        <%= link_to "Edit this tattoo", edit_master_tattoo_path(tattoo.master, tattoo) %>
+        <%= button_to "Destroy this tattoo", [:admin, tattoo], method: :delete %>
       </div>
     <% end %>
   </article>
