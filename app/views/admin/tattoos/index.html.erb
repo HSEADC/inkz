@@ -1,0 +1,12 @@
+<h1>Tattoos</h1>
+
+<p style="color: green"><%= notice %></p>
+
+<div id="tattoos card">
+  <% @tattoos.each do |tattoo| %>
+    <% master = tattoo.master %>
+    <%= link_to [:admin, tattoo]  do %>
+      <%= render partial: 'admin/tattoos/tattoo', locals: { master: master, tattoo: tattoo } %>
+    <% end %>
+  <% end %>
+</div>

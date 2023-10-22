@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     @color = generate_random_hex_color
+    @subscription = Subscription.new
   end
 
   def about

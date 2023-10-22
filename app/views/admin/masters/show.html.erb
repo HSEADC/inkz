@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<table role="grid">
+  <tbody>
+    <%= render partial: 'admin/masters/master', locals: { master: @master } %>
+  </tbody>
+</table>
+
+<hr>
+<h2>Tattoos:</h2>
+
+<% if current_user && @master.user == current_user %>
+  <%= link_to "New tattoo", new_master_tattoo_path(@master) %>
+<% end %>
+
+<div id="tattoos-card">
+  <% @tattoos.each do |tattoo| %>
+    <div class="tattoo-card">
+      <%= link_to admin_tattoo_path(tattoo) do %>
+        <%= render partial: "admin/tattoos/tattoo", locals: { master: @master, tattoo: tattoo } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

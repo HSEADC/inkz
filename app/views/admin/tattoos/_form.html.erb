@@ -1,0 +1,33 @@
+<%= form_with(model: [master, tattoo]) do |form| %>
+  <% if tattoo.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tattoo.errors.count, "error") %> prohibited this tattoo from being saved:</h2>
+
+      <ul>
+        <% tattoo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :specialization, style: "display: block" %>
+    <%= form.text_field :specialization %>
+  </div>
+
+  <!-- Add a file input field for the tattoo image -->
+  <div>
+    <%= form.label :tattoo_image %>
+    <%= form.file_field :tattoo_image, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

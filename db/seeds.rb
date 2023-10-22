@@ -56,7 +56,8 @@
 
 def seed
   reset_db
-  create_users(10)
+  create_admin
+  create_users(14)
   create_masters(@masters_data)
   create_tattoos(@tattoos_data)
 end
@@ -67,20 +68,24 @@ def reset_db
   Rake::Task['db:migrate'].invoke
 end
 
+def create_admin
+  user = User.create!(email: "admin@bozzhik.md", password: 'bozzhik', is_admin: true)
+  puts "Admin with #{user.email} created with id #{user.id}"
+end
+
 def create_users(num_users)
-  (0...num_users).map do |i|
+  (1...num_users).map do |i|
+    is_master = (i <= 10)
     user_data = {
       email: "user#{i}@bozzhik.md",
       password: 'bozzhik',
-      is_master: (i < 5)
+      is_master: is_master
     }
 
-    User.create!(user_data).tap do |user|
-      puts "User with #{user.email} created with id #{user.id}"
-    end
+    user = User.create!(user_data)
+    puts "User with #{user.email} created with id #{user.id}. Is Master: #{is_master ? 'Yes' : 'No'}"
   end
 end
-
 
 # ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
 def upload_random_image
@@ -90,20 +95,19 @@ def upload_random_image
 end
 
 def create_masters(data)
-  users = User.all.to_a.shuffle
-  data.each do |master_data|
-    user = users.pop
+  users = User.where(is_master: true).to_a
+  data.each_with_index do |master_data, index|
+    user = users[index]
     master = Master.create(name: master_data[:name], nickname: master_data[:nickname], specialization: master_data[:specialization], user_id: user.id)
     puts "Master with id #{master.id} just created"
   end
 end
 
-
 def create_tattoos(data)
-  data.shuffle.each do |tattoo_data|
-    user = User.all.sample
-    master_id = tattoo_data[:master_id] || Master.pluck(:id).sample
-    tattoo = Tattoo.create(title: tattoo_data[:title], specialization: tattoo_data[:specialization], master_id: master_id, tattoo_image: upload_random_image, user_id: user.id)
+  masters = Master.all
+  data.each do |tattoo_data|
+    master = masters.sample
+    tattoo = Tattoo.create(title: tattoo_data[:title], specialization: tattoo_data[:specialization], master_id: master.id, tattoo_image: upload_random_image, user_id: master.user.id)
     puts "Tattoo with id #{tattoo.id} for master with id #{tattoo.master.id} just created"
   end
 end

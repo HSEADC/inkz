@@ -1,0 +1,13 @@
+<% index ||= 0 %>
+
+<tr>
+  <th scope="row"><%= index + 1 %></th>
+  <td><%= master.user.email %></td>
+  <td><%= master.name %></td>
+  <td><%= master.nickname %></td>
+  <td>
+    <%= link_to "View", admin_master_path(master) %>
+    <%= link_to "Edit", edit_admin_master_path(master) %>
+    <%= button_to "Destroy", master, method: :delete %>
+  </td>
+</tr>

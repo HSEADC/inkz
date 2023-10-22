@@ -1,1 +1,7 @@
+<p style="color: green"><%= notice %></p>
+
 <h1 class="main-text" style="color: <%= @color %>">Index page</h1>
+
+<%= turbo_frame_tag dom_id(@subscription) do %>
+    <%= render 'subscriptions/form', subscription: @subscription%>
+<% end %>

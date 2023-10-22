@@ -1,23 +1,14 @@
-class TattoosController < ApplicationController
+class Admin::TattoosController < ApplicationController
   load_and_authorize_resource
   before_action :set_tattoo, only: %i[ show edit update destroy ]
 
   # GET /tattoos or /tattoos.json
   def index
     @tattoos = Tattoo.all
-    @display_master = true
-
-    if user_signed_in?  # Check if the user is signed in using your authentication logic
-      @tattooos = current_user.tattoos
-    else
-      # Handle the case where the user is not authenticated
-      # For example, you can display public content or a message
-    end
   end
 
   # GET /tattoos/1 or /tattoos/1.json
   def show
-    @display_master = true
     @master = @tattoo.master
   end
 
@@ -77,7 +68,7 @@ class TattoosController < ApplicationController
     @tattoo.destroy
 
     respond_to do |format|
-      format.html { redirect_to master_url(@master), notice: "Tattoo was successfully destroyed." }
+      format.html { redirect_to admin_tattoos_url, notice: "Tattoo was successfully destroyed." }
       format.json { head :no_content }
     end
   end
