@@ -26,9 +26,9 @@ class Admin::TattoosController < ApplicationController
   # POST /tattoos or /tattoos.json
   def create
     @master = Master.find(params[:master_id])
-    @tattoo = Tattoo.new(title: params[:tattoo][:title], specialization: params[:tattoo][:specialization], master_id: @master.id)
-    puts @tattoo
-
+    @tattoo = Tattoo.new(tattoo_params)
+    @tattoo.master = @master
+    @tattoo.user = nil  # Set the user to nil for admin-created tattoos
 
     if params[:tattoo][:tattoo_image].present?
       @tattoo.tattoo_image = params[:tattoo][:tattoo_image]

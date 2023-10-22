@@ -36,7 +36,7 @@ class TattoosController < ApplicationController
   def create
     @master = Master.find(params[:master_id])
     @tattoo = Tattoo.new(title: params[:tattoo][:title], specialization: params[:tattoo][:specialization], master_id: @master.id)
-    puts @tattoo
+    @tattoo.user = current_user
 
 
     if params[:tattoo][:tattoo_image].present?
@@ -90,6 +90,6 @@ class TattoosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tattoo_params
-      params.require(:tattoo).permit(:title, :specialization)
+      params.require(:tattoo).permit(:title, :specialization, :tattoo_image)
     end
 end

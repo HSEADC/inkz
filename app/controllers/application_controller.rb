@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    tattoos_path
+    if resource.is_admin
+      admin_tattoos_path
+    else
+      tattoos_path
+    end
   end
 
   def after_sign_out_path_for(resource)

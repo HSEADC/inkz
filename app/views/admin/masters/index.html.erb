@@ -2,6 +2,10 @@
 
 <p style="color: green"><%= notice %></p>
 
+<% if can?(:create, Master) %>
+  <%= link_to "New master", new_master_path %>
+<% end %>
+
 <table role="grid">
   <thead>
     <tr>
