@@ -1,0 +1,25 @@
+<h1>Masters</h1>
+
+<p style="color: green"><%= notice %></p>
+
+<% if current_user && current_user.is_master? && can?(:create, Master) && !@user_masters.present? %>
+  <%= link_to "New master", new_master_path %>
+<% end %>
+
+<% if current_user && current_user.is_master? && @user_masters.present? %>
+  <hr>
+  <div id="user_masters">
+    <p>Your Master</p>
+    <% @user_masters.each do |master| %>
+      <%= link_to render(master), master_path(master) %>
+    <% end %>
+  </div>
+<% end %>
+
+<div id="other_masters">
+  <hr>
+  <p>All Masters</p>
+  <% @other_masters.each do |master| %>
+    <%= link_to render(master), master_path(master) %>
+  <% end %>
+</div>

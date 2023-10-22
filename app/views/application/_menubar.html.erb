@@ -3,10 +3,15 @@
     <li><strong>Tatu</strong></li>
   </ul>
   <ul class="nav_group">
-    <%= link_to "Home", root_url %>
-    <%= link_to "About", welcome_about_url %>
-    <%= link_to "Masters", masters_url %>
-    <%= link_to "Tattoos", tattoos_url %>
+    <% if current_user&.is_admin? %>
+      <%= link_to "Masters", admin_masters_url %>
+      <%= link_to "Tattoos", admin_tattoos_url %>
+    <% else %>
+      <%= link_to "Home", root_url %>
+      <%= link_to "About", welcome_about_url %>
+      <%= link_to "Masters", masters_url %>
+      <%= link_to "Tattoos", tattoos_url %>
+    <% end %>
   </ul>
   <ul class="nav_group">
     <% if user_signed_in? %>
