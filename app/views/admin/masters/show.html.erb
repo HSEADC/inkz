@@ -1,13 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @master %>
-
-<% if can? :manage, @master %>
-  <div>
-    <%= link_to "Edit this master", edit_master_path(@master) %>
-    <%= button_to "Destroy this master", @master, method: :delete %>
-  </div>
-<% end %>
+<table role="grid">
+  <tbody>
+    <%= render partial: 'admin/masters/master', locals: { master: @master } %>
+  </tbody>
+</table>
 
 <hr>
 <h2>Tattoos:</h2>
@@ -25,5 +22,3 @@
     </div>
   <% end %>
 </div>
-
-
