@@ -1,25 +1,14 @@
-<div id="<%= dom_id tattoo %>">
-  <article>
-    <%= image_tag tattoo.tattoo_image.url if tattoo.tattoo_image.url %>
-    <h4>
-      <%= tattoo.title %>
-    </h4>
-    
-    <% if @display_master == true %>
-      <h4><%= link_to tattoo.master.user.email, master_path(tattoo.master) %></h4>
-    <% end %>
-
-    <p><strong>Specialization:</strong> <%= tattoo.specialization %></p>
-    <p><strong>Master:</strong> <%= tattoo.master.name %></p>
-    <p><strong>User:</strong> <%= tattoo.user.email if tattoo.user %></p>
-    <p><strong>Created at:</strong> <%= tattoo.created_at %></p>
-    <p><strong>Updated at:</strong> <%= tattoo.updated_at %></p>
-
-    <% if can?(:manage, tattoo) %>
-      <div>
-        <%= link_to "Edit this tattoo", edit_master_tattoo_path(tattoo.master, tattoo) %>
-        <%= button_to "Destroy this tattoo", [:admin, tattoo], method: :delete %>
-      </div>
-    <% end %>
-  </article>
-</div>
+<tr id="<%= dom_id tattoo %>">
+  <td><%= image_tag tattoo.tattoo_image.url if tattoo.tattoo_image.url %></td>
+  <td><%= tattoo.title %></td>
+  <td><strong>Specialization:</strong> <%= tattoo.specialization %></td>
+  <td><strong>Master:</strong> <%= tattoo.master.name %></td>
+  <td><%= link_to tattoo.master.user.email, admin_master_path(tattoo.master) %></td>
+  <td><%= tattoo.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+  <td><%= tattoo.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+  <td>
+    <%= link_to "View", admin_tattoo_path(tattoo) %>
+    <%= link_to "Edit this tattoo", edit_master_tattoo_path(tattoo.master, tattoo) %>
+    <%= button_to "Destroy this tattoo", [:admin, tattoo], method: :delete %>
+  </td>
+</tr>

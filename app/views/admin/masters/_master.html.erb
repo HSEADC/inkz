@@ -1,6 +1,6 @@
 <% index ||= 0 %>
 
-<tr>
+<tr id="<%= dom_id master %>">
   <th scope="row"><%= index + 1 %></th>
   <td><%= master.user.email %></td>
   <td><%= master.name %></td>

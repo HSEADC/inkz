@@ -2,11 +2,24 @@
 
 <p style="color: green"><%= notice %></p>
 
-<div id="tattoos card">
-  <% @tattoos.each do |tattoo| %>
-    <% master = tattoo.master %>
-    <%= link_to [:admin, tattoo]  do %>
-      <%= render partial: 'admin/tattoos/tattoo', locals: { master: master, tattoo: tattoo } %>
-    <% end %>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Specialization</th>
+      <th scope="col">Master</th>
+      <th scope="col">User</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Updated at</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <div class="tattoos admin card">
+      <% @tattoos.each do |tattoo| %>
+        <%= render partial: 'tattoo', locals: { tattoo: tattoo } %>
+      <% end %>
+    </div>
+  </tbody>
+</table>

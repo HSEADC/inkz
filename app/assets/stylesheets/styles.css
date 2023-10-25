@@ -43,3 +43,13 @@ hr {
   border-top: 3px solid var(--muted-border-color);
   color: inherit;
 }
+
+article img {
+  width: 30vw;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.tattoos.admin.card img {
+  width: 1vw;
+}
