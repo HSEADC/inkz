@@ -24,13 +24,17 @@ bundle install
 rails db:migrate
 ```
 
-5. Наполните сидами базу данных
+5. Скачайте [изображения с тату](https://disk.yandex.ru/d/PTdfE03I45aN2w) и разместите их в `public/autoupload/tattoos`
+
+
+
+7. Наполните сидами базу данных
 
 ```ruby
 rails db:seed
 ```
 
-6. Запустите сервер разработки
+7. Запустите сервер разработки
 
 ```ruby
 bin/dev
