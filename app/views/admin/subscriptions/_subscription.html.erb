@@ -4,8 +4,5 @@
   <th scope="row"><%= index + 1 %></th>
   <td><%= subscription.email %></td>
   <td><%= subscription.created_at.strftime("%B %d, %Y %I:%M %p") %></td>
-    <%# link_to "View", admin_subscription_path(subscription) %>
-    <%# link_to "Edit", edit_admin_subscription_path(subscription) %>
-    <%# button_to "Destroy this subscription", subscription, method: :delete %>
+  <td><%= button_to "Destroy this subscription", @subscription, method: :delete %></td>
 </tr>
-

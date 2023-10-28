@@ -52,7 +52,7 @@ class Admin::SubscriptionsController < ApplicationController
     @subscription.destroy
 
     respond_to do |format|
-      format.html { redirect_to subscriptions_url, notice: "Subscription was successfully destroyed." }
+      format.html { redirect_to admin_subscriptions_url, notice: "Subscription was successfully destroyed." }
       format.json { head :no_content }
     end
   end
