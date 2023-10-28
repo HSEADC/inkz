@@ -32,6 +32,7 @@ class MastersController < ApplicationController
 
   # POST /masters or /masters.json
   def create
+    puts('HYI HYIHYIHYIHYIHYIHYIHYIHYIHYIHYIHYIHYI')
     @master = Master.new(master_params)
     # @master.user = current_user # Set the user for this master
 
