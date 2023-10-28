@@ -36,7 +36,28 @@ class Admin::MastersController < ApplicationController
     end
   end
 
-  # ...
+  # PATCH/PUT /masters/1 or /masters/1.json
+  def update
+    respond_to do |format|
+      if @master.update(master_params)
+        format.html { redirect_to admin_master_url(@master), notice: "Master was successfully updated." }
+        format.json { render :show, status: :ok, location: @master }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @master.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /masters/1 or /masters/1.json
+  def destroy
+    @master.destroy
+
+    respond_to do |format|
+      format.html { redirect_to admin_masters_url, notice: "Master was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
