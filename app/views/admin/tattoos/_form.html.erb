@@ -1,5 +1,4 @@
-<%= form_with(model: [master, tattoo]) do |form| %>
-  <% if tattoo.errors.any? %>
+<%= form_with(model: [master, tattoo], url: admin_master_tattoo_path(master, tattoo), method: :patch) do |form| %>  <% if tattoo.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(tattoo.errors.count, "error") %> prohibited this tattoo from being saved:</h2>
 
