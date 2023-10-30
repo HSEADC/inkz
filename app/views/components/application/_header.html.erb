@@ -1,14 +1,13 @@
 <header class="flex justify-center">
-  <nav class="grid z-50 fixed grid-cols-3 text-xl items-center mt-7 text-white w-[95%]">
-    <ul class="justify-self-start">
+  <nav class="grid z-50 fixed grid-cols-3 sm:grid-cols-2 text-xl sm:text-lg items-center sm:mt-4 mt-7 text-white w-[95%]">
+    <ul class="sm:hidden justify-self-start">
       <li>
         <%= link_to(root_path, class: 's-20') do %>
           <%= image_tag('logo.svg', alt: 'Логотип INKZ', class: 'hover:scale-110 duration-300') %>
         <% end %>
       </li>
     </ul>
-    <ul class="flex gap-5 font-medium uppercase justify-self-center">
-      <%= link_to "About", welcome_about_url, class: "hover:scale-110 duration-300" %>
+    <ul class="flex gap-5 font-medium uppercase sm:justify-self-start justify-self-center">
       <%= link_to "Masters", admin_masters_url, class: "hover:scale-110 duration-300" %>
       <%= link_to "Tattoos", admin_tattoos_url, class: "hover:scale-110 duration-300" %>
 
