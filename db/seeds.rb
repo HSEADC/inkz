@@ -58,7 +58,7 @@ def seed
   reset_db
   create_users(14)
   create_admin
-  create_subscriptions(10)
+  create_subscriptions(5)
   create_masters(@masters_data)
   create_tattoos(@tattoos_data)
 end

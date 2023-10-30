@@ -41,7 +41,7 @@ class Admin::MastersController < ApplicationController
 
     respond_to do |format|
       if @master.save
-        format.html { redirect_to master_url(@master), notice: "Master was successfully created." }
+        format.html { redirect_to admin_master_url(@master), notice: "Master was successfully created." }
         format.json { render :show, status: :created, location: @master }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class Admin::MastersController < ApplicationController
   def update
     respond_to do |format|
       if @master.update(master_params)
-        format.html { redirect_to master_url(@master), notice: "Master was successfully updated." }
+        format.html { redirect_to admin_master_url(@master), notice: "Master was successfully updated." }
         format.json { render :show, status: :ok, location: @master }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -68,7 +68,7 @@ class Admin::MastersController < ApplicationController
     @master.destroy
 
     respond_to do |format|
-      format.html { redirect_to masters_url, notice: "Master was successfully destroyed." }
+      format.html { redirect_to admin_masters_url, notice: "Master was successfully destroyed." }
       format.json { head :no_content }
     end
   end
