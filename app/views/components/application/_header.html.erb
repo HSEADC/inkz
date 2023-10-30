@@ -1,10 +1,10 @@
 <header class="flex justify-center">
-  <nav class="grid z-50 fixed grid-cols-3 text-xl items-center mt-10 text-white w-[95%]">
+  <nav class="grid z-50 fixed grid-cols-3 text-xl items-center mt-7 text-white w-[95%]">
     <ul class="justify-self-start">
       <li>
-        <a class="s-20" href="<%= root_path %>">
+        <%= link_to(root_path, class: 's-20') do %>
           <%= image_tag('logo.svg', alt: 'Логотип INKZ', class: 'hover:scale-110 duration-300') %>
-        </a>
+        <% end %>
       </li>
     </ul>
     <ul class="flex gap-5 font-medium uppercase justify-self-center">
@@ -19,10 +19,14 @@
     <ul class="justify-self-end">
       <% if user_signed_in? %>
         <%#= link_to current_user.email, edit_user_registration_path %>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "hover:scale-110 duration-300" %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <%= image_tag('icons/login.svg', alt: 'Выход из аккаунта', class: 's-10 rotate-180 hover:scale-110 duration-300') %>
+        <% end %>
+
       <% else %>
-        <%= link_to "Log in", new_user_session_path, class: "hover:scale-110 duration-300" %>
-        <%#= link_to "Register", new_user_registration_path %>
+        <%= link_to new_user_session_path do %>
+          <%= image_tag('icons/login.svg', alt: 'Вход в аккаунт', class: 's-10 hover:scale-110 duration-300') %>
+        <% end %>
       <% end %>
     </ul>
   </nav>
