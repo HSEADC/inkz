@@ -17,6 +17,7 @@ class Admin::SubscriptionsController < ApplicationController
 
   # GET /subscriptions/1/edit
   def edit
+    @subscription = Subscription.find(params[:id])
   end
 
   # POST /subscriptions or /subscriptions.json
@@ -25,7 +26,7 @@ class Admin::SubscriptionsController < ApplicationController
 
     respond_to do |format|
       if @subscription.save
-        format.html { redirect_to subscription_url(@subscription), notice: "Subscription was successfully created." }
+        format.html { redirect_to admin_subscriptions_url, notice: "Subscription was successfully created." }
         format.json { render :show, status: :created, location: @subscription }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class Admin::SubscriptionsController < ApplicationController
   def update
     respond_to do |format|
       if @subscription.update(subscription_params)
-        format.html { redirect_to subscription_url(@subscription), notice: "Subscription was successfully updated." }
+        format.html { redirect_to admin_subscriptions_url, notice: "Subscription was successfully updated." }
         format.json { render :show, status: :ok, location: @subscription }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class Admin::SubscriptionsController < ApplicationController
     @subscription.destroy
 
     respond_to do |format|
-      format.html { redirect_to subscriptions_url, notice: "Subscription was successfully destroyed." }
+      format.html { redirect_to admin_subscriptions_url, notice: "Subscription was successfully destroyed." }
       format.json { head :no_content }
     end
   end

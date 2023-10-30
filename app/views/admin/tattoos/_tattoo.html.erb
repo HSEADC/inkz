@@ -8,7 +8,7 @@
   <td><%= tattoo.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
   <td>
     <%= link_to "View", admin_tattoo_path(tattoo) %>
-    <%= link_to "Edit this tattoo", edit_master_tattoo_path(tattoo.master, tattoo) %>
+    <%= link_to "Edit this tattoo", edit_admin_master_tattoo_path(tattoo.master, tattoo) %>
     <%= button_to "Destroy this tattoo", [:admin, tattoo], method: :delete %>
   </td>
 </tr>

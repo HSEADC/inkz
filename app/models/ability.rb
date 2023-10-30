@@ -7,8 +7,9 @@ class Ability
     user ||= User.new
 
     if user.is_admin?
-      # Users with is_admin = true can manage all resources
-      can :manage, :all
+      can :manage, Master
+      can :manage, Tattoo
+      
     elsif user.is_master?
       can :manage, Tattoo 
     end

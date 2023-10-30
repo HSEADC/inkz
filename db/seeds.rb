@@ -56,8 +56,9 @@
 
 def seed
   reset_db
-  create_admin
   create_users(14)
+  create_admin
+  create_subscriptions(5)
   create_masters(@masters_data)
   create_tattoos(@tattoos_data)
 end
@@ -66,11 +67,6 @@ def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].invoke
-end
-
-def create_admin
-  user = User.create!(email: "admin@bozzhik.md", password: 'bozzhik', is_admin: true)
-  puts "Admin with #{user.email} created with id #{user.id}"
 end
 
 def create_users(num_users)
@@ -87,11 +83,24 @@ def create_users(num_users)
   end
 end
 
+def create_admin
+  user = User.create!(email: "admin@bozzhik.md", password: 'bozzhik', is_admin: true)
+  puts "Admin with #{user.email} created with id #{user.id}"
+end
+
 # ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
 def upload_random_image
   uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
   uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
   uploader
+end
+
+def create_subscriptions(num_users)
+  num_users.times do |i|
+    email = "user#{i + 1}@bozzhik.md"
+    subscription = Subscription.create(email: email)
+    puts "Subscription with email #{subscription.email} just created"
+  end
 end
 
 def create_masters(data)

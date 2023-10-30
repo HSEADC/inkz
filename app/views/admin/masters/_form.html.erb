@@ -1,4 +1,4 @@
-<%= form_with(model: master) do |form| %>
+<%= form_with(model: [:admin, @master]) do |form| %>
   <% if master.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(master.errors.count, "error") %> prohibited this master from being saved:</h2>
@@ -26,7 +26,12 @@
     <%= form.text_field :specialization %>
   </div>
 
-  <div>
+  <div class="field">
+    <%= form.label :user_id, "Select User" %>
+    <%= form.collection_select :user_id, @users, :id, :email, include_blank: true %>
+  </div>
+
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>

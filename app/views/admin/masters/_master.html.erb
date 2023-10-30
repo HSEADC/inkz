@@ -8,6 +8,6 @@
   <td>
     <%= link_to "View", admin_master_path(master) %>
     <%= link_to "Edit", edit_admin_master_path(master) %>
-    <%= button_to "Destroy", master, method: :delete %>
+    <%= button_to "Destroy", admin_master_path(master), method: :delete %>
   </td>
 </tr>

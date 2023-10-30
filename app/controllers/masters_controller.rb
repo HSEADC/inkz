@@ -49,7 +49,7 @@ class MastersController < ApplicationController
   # PATCH/PUT /masters/1 or /masters/1.json
   def update
     respond_to do |format|
-      if @master.update(master_params)
+      if @master.update(master_params.except(:user_id))
         format.html { redirect_to master_url(@master), notice: "Master was successfully updated." }
         format.json { render :show, status: :ok, location: @master }
       else

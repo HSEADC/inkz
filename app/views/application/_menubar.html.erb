@@ -5,6 +5,7 @@
   <ul class="nav_group">
     <% if current_user&.is_admin? %>
       <%= link_to "Home", root_url %>
+      <%= link_to "Subscriptions", admin_subscriptions_url %>
       <%= link_to "Masters", admin_masters_url %>
       <%= link_to "Tattoos", admin_tattoos_url %>
     <% else %>

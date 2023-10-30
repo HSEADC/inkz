@@ -38,7 +38,7 @@ class Admin::TattoosController < ApplicationController
 
     respond_to do |format|
       if @tattoo.save
-        format.html { redirect_to tattoo_url(@tattoo), notice: "Tattoo was successfully created." }
+        format.html { redirect_to admin_tattoo_url(@tattoo), notice: "Tattoo was successfully created." }
         format.json { render :show, status: :created, location: @tattoo }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -53,8 +53,8 @@ class Admin::TattoosController < ApplicationController
 
     respond_to do |format|
       if @tattoo.update(tattoo_params)
-        format.html { redirect_to tattoo_url(@tattoo), notice: "Tattoo was successfully updated." }
-        format.json { render :show, status: :ok, location: @tattoo }
+        format.html { redirect_to admin_tattoo_url(@tattoo), notice: "Tattoo was successfully updated." }
+        format.json { render :show, status: :ok, location: admin_tattoos_url }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @tattoo.errors, status: :unprocessable_entity }

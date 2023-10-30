@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
+    
     resources :masters do
       resources :tattoos
     end
     
+    resources :masters
     resources :tattoos
     resources :subscriptions
   end
