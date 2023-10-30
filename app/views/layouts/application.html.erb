@@ -12,9 +12,9 @@
     <%= javascript_importmap_tags %>
   </head>
   
-  <body class="bg-gray-400">
+  <body class="font-sans">
+    <%= render 'components/application/header' %>
     <main>
-      <%= render 'components/application/header' %>
       <%= yield %>
     </main>
   </body>
