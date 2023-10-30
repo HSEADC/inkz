@@ -1,0 +1,29 @@
+<header class="flex justify-center">
+  <nav class="grid z-50 fixed grid-cols-3 text-xl items-center mt-10 text-white w-[95%]">
+    <ul class="justify-self-start">
+      <li>
+        <a class="s-20" href="<%= root_path %>">
+          <%= image_tag('logo.svg', alt: 'Логотип INKZ', class: 'hover:scale-110 duration-300') %>
+        </a>
+      </li>
+    </ul>
+    <ul class="flex gap-5 font-medium uppercase justify-self-center">
+      <%= link_to "About", welcome_about_url, class: "hover:scale-110 duration-300" %>
+      <%= link_to "Masters", admin_masters_url, class: "hover:scale-110 duration-300" %>
+      <%= link_to "Tattoos", admin_tattoos_url, class: "hover:scale-110 duration-300" %>
+
+      <% if current_user&.is_admin? %>
+        <%= link_to "Subscriptions", admin_subscriptions_url, class: "hover:scale-110 duration-300" %>
+      <% end %>
+    </ul>
+    <ul class="justify-self-end">
+      <% if user_signed_in? %>
+        <%#= link_to current_user.email, edit_user_registration_path %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "hover:scale-110 duration-300" %>
+      <% else %>
+        <%= link_to "Log in", new_user_session_path, class: "hover:scale-110 duration-300" %>
+        <%#= link_to "Register", new_user_registration_path %>
+      <% end %>
+    </ul>
+  </nav>
+</header>

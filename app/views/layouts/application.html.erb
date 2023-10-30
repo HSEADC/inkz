@@ -6,15 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" %>
+    <%#= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <main class="container">
-      <%= render 'menubar' %>
+  
+  <body class="bg-gray-400">
+    <main>
+      <%= render 'components/application/header' %>
       <%= yield %>
     </main>
   </body>
