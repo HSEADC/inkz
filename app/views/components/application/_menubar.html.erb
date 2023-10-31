@@ -4,13 +4,10 @@
   </ul>
   <ul class="flex gap-3">
     <% if current_user&.is_admin? %>
-      <%= link_to "Home", root_url %>
       <%= link_to "Subscriptions", admin_subscriptions_url %>
       <%= link_to "Masters", admin_masters_url %>
       <%= link_to "Tattoos", admin_tattoos_url %>
     <% else %>
-      <%= link_to "Home", root_url %>
-      <%= link_to "About", welcome_about_url %>
       <%= link_to "Masters", masters_url %>
       <%= link_to "Tattoos", tattoos_url %>
     <% end %>

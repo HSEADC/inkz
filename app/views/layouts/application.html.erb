@@ -16,13 +16,13 @@
   </head>
   
   <body class="font-sans">
-    <% if request.path == root_path || request.path == about_path %>
+    <% if request.path == root_path || request.path == welcome_about_path %>
       <div class="container">
     <% else %>
       <div class="container mt-10">
     <% end %>
 
-      <% if request.path == root_path || request.path == about_path %>
+      <% if request.path == root_path || request.path == welcome_about_path %>
         <%= render 'components/application/header' %>
       <% else %>
         <%= render 'components/application/menubar' %>
