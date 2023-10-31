@@ -1,55 +1,30 @@
-.nav_group {
-  display: flex;
-  gap: 1rem;
+.animate-bounce-custom {
+  animation: bounce-custom 1.75s infinite;
 }
 
-.nav_group a:hover {
-  text-decoration: underline;
+@keyframes bounce-custom {
+  0%,
+  100% {
+    transform: translateY(-15%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
 }
 
-.master-card {
-  text-decoration: none;
+[data-block='GRADIENT'] {
+  background: linear-gradient(180deg, #000 0.5%, rgba(0, 26, 196, 0.54) 40%, rgba(255, 130, 130, 0) 80.72%);
 }
 
-mark {
-  padding: 0.25rem 0.5rem;
-  background-color: #19b3e6;
+[data-block='FOOTER_GRADIENT'] {
+  background: linear-gradient(0deg, #000 1.04%, rgba(0, 26, 196, 0.5) 47.92%, rgba(255, 0, 0, 0) 98.96%);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin-bottom: 1rem;
-}
-
-img {
-  margin-bottom: 1rem;
-}
-
-.main-text {
-  font-size: 7rem;
-  margin-top: 3rem;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-hr {
-  height: 0;
-  border: 0;
-  border-top: 3px solid var(--muted-border-color);
-  color: inherit;
-}
-
-article img {
-  width: 30vw;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-}
-
-.tattoos.admin.card img {
-  width: 1vw;
+.GLASS_CARD {
+  border: 3.333px solid rgba(255, 255, 255, 0.45);
+  background: var(--Linear, linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(240, 239, 239, 0.3) 99.48%));
+  box-shadow: 0px 4.44444px 14.44444px 0px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(166.66665649414062px);
 }
