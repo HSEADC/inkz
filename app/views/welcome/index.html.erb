@@ -1,11 +1,62 @@
-<% heightScreen = '!h-[100svh] !h-[100vh]' %>
+<% heightScreen = '!h-[100svh] h-[100vh]' %>
 
-<div class="grid relative place-items-center overflow-hidden text-white <%= heightScreen %>">
-    <h1 class="font-normal text-[18.75rem] font-ink">INKZ</h1>
-    <div class="absolute object-cover w-full h-full -z-10">
-        <%= image_tag('https://plus.unsplash.com/premium_photo-1695058139748-b9f43c687e74?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Логотип INKZ') %>   
+<section data-block="HERO" class="grid relative place-items-center overflow-hidden text-white rounded-b-[50px] sm:rounded-b-[35px] <%= heightScreen %>">
+    <div class="mt-16 xl:mt-14 sm:mt-10">
+        <h1 class="font-normal text-[18.75rem] xl:text-[15rem] sm:text-9xl text-center leading-none font-ink">INKZ</h1>
+        <div class="mt-5 xl:mt-0 sm:w-auto w-[55%] mx-auto leading-[1.15] xl:leading-none">
+            <h2 class="ml-40 sm:ml-10 sm:text-lg text-[25px] xl:text-xl sm:w-[70%] w-[62%] font-bold uppercase">Медиа-сервис, который объединяет тату мастеров и клиентов</h2>
+            <h3 class="ml-80 sm:ml-20 mt-7 sm:mt-3 xl:ml-72 xl:w-[60%] xl:mt-4 w-[60%] sm:w-[70%] xl:text-lg sm:text-sm text-[23px]">Мы собираем вместе мастеров из разных городов России и делаем процесс вашего знакомства с ними прозрачным</h3>
+        </div>
     </div>
-</div>
+    <div data-block="GRADIENT" class="absolute w-screen inset-0 h-[15vh] -z-5">   
+    </div>
+    <div data-block="ARROW" class="absolute h-full sm:h-[95%] -z-5 -mt-[8vh] xl:-mt-[5vh] flex gap-10 items-end justify-center">
+        <%= link_to '#COMMUNITY', class: 'grid s-14 sm:s-7 place-items-center animate-bounce-custom' do %>
+        <%= image_tag('icons/arrow.svg', alt: 'Стрелка вниз', class: '') %>
+        <% end %>
+    </div>
+    <div data-block="METALIC" class="absolute w-screen h-screen -z-[7]">
+        <%= image_tag('index/metalic.png', alt: 'Матллиеческие татуировки', class: 'w-full h-full object-cover') %>   
+    </div>
+    <div data-block="BACKGROUND" class="absolute w-screen h-screen -z-10">
+        <%= image_tag('index/background.jpg', alt: 'Человек с татуировкой', class: 'w-full h-full object-cover') %>   
+    </div>
+</section>
+
+<main class="w-[85%] mx-auto">
+
+    <section id="COMMUNITY" class="mt-32">
+        <h1 class="font-bold uppercase sm:text-4xl text-7xl">Наше сообщество</h1>
+        <h2 class="ml-96 xl:ml-72 sm:ml-14 sm:w-[85%] w-[40%] sm:font-normal sm:normal-case sm:text-sm text-[25px] leading-none xl:text-xl font-bold uppercase sm:mt-3 mt-10">Мы собираем вместе мастеров из разных городов России и делаем процесс вашего знакомства с ними прозрачным</h2>
+    <div class="flex justify-between text-xl sm:grid sm:grid-cols-2 xl:text-lg sm:text-sm">
+        <div class="flex flex-col items-center mt-10">
+            <%= image_tag('index/avatars/1.jpg', alt: '', class: 's-64 xl:s-44 sm:s-36 object-cover') %>   
+            <h1 class="-mt-8 xl:-mt-6 sm:-mt-5 text-custom-gray">@lika.saburenko</h1>
+        </div>
+        <div class="flex flex-col items-center mt-10">
+            <%= image_tag('index/avatars/2.jpg', alt: '', class: 's-64 xl:s-44 sm:s-36 object-cover') %>   
+            <h1 class="-mt-8 xl:-mt-6 sm:-mt-5 text-custom-gray">@d.marinchenkov</h1>
+        </div>
+        <div class="flex flex-col items-center mt-10">
+            <%= image_tag('index/avatars/3.jpg', alt: '', class: 's-64 xl:s-44 sm:s-36 object-cover') %>   
+            <h1 class="-mt-8 xl:-mt-6 sm:-mt-5 text-custom-gray">@gorehex</h1>
+        </div>
+        <div class="flex flex-col items-center mt-10">
+            <%= image_tag('index/avatars/4.jpg', alt: '', class: 's-64 xl:s-44 sm:s-36 object-cover') %>   
+            <h1 class="-mt-8 xl:-mt-6 sm:-mt-5 text-custom-gray">@hanzai_boy</h1>
+        </div>
+        <div class="flex flex-col items-center mt-10">
+            <%= image_tag('index/avatars/5.jpg', alt: '', class: 's-64 xl:s-44 sm:s-36 object-cover') %>   
+            <h1 class="-mt-8 xl:-mt-6 sm:-mt-5 text-custom-gray">@13_bodytattoos</h1>
+        </div>
+        <div class="flex flex-col items-center mt-10">
+            <%= image_tag('index/avatars/6.jpg', alt: '', class: 's-64 xl:s-44 sm:s-36 object-cover') %>   
+            <h1 class="-mt-8 xl:-mt-6 sm:-mt-5 text-custom-gray">@hardblank__</h1>
+        </div>
+    </div>
+    </section>
+
+</main>
 
 
 <%#= turbo_frame_tag dom_id(@subscription) do %>

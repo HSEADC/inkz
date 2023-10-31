@@ -1,5 +1,5 @@
 <header class="flex justify-center">
-  <nav class="grid z-50 fixed grid-cols-3 sm:grid-cols-2 text-xl sm:text-lg items-center sm:mt-4 mt-7 text-white w-[95%]">
+  <nav class="grid z-50 fixed grid-cols-3 sm:grid-cols-2 text-xl sm:text-lg items-center sm:mt-2 mt-7 w-[95%]">
     <ul class="sm:hidden justify-self-start">
       <li>
         <%= link_to(root_path, class: 's-20') do %>
@@ -19,12 +19,12 @@
       <% if user_signed_in? %>
         <%#= link_to current_user.email, edit_user_registration_path %>
         <%= link_to destroy_user_session_path, method: :delete do %>
-          <%= image_tag('icons/login.svg', alt: 'Выход из аккаунта', class: 's-10 rotate-180 hover:scale-110 duration-300') %>
+          <%= image_tag('icons/login.svg', alt: 'Выход из аккаунта', class: 's-10 sm:s-7 rotate-180 hover:scale-110 duration-300') %>
         <% end %>
 
       <% else %>
         <%= link_to new_user_session_path do %>
-          <%= image_tag('icons/login.svg', alt: 'Вход в аккаунт', class: 's-10 hover:scale-110 duration-300') %>
+          <%= image_tag('icons/login.svg', alt: 'Вход в аккаунт', class: 's-10 sm:s-7 hover:scale-110 duration-300') %>
         <% end %>
       <% end %>
     </ul>

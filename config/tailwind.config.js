@@ -10,6 +10,16 @@ module.exports = {
         sans: ['SuisseIntl', ...defaultTheme.fontFamily.sans],
         ink: ['Angst'],
       },
+      colors: {
+        custom: {
+          gray: '#A8A8A8',
+        },
+      },
+    },
+    screens: {
+      xl: {max: '1536px'},
+      sm: {max: '768px'},
+      xs: {max: '350px'},
     },
   },
   plugins: [

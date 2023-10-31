@@ -1,0 +1,19 @@
+.animate-bounce-custom {
+  animation: bounce-custom 1.75s infinite;
+}
+
+@keyframes bounce-custom {
+  0%,
+  100% {
+    transform: translateY(-15%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+[data-block='GRADIENT'] {
+  background: linear-gradient(180deg, #000 0.5%, rgba(0, 26, 196, 0.54) 40%, rgba(255, 130, 130, 0) 80.72%);
+}
