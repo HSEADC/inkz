@@ -1,5 +1,7 @@
 <% heightScreen = '!h-[100svh] h-[100vh]' %>
 
+<p class="absolute bottom-5 right-5" style="color: green"><%= notice %></p>
+
 <section data-block="HERO" class="grid relative place-items-center overflow-hidden text-white rounded-b-[50px] sm:rounded-b-[35px] <%= heightScreen %>">
     <div class="mt-16 xl:mt-14 sm:mt-10">
         <h1 class="font-normal text-[18.75rem] xl:text-[15rem] sm:text-9xl text-center leading-none font-ink">INKZ</h1>
@@ -120,7 +122,7 @@
     </section>
 
     <section data-block="EMAIL" class="mt-32 sm:mt-20">
-        <div class="flex flex-col justify-between w-full py-10 text-center GLASS_CARD">
+        <div class="flex flex-col justify-between w-full py-10 text-center GLASS_CARD rounded-[30px]">
             <h1 class="text-5xl sm:text-2xl font-bold uppercase w-[50%] mx-auto">Следите за разработкой нашего приложения в нашей <a href="https://vk.com/club223209209" target="_blank" class="underline hover:no-underline">группе в ВК</a></h1>
             <%= image_tag('index/aripile.png', alt: '', class: 'w-2/3 mx-auto') %>
             <h1 class="text-5xl sm:text-2xl font-bold uppercase w-[50%] mx-auto">не пропустите запуск и станьте частью нашего coобщества</h1>
@@ -133,7 +135,3 @@
     </section>
 
 </main>
-
-
-
-<p style="color: green"><%= notice %></p>

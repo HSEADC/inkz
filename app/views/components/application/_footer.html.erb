@@ -1,0 +1,7 @@
+<footer class="flex items-center justify-between p-10 mt-32 text-white bg-black">
+  <%= link_to(root_path, class: 'h-10 flex gap-2') do %>
+    <%= image_tag('logo2.svg', alt: 'Логотип INKZ', class: 'text-2xl hover:scale-110 duration-300') %>
+    <h1 class="text-4xl font-bold">INKZ</h1>
+  <% end %>
+  <%= link_to "О проекте", welcome_about_url, class: "text-2xl hover:scale-110 duration-300" %>
+</footer>
