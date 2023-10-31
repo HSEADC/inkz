@@ -11,12 +11,8 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="flex justify-center gap-2">
+    <%= form.email_field :email, class: 'text-2xl rounded-full bg-transparent border border-black placeholder:text-black', placeholder: 'Введите почту' %>
+    <%= form.submit 'Отправить', class: 'text-2xl rounded-full bg-black text-white px-6 py-3' %>
   </div>
 <% end %>

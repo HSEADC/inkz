@@ -128,7 +128,7 @@
         <h1 class="text-5xl sm:text-2xl font-bold uppercase w-[50%] sm:w-[95%] mx-auto">Следите за разработкой нашего приложения в нашей <a href="https://vk.com/club223209209" target="_blank" class="underline hover:no-underline">группе в ВК</a></h1>
         <%= image_tag('index/aripile.png', alt: '', class: 'w-2/3 mx-auto') %>
         <h1 class="text-5xl sm:text-2xl font-bold uppercase w-[50%] sm:w-[95%] mx-auto">не пропустите запуск и станьте частью нашего coобщества</h1>
-        <div class="mt-20">
+        <div class="my-20">
             <%= turbo_frame_tag dom_id(@subscription) do %>
                     <%= render 'subscriptions/form', subscription: @subscription%>
             <% end %>
