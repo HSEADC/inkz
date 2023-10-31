@@ -1,6 +1,6 @@
 <nav>
   <ul>
-    <li><strong>Tatu</strong></li>
+    <%= link_to "Index", root_path %>
   </ul>
   <ul class="flex gap-3">
     <% if current_user&.is_admin? %>
