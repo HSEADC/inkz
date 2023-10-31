@@ -1,5 +1,5 @@
 <header class="flex justify-center">
-  <nav class="grid z-50 fixed grid-cols-3 sm:grid-cols-2 text-xl sm:text-lg items-center sm:mt-4 mt-7 w-[95%]">
+  <nav class="grid z-50 fixed grid-cols-2 sm:grid-cols-2 text-xl sm:text-lg items-center sm:mt-4 mt-7 w-[95%]">
     <ul class="sm:hidden justify-self-start">
       <li>
         <%= link_to(root_path, class: 's-20') do %>
@@ -7,14 +7,14 @@
         <% end %>
       </li>
     </ul>
-    <ul class="flex gap-5 font-medium uppercase sm:justify-self-start justify-self-center">
-      <%= link_to "Masters", admin_masters_url, class: "hover:scale-110 duration-300" %>
-      <%= link_to "Tattoos", admin_tattoos_url, class: "hover:scale-110 duration-300" %>
+    <%# <ul class="flex gap-5 font-medium uppercase sm:justify-self-start justify-self-center">
+      <%#= link_to "Masters", admin_masters_url, class: "hover:scale-110 duration-300" %>
+      <%#= link_to "Tattoos", admin_tattoos_url, class: "hover:scale-110 duration-300" %>
 
-      <% if current_user&.is_admin? %>
-        <%= link_to "Subscriptions", admin_subscriptions_url, class: "hover:scale-110 duration-300" %>
-      <% end %>
-    </ul>
+      <%# if current_user&.is_admin? %>
+        <%#= link_to "Subscriptions", admin_subscriptions_url, class: "hover:scale-110 duration-300" %>
+      <%# end %>
+   <%# </ul> %>
     <ul class="justify-self-end">
       <% if user_signed_in? %>
         <%#= link_to current_user.email, edit_user_registration_path %>

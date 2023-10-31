@@ -1,0 +1,25 @@
+<nav>
+  <ul>
+    <%= link_to "Index", root_path %>
+  </ul>
+  <ul class="flex gap-3">
+    <% if current_user&.is_admin? %>
+      <%= link_to "Subscriptions", admin_subscriptions_url %>
+      <%= link_to "Masters", admin_masters_url %>
+      <%= link_to "Tattoos", admin_tattoos_url %>
+    <% else %>
+      <%= link_to "Masters", masters_url %>
+      <%= link_to "Tattoos", tattoos_url %>
+    <% end %>
+  </ul>
+  <ul class="flex gap-3">
+    <% if user_signed_in? %>
+      <%#= link_to current_user.email, edit_user_registration_path %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Log in", new_user_session_path %>
+      <%#= link_to "Register", new_user_registration_path %>
+    <% end %>
+  </ul>
+</nav>
+	

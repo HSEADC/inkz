@@ -15,7 +15,11 @@
   <% @tattoos.each do |tattoo| %>
     <div class="tattoo-card">
       <%= link_to admin_tattoo_path(tattoo) do %>
-        <%= render partial: "admin/tattoos/tattoo", locals: { master: @master, tattoo: tattoo } %>
+        <table role="grid">
+          <tbody>
+            <%= render partial: "admin/tattoos/tattoo", locals: { master: @master, tattoo: tattoo } %>
+          </tbody>
+        </table>
       <% end %>
     </div>
   <% end %>
