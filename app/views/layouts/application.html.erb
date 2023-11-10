@@ -7,27 +7,17 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
-    <% if controller_name != 'welcome' %>
+    <%# if controller_name != 'welcome' %>
       <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" %>
-    <% end %>
+    <%# end %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
   
   <body class="font-sans">
-    <% if request.path == root_path || request.path == welcome_about_path %>
-      <div class="container">
-    <% else %>
-      <div class="container mt-5">
-    <% end %>
-
-      <% if request.path == root_path || request.path == welcome_about_path %>
-        <%= render 'components/application/header' %>
-      <% else %>
-        <%= render 'components/application/menubar' %>
-      <% end %>
-      
+    <div class="container">
+      <%= render 'components/application/menubar' %>
       <%= yield %>
     </div>
   </body>

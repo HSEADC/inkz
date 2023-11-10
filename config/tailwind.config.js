@@ -7,8 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['SuisseIntl', ...defaultTheme.fontFamily.sans],
-        ink: ['Angst'],
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         custom: {

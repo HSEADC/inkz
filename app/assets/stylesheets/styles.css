@@ -13,18 +13,3 @@
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
-
-[data-block='GRADIENT'] {
-  background: linear-gradient(180deg, #000 0.5%, rgba(0, 26, 196, 0.54) 40%, rgba(255, 130, 130, 0) 80.72%);
-}
-
-[data-block='FOOTER_GRADIENT'] {
-  background: linear-gradient(0deg, #000 1.04%, rgba(0, 26, 196, 0.5) 47.92%, rgba(255, 0, 0, 0) 98.96%);
-}
-
-.GLASS_CARD {
-  border: 3.333px solid rgba(255, 255, 255, 0.45);
-  background: var(--Linear, linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(240, 239, 239, 0.3) 99.48%));
-  box-shadow: 0px 4.44444px 14.44444px 0px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(166.66665649414062px);
-}
