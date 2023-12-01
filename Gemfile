@@ -51,6 +51,9 @@ gem "bootsnap", require: false
 gem "carrierwave"
 gem "devise"
 gem "cancancan"
+gem "tailwindcss-rails", "~> 2.0"
+gem "htmlbeautifier"
+gem "rack-cors"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -74,5 +77,3 @@ group :test do
   gem "selenium-webdriver"
 
 end
-
-gem "tailwindcss-rails", "~> 2.0"

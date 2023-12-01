@@ -1,21 +1,16 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @master %>
-
 <% if can? :manage, @master %>
   <div>
     <%= link_to "Edit this master", edit_master_path(@master) %>
     <%= button_to "Destroy this master", @master, method: :delete %>
   </div>
 <% end %>
-
 <hr>
 <h2>Tattoos:</h2>
-
 <% if current_user && @master.user == current_user %>
   <%= link_to "New tattoo", new_master_tattoo_path(@master) %>
 <% end %>
-
 <div id="tattoos-card">
   <% @tattoos.each do |tattoo| %>
     <div class="tattoo-card">
@@ -25,5 +20,3 @@
     </div>
   <% end %>
 </div>
-
-

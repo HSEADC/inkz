@@ -1,16 +1,27 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+
+      resources :masters
+      resources :tattoos
+
+      # resources :masters do
+      #   resources :tattoos
+      # end
+
+      # resources :subscriptions
+    end
+  end
+
   namespace :admin do
-    
     resources :masters do
       resources :tattoos
     end
-    
+
     resources :masters
     resources :tattoos
     resources :subscriptions
   end
-  
-  devise_for :users
 
   resources :masters do
     resources :tattoos
@@ -18,7 +29,9 @@ Rails.application.routes.draw do
 
   resources :tattoos
   resources :subscriptions, only: [:create, :show]
-  
+
+  devise_for :users
+
   get 'welcome/index'
   get 'welcome/about'
 

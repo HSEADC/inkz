@@ -1,16 +1,12 @@
 <p style="color: green"><%= notice %></p>
-
 <table role="grid">
   <tbody>
     <%= render partial: 'admin/masters/master', locals: { master: @master } %>
   </tbody>
 </table>
-
 <hr>
 <h2>Tattoos:</h2>
-
 <%= link_to "New tattoo", new_admin_master_tattoo_path(@master) %>
-
 <div id="tattoos-card">
   <% @tattoos.each do |tattoo| %>
     <div class="tattoo-card">
