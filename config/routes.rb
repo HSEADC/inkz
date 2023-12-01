@@ -3,11 +3,12 @@ Rails.application.routes.draw do
     namespace :v1 do
 
       resources :masters
+      resources :tattoos
 
       # resources :masters do
       #   resources :tattoos
       # end
-      # resources :tattoos
+
       # resources :subscriptions
     end
   end
