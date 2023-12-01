@@ -106,6 +106,7 @@ GEM
     ffi (1.16.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    htmlbeautifier (1.4.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -257,6 +258,7 @@ DEPENDENCIES
   carrierwave
   debug
   devise
+  htmlbeautifier
   importmap-rails
   jbuilder
   puma (~> 5.0)
