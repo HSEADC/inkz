@@ -9,19 +9,17 @@
     </ul>
     <%# <ul class="flex gap-5 font-medium uppercase sm:justify-self-start justify-self-center">
       <%#= link_to "Masters", admin_masters_url, class: "hover:scale-110 duration-300" %>
-      <%#= link_to "Tattoos", admin_tattoos_url, class: "hover:scale-110 duration-300" %>
-
-      <%# if current_user&.is_admin? %>
-        <%#= link_to "Subscriptions", admin_subscriptions_url, class: "hover:scale-110 duration-300" %>
-      <%# end %>
-   <%# </ul> %>
+    <%#= link_to "Tattoos", admin_tattoos_url, class: "hover:scale-110 duration-300" %>
+    <%# if current_user&.is_admin? %>
+    <%#= link_to "Subscriptions", admin_subscriptions_url, class: "hover:scale-110 duration-300" %>
+    <%# end %>
+    <%# </ul> %>
     <ul class="justify-self-end">
       <% if user_signed_in? %>
         <%#= link_to current_user.email, edit_user_registration_path %>
         <%= link_to destroy_user_session_path, method: :delete do %>
           <%= image_tag('icons/login.svg', alt: 'Выход из аккаунта', class: 's-10 sm:s-7 rotate-180 hover:scale-110 duration-300') %>
         <% end %>
-
       <% else %>
         <%= link_to new_user_session_path do %>
           <%= image_tag('icons/login.svg', alt: 'Вход в аккаунт', class: 's-10 sm:s-7 hover:scale-110 duration-300') %>

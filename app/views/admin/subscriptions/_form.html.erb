@@ -2,7 +2,6 @@
   <% if subscription.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
-
       <ul>
         <% subscription.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,12 +9,10 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label :email, style: "display: block" %>
     <%= form.email_field :email %>
   </div>
-
   <div>
     <%= form.submit %>
   </div>
