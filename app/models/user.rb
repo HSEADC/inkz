@@ -3,9 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :registerable
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
-  
-  has_one :master
-  has_many :tattoos
+
+  has_one :master, dependent: :destroy #? нужно для того, чтобы удалять мастера, если удаляется пользователь?
+  has_many :tattoos, dependent: :destroy #? нужно для того, чтобы удалять тату, если удаляется пользователь?
 
   def is_master?
     is_master
