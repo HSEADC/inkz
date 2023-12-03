@@ -1,6 +1,6 @@
 <tr id="<%= dom_id tattoo %>">
   <td><%= image_tag tattoo.tattoo_image.url if tattoo.tattoo_image.url %></td>
-  <td><%= tattoo.title %></td>
+  <td class="capitalize"><%= tattoo.title %></td>
   <td><%= tattoo.master.name %></td>
   <td><%= link_to tattoo.master.user.email, admin_master_path(tattoo.master) %></td>
   <td><%= tattoo.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
