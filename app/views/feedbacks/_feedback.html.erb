@@ -1,0 +1,27 @@
+<div id="<%= dom_id feedback %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Comment:</strong>
+    <%= feedback.comment %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Rating:</strong>
+    <%= feedback.rating %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= feedback.user_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Master:</strong>
+    <%= feedback.master_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this feedback", feedback, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this feedback", edit_feedback_path(feedback), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
