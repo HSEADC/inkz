@@ -58,9 +58,11 @@ def seed
   reset_db
   create_users(14)
   create_admin
-  create_subscriptions(5)
+
   create_masters(@masters_data)
+  create_feedbacks
   create_tattoos(@tattoos_data)
+  create_subscriptions(5)
 end
 
 def reset_db
@@ -88,21 +90,6 @@ def create_admin
   puts "Admin with #{user.email} created with id #{user.id}"
 end
 
-# ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
-def upload_random_image
-  uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
-  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
-  uploader
-end
-
-def create_subscriptions(num_users)
-  num_users.times do |i|
-    email = "user#{i + 1}@bozzhik.md"
-    subscription = Subscription.create(email: email)
-    puts "Subscription with email #{subscription.email} just created"
-  end
-end
-
 def create_masters(data)
   users = User.where(is_master: true).to_a
   data.each_with_index do |master_data, index|
@@ -112,12 +99,45 @@ def create_masters(data)
   end
 end
 
+def create_feedbacks
+  masters = Master.all
+  user_9 = User.find(9)
+
+  masters.each do |master|
+    2.times do
+      feedback_data = {
+        comment: Faker::Lorem.sentence,
+        rating: rand(0..5),
+        user_id: user_9.id,
+        master_id: master.id
+      }
+      feedback = Feedback.create!(feedback_data)
+      puts "Feedback with id #{feedback.id} for Master with id #{master.id} just created. [#{feedback.comment}] —  #{feedback.rating}"
+    end
+  end
+end
+
+# ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
+def upload_random_image
+  uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
+  uploader
+end
+
 def create_tattoos(data)
   masters = Master.all
   data.each do |tattoo_data|
     master = masters.sample
     tattoo = Tattoo.create(title: tattoo_data[:title], specialization: tattoo_data[:specialization], master_id: master.id, tattoo_image: upload_random_image, user_id: master.user.id)
     puts "Tattoo with id #{tattoo.id} for master with id #{tattoo.master.id} just created"
+  end
+end
+
+def create_subscriptions(num_users)
+  num_users.times do |i|
+    email = "user#{i + 1}@bozzhik.md"
+    subscription = Subscription.create(email: email)
+    puts "Subscription with email #{subscription.email} just created"
   end
 end
 
