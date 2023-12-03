@@ -23,7 +23,7 @@
   </div>
   <div class="field">
     <%= form.label :user_id, "Select User" %>
-    <%= form.collection_select :user_id, @users, :id, :email, include_blank: true %>
+    <%= form.collection_select :user_id, @users, :id, :email, include_blank: true %> <%#? %>
   </div>
   <div class="actions">
     <%= form.submit %>
