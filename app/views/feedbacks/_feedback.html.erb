@@ -1,27 +1,29 @@
-<div id="<%= dom_id feedback %>">
+<article id="<%= dom_id feedback %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Comment:</strong>
+    <strong class="block mb-1 font-medium">Comment:</strong>
     <%= feedback.comment %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Rating:</strong>
-    <%= feedback.rating %>
-  </p>
+  <hr class="mt-6">
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= feedback.user_id %>
-  </p>
+  <div class="flex gap-5">
+    <p class="my-5">
+      <strong class="block mb-1 font-medium">Rating:</strong>
+      <mark><%= feedback.rating %></mark>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Master:</strong>
-    <%= feedback.master_id %>
-  </p>
+    <p class="my-5">
+      <strong class="block mb-1 font-medium">User:</strong>
+      <mark><%= feedback.user_id %></mark>
+    </p>
+
+    <p class="my-5">
+      <strong class="block mb-1 font-medium">Master:</strong>
+      <mark><%= feedback.master_id %></mark>
+    </p>
+  </div>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this feedback", feedback, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this feedback", edit_feedback_path(feedback), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
+    <%= link_to "Edit this feedback", edit_feedback_path(feedback) %>
   <% end %>
-</div>
+</article>
