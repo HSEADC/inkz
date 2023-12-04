@@ -23,7 +23,6 @@
     </p>
   </div>
 
-  <% if action_name != "show" %>
-    <%= link_to "Edit this feedback", edit_feedback_path(feedback) %>
-  <% end %>
+  <%= link_to "Edit this feedback", edit_feedback_path(feedback) %>
+  <%= button_to "Destroy this feedback", feedback_path(feedback), method: :delete %>
 </article>

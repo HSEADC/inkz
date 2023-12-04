@@ -28,7 +28,12 @@ Rails.application.routes.draw do
     resources :tattoos
   end
 
+  resources :masters do
+    resources :feedbacks
+  end
+
   resources :tattoos
+  resources :feedbacks
   resources :subscriptions, only: [:create, :show]
 
   devise_for :users
