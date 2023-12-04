@@ -18,7 +18,7 @@
 
   <div class="my-5">
     <%= form.label :rating %>
-    <%= form.number_field :rating %>
+    <%= form.number_field :rating, in: 0..5, step: 1 %>
   </div>
 
   <div class="inline">

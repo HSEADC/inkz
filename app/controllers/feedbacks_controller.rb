@@ -1,4 +1,5 @@
 class FeedbacksController < ApplicationController
+  before_action :set_master, only: [:new, :create]
   before_action :set_feedback, only: %i[show edit update destroy]
   before_action :authorize_user, only: %i[edit update destroy]
 
@@ -13,11 +14,12 @@ class FeedbacksController < ApplicationController
 
   # POST /feedbacks or /feedbacks.json
   def create
-    @feedback = Feedback.new(feedback_params)
+    @feedback = @master.feedbacks.new(feedback_params)
+    @feedback.user = current_user if user_signed_in?
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to master_url(@feedback.master), notice: "Feedback was successfully created." }
+        format.html { redirect_to master_url(@master), notice: "Feedback was successfully created." }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -58,6 +60,10 @@ class FeedbacksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def feedback_params
       params.require(:feedback).permit(:comment, :rating, :user_id, :master_id)
+    end
+
+    def set_master
+      @master = Master.find(params[:master_id])
     end
 
     def authorize_user
