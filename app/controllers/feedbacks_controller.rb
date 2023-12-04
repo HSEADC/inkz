@@ -1,5 +1,6 @@
 class FeedbacksController < ApplicationController
-  before_action :set_feedback, only: %i[ show edit update destroy ]
+  before_action :set_feedback, only: %i[show edit update destroy]
+  before_action :authorize_user, only: %i[edit update destroy]
 
   # GET /feedbacks or /feedbacks.json
   def index
@@ -66,5 +67,25 @@ class FeedbacksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def feedback_params
       params.require(:feedback).permit(:comment, :rating, :user_id, :master_id)
+    end
+
+    def authorize_user
+      if current_user
+        if @feedback.user_id == current_user.id
+          # Allow regular users to manage and delete their own feedbacks
+          true
+        elsif current_user.is_master? && @feedback.master.user_id == current_user.id
+          # Allow masters to manage and delete feedbacks associated with their master
+          true
+        else
+          # Redirect or show an error if the user doesn't have the required permissions
+          redirect_to root_path, alert: 'You are not authorized to perform this action.'
+          false
+        end
+      else
+        # If the user is not logged in, redirect to the login page
+        redirect_to new_user_session_path, alert: 'You must be logged in to perform this action.'
+        false
+      end
     end
 end

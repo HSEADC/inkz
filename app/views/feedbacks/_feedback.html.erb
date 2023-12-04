@@ -23,6 +23,9 @@
     </p>
   </div>
 
+  <% if can_modify_feedback?(feedback) %>
   <%= link_to "Edit this feedback", edit_feedback_path(feedback) %>
   <%= button_to "Destroy this feedback", feedback_path(feedback), method: :delete %>
+<% end %>
+
 </article>
