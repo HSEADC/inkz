@@ -50,23 +50,28 @@ bin/dev
 ```ruby
 sudo apt-get install unzip
 ```
-для `MacOS`
 
+для `MacOS`
 ```ruby
 brew install unzip
 ```
 
-2. Загрузите `.zip` архив с помощью gem `yadisk`
+2. Создайте папку `autoupload` в `/public`
+```bash
+mkdir public/autoupload
+```
+
+3. Загрузите `.zip` архив с помощью gem `yadisk`
 ```bash
 yadisk https://disk.yandex.ru/d/t0zdYm6sBbULlg public/autoupload
 ```
 
-3. Извлеките данные из `.zip` архива в `public/autoupload`
+4. Извлеките данные из `.zip` архива в `public/autoupload`
 ```bash
 unzip public/autoupload/tattoos.zip -d public/autoupload
 ```
 
-4. Удалите `.zip` архив
+5. Удалите `.zip` архив
 ```bash
 rm public/autoupload/tattoos.zip
 ```
