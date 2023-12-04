@@ -33,8 +33,8 @@ Rails.application.routes.draw do
   end
 
   resources :tattoos
-  resources :feedbacks
-  resources :subscriptions, only: [:create, :show]
+resources :feedbacks, only: [:new, :create, :edit, :update, :destroy]
+  resources :subscriptions, only: [ :show, :create]
 
   devise_for :users
 
