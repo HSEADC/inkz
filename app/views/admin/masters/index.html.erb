@@ -1,5 +1,5 @@
 <h1>Masters</h1>
-<p style="color: green"><%= notice %></p>
+<p class="inline-block px-3 py-2 mb-5 font-medim bg-slate-700" id="notice"><%= notice %></p>
 <% if can?(:create, Master) %>
   <%= link_to "New master", new_admin_master_path %>
 <% end %>
