@@ -1,2 +1,4 @@
-<p class="inline-block px-3 py-2 mb-5 font-medim bg-slate-700" id="notice"><%= notice %></p>
+<% if notice.present? %>
+  <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-slate-700', id: 'notice') %>
+<% end %>
 <h1 class="mt-[25vh] text-center fond-bold uppercase text-4xl">About page</h1>
