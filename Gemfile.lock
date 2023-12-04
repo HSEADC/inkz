@@ -249,6 +249,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yadisk (0.2.0)
     zeitwerk (2.6.12)
 
 PLATFORMS
@@ -278,6 +279,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  yadisk
 
 RUBY VERSION
    ruby 3.2.2p53
