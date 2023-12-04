@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :feedbacks
   namespace :api do
     namespace :v1 do
 
@@ -27,8 +28,13 @@ Rails.application.routes.draw do
     resources :tattoos
   end
 
+  resources :masters do
+    resources :feedbacks
+  end
+
   resources :tattoos
-  resources :subscriptions, only: [:create, :show]
+resources :feedbacks, only: [:new, :create, :edit, :update, :destroy]
+  resources :subscriptions, only: [ :show, :create]
 
   devise_for :users
 

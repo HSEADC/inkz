@@ -11,56 +11,15 @@
   { name: 'Вячеслав Вячеславович', nickname: 'SlavBio', },
 ]
 
-@tattoos_data = [
-  { title: 'Иллюзия вечернего света', specialization: 'Гипноз', master_id: 1 },
-  { title: 'Абстрактный космос', specialization: 'Эксперимент', master_id: 2 },
-  { title: 'Сон в горах', specialization: 'Классика', master_id: 3 },
-  { title: 'Поцелуй Луны', specialization: 'Мистика', master_id: 4 },
-  { title: 'Механический город', specialization: 'Ретро', master_id: 5 },
-  { title: 'Племенные символы', specialization: 'Этника', master_id: 6 },
-  { title: 'Сакура в ветрах', specialization: 'Япония', master_id: 7 },
-  { title: 'Расплывчатые краски', specialization: 'Импрессионизм', master_id: 8 },
-  { title: 'Геометрия в деталях', specialization: 'Абстракция', master_id: 9 },
-  { title: 'Черная магия', specialization: 'Оккультизм', master_id: 10 },
-  { title: 'Амфибия', specialization: 'Эксперимент', master_id: 1 },
-  { title: 'Аксиома времени', specialization: 'Ретро', master_id: 2 },
-  { title: 'Вечерняя мелодия', specialization: 'Мистика', master_id: 3 },
-  { title: 'Заводной робот', specialization: 'Этника', master_id: 4 },
-  { title: 'Солнце и луна', specialization: 'Япония', master_id: 5 },
-  { title: 'Акварельные мечты', specialization: 'Импрессионизм', master_id: 6 },
-  { title: 'Графика в стиле Пикассо', specialization: 'Абстракция', master_id: 7 },
-  { title: 'Сказочный пейзаж', specialization: 'Классика', master_id: 8 },
-  { title: 'Древний рунный знак', specialization: 'Оккультизм', master_id: 9 },
-  { title: 'Электрический ангел', specialization: 'Ретро', master_id: 10 },
-  { title: 'Сон в лесу', specialization: 'Мистика', master_id: 1 },
-  { title: 'Живопись без границ', specialization: 'Абстракция', master_id: 2 },
-  { title: 'Шаманский талисман', specialization: 'Этника', master_id: 3 },
-  { title: 'Традиции Древнего Востока', specialization: 'Япония', master_id: 4 },
-  { title: 'Рисунок на берегу озера', specialization: 'Импрессионизм', master_id: 5 },
-  { title: 'Астральный лабиринт', specialization: 'Оккультизм', master_id: 6 },
-  { title: 'Текстуры и абстракции', specialization: 'Абстракция', master_id: 7 },
-  { title: 'Мастерская живописи', specialization: 'Классика', master_id: 8 },
-  { title: 'Руны и магия', specialization: 'Оккультизм', master_id: 9 },
-  { title: 'Символы ветра', specialization: 'Этника', master_id: 10 },
-  { title: 'Легендарный дракон', specialization: 'Мистика', master_id: 1 },
-  { title: 'Гиперреализм в черно-белом', specialization: 'Абстракция', master_id: 2 },
-  { title: 'Сказка на коже', specialization: 'Япония', master_id: 3 },
-  { title: 'Акварельные сны', specialization: 'Импрессионизм', master_id: 4 },
-  { title: 'Часы на руке', specialization: 'Ретро', master_id: 5 },
-  { title: 'Иллюзии мозга', specialization: 'Эксперимент', master_id: 6 },
-  { title: 'Геометрические структуры', specialization: 'Абстракция', master_id: 7 },
-  { title: 'Тайны океана', specialization: 'Этника', master_id: 8 },
-  { title: 'Тропики и живопись', specialization: 'Импрессионизм', master_id: 9 },
-  { title: 'Магический портал', specialization: 'Оккультизм', master_id: 10 }
-]
-
 def seed
   reset_db
   create_users(14)
   create_admin
-  create_subscriptions(5)
+
   create_masters(@masters_data)
-  create_tattoos(@tattoos_data)
+  create_feedbacks
+  create_tattoos
+  create_subscriptions
 end
 
 def reset_db
@@ -88,21 +47,6 @@ def create_admin
   puts "Admin with #{user.email} created with id #{user.id}"
 end
 
-# ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
-def upload_random_image
-  uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
-  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
-  uploader
-end
-
-def create_subscriptions(num_users)
-  num_users.times do |i|
-    email = "user#{i + 1}@bozzhik.md"
-    subscription = Subscription.create(email: email)
-    puts "Subscription with email #{subscription.email} just created"
-  end
-end
-
 def create_masters(data)
   users = User.where(is_master: true).to_a
   data.each_with_index do |master_data, index|
@@ -112,12 +56,54 @@ def create_masters(data)
   end
 end
 
-def create_tattoos(data)
+def create_feedbacks(num_feedbacks = 2)
   masters = Master.all
-  data.each do |tattoo_data|
-    master = masters.sample
-    tattoo = Tattoo.create(title: tattoo_data[:title], specialization: tattoo_data[:specialization], master_id: master.id, tattoo_image: upload_random_image, user_id: master.user.id)
-    puts "Tattoo with id #{tattoo.id} for master with id #{tattoo.master.id} just created"
+  user_9 = User.find(9)
+
+  masters.each do |master|
+    num_feedbacks.times do
+      feedback_data = {
+        comment: Faker::Lorem.sentence,
+        rating: rand(0..5),
+        user_id: user_9.id,
+        master_id: master.id
+      }
+      feedback = Feedback.create!(feedback_data)
+      puts "Feedback with id #{feedback.id} for Master with id #{master.id} just created. [#{feedback.comment}] —  #{feedback.rating}"
+    end
+  end
+end
+
+# ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
+def upload_random_image
+  uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
+  uploader
+end
+
+def create_tattoos(num_tattoos = 2)
+  masters = Master.all
+
+  masters.each do |master|
+    num_tattoos.times do
+      tattoo = Tattoo.create(
+        title: Faker::Lorem.words(number: 3).join(' '),
+        specialization: Faker::Lorem.word,
+        master_id: master.id,
+        tattoo_image: upload_random_image,
+        user_id: master.user.id
+      )
+
+      puts "Tattoo with id #{tattoo.id} for master with id #{tattoo.master.id} just created. Title: #{tattoo.title}, Specialization: #{tattoo.specialization}"
+    end
+  end
+end
+
+def create_subscriptions(num_users = 5)
+  num_users.times do
+    email = Faker::Internet.email
+    subscription = Subscription.create(email: email)
+    puts "Subscription with email #{subscription.email} just created"
   end
 end
 
