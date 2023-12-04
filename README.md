@@ -46,7 +46,7 @@ bin/dev
 
 <br/>
 
-1. Установка пакета `unzip` для `Linux`
+1. Установите пакет `unzip` для `Linux`
 ```ruby
 sudo apt-get install unzip
 ```
@@ -56,17 +56,17 @@ sudo apt-get install unzip
 brew install unzip
 ```
 
-2. Загрузка `.zip` архива с помощью gem `yadisk`
+2. Загрузите `.zip` архив с помощью gem `yadisk`
 ```bash
 yadisk https://disk.yandex.ru/d/t0zdYm6sBbULlg public/autoupload
 ```
 
-3. Извлечение данных из `.zip` архива в `public/autoupload`
+3. Извлеките данные из `.zip` архива в `public/autoupload`
 ```bash
 unzip public/autoupload/tattoos.zip -d public/autoupload
 ```
 
-4. Удаление `.zip` архива
+4. Удалите `.zip` архив
 ```bash
 rm public/autoupload/tattoos.zip
 ```
