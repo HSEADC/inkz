@@ -5,13 +5,13 @@
       <%= tattoo.title %>
     </h4>
     <% if @display_master == true %>
-      <h4><%= link_to master.user.email, master_path(tattoo.master) %></h4>
-      <%# <h4><%= link_to tattoo.master.nickname, master_path(tattoo.master) %>
+      <h4><%= link_to tattoo.master.nickname, master_path(tattoo.master) %></h4>
     <% end %>
     <mark class="capitalize"><%= tattoo.specialization %></mark>
-    <% if can?(:manage, @master) %>
+
+    <% if can_modify_tattoo?(tattoo) %>
       <div>
-        <%= link_to "Edit this tattoo", edit_master_tattoo_path(master, tattoo) %>
+        <%= link_to "Edit this tattoo", edit_master_tattoo_path(tattoo.master, tattoo) %>
         <%= button_to "Destroy this tattoo", tattoo, method: :delete %>
       </div>
     <% end %>
