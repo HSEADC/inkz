@@ -24,7 +24,10 @@
 <hr>
 <h2>Feedbacks:</h2>
 
-<%= link_to "New feedback", new_master_feedback_path(@master) %>
+<% if user_signed_in? && can?(:create, Feedback) %>
+  <%= link_to "New feedback", new_master_feedback_path(@master) %>
+<% end %>
+
 <div id="feedbacks">
   <% @master.feedbacks.each do |feedback| %>
     <div class="feedback-card">
