@@ -1,6 +1,4 @@
-class Admin::MastersController < ApplicationController
-  load_and_authorize_resource
-  before_action :authenticate_user!, except: [:index, :show]  # Allow unauthenticated access to index and show
+class Admin::MastersController < Admin::ApplicationController
 
   # GET /masters or /masters.json
   def index
@@ -82,5 +80,9 @@ class Admin::MastersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def master_params
       params.require(:master).permit(:name, :nickname, :specialization, :user_id)
+    end
+
+    def authorize_admin
+      redirect_to root_path unless current_user&.is_admin?
     end
 end

@@ -1,5 +1,4 @@
-class Admin::TattoosController < ApplicationController
-  load_and_authorize_resource
+class Admin::TattoosController < Admin::ApplicationController
   before_action :set_tattoo, only: %i[ show edit update destroy ]
 
   # GET /tattoos or /tattoos.json
