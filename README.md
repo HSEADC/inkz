@@ -24,7 +24,7 @@ bundle install
 rails db:migrate
 ```
 
-6. Скачайте [изображения с тату](https://disk.yandex.ru/d/PTdfE03I45aN2w) в `public/autoupload/tattoos` или сделайте это через `*CLI`
+6. Скачайте [изображения с тату](https://disk.yandex.ru/d/t0zdYm6sBbULlg) в `public/autoupload/tattoos` или сделайте это через `*CLI`
 
 7. Наполните сидами базу данных
 
