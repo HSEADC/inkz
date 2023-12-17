@@ -87,7 +87,7 @@ def create_tattoos(num_tattoos = 2)
   masters.each do |master|
     num_tattoos.times do
       tattoo = Tattoo.create(
-        title: Faker::Lorem.words(number: 3).join(' '),
+        title: Faker::Lorem.words(number: 2).join(' '),
         specialization: Faker::Lorem.word,
         master_id: master.id,
         tattoo_image: upload_random_image,
