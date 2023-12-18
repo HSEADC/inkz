@@ -63,7 +63,7 @@ def create_feedbacks(num_feedbacks = 2)
   masters.each do |master|
     num_feedbacks.times do
       feedback_data = {
-        comment: Faker::Lorem.sentence,
+        comment: Faker::Lorem.words(number: 25).join(' '),
         rating: rand(0..5),
         user_id: user_9.id,
         master_id: master.id
