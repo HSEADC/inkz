@@ -6,9 +6,9 @@ Rails.application.routes.draw do
       resources :masters
       resources :tattoos
 
-      # resources :masters do
-      #   resources :tattoos
-      # end
+      resources :masters do
+        resources :tattoos
+      end
 
       # resources :subscriptions
     end
