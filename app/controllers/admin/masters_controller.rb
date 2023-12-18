@@ -1,4 +1,6 @@
 class Admin::MastersController < Admin::ApplicationController
+  before_action :set_master, only: %i[show edit update destroy]
+
 
   # GET /masters or /masters.json
   def index
