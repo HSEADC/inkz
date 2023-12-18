@@ -4,5 +4,5 @@ class Tattoo < ApplicationRecord
 
   mount_uploader :tattoo_image, TattooImageUploader
 
-  validates :title, presence: true
+  validates :title, :specialization, :tattoo_image, presence: true
 end
