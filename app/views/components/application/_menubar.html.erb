@@ -1,4 +1,4 @@
-<nav class="mt-10 mb-5">
+<nav class="flex items-start mt-10 mb-5">
   <ul>
     <%= link_to "Index", root_path %>
   </ul>
@@ -12,14 +12,13 @@
       <%= link_to "Tattoos", tattoos_url %>
     <% end %>
   </ul>
-  <ul class="flex gap-3">
+  <ul class="flex flex-col items-end">
     <% if user_signed_in? %>
-      <mark><%= current_user.email %></mark>
-      <%#= link_to current_user.email, edit_user_registration_path %>
+      <%= link_to current_user.email, edit_user_registration_path %>
       <%= link_to "Log out", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "Log in", new_user_session_path %>
-      <%#= link_to "Register", new_user_registration_path %>
+      <%= link_to "Register", new_user_registration_path %>
     <% end %>
   </ul>
 </nav>
