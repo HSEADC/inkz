@@ -1,7 +1,6 @@
 class Admin::FeedbacksController < Admin::ApplicationController
   before_action :set_master, only: [:new, :create]
   before_action :set_feedback, only: %i[show edit update destroy]
-  before_action :authorize_user, only: %i[edit update destroy]
 
 
   def index
@@ -13,8 +12,19 @@ class Admin::FeedbacksController < Admin::ApplicationController
     @feedback.destroy
 
     respond_to do |format|
-      format.html { redirect_to master_url(@feedback.master), notice: "Feedback was successfully destroyed." }
+      format.html { redirect_to admin_feedback_path, notice: "Feedback was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_feedback
+    @feedback = Feedback.find(params[:id])
+    @master = @feedback.master
+  end
+
+  def set_master
+    @master = Master.find(params[:master_id])
   end
 end
