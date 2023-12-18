@@ -4,7 +4,6 @@ class CreateMasters < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :nickname
       t.string :specialization
-      t.integer :user_id
 
       t.timestamps
     end

@@ -4,7 +4,6 @@ class CreateTattoos < ActiveRecord::Migration[7.0]
       t.string :title
       t.string :specialization
       t.references :master, null: false, foreign_key: true
-      t.string :tattoo_image
 
       t.timestamps
     end
