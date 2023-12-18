@@ -21,6 +21,11 @@
     <%= form.number_field :rating, in: 0..5, step: 1 %>
   </div>
 
+  <div>
+    <%= form.label :feedback_image %>
+    <%= form.file_field :feedback_image, class: "form-control" %>
+  </div>
+
   <div class="inline">
     <%= form.submit %>
   </div>

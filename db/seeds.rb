@@ -56,20 +56,31 @@ def create_masters(data)
   end
 end
 
+def upload_random_feedback_image
+  uploader = FeedbackImageUploader.new(Feedback.new, :feedback_image)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
+  uploader
+end
+
 def create_feedbacks(num_feedbacks = 2)
   masters = Master.all
   user_9 = User.find(9)
 
   masters.each do |master|
-    num_feedbacks.times do
+    num_feedbacks.times do |i|
       feedback_data = {
         comment: Faker::Lorem.words(number: 25).join(' '),
         rating: rand(0..5),
         user_id: user_9.id,
-        master_id: master.id
+        master_id: master.id,
       }
+
+      if i == 1
+        feedback_data[:feedback_image] = upload_random_feedback_image
+      end
+
       feedback = Feedback.create!(feedback_data)
-      puts "Feedback with id #{feedback.id} for Master with id #{master.id} just created. [#{feedback.comment}] —  #{feedback.rating}"
+      puts "Feedback with id #{feedback.id} for Master with id #{master.id} just created with rating #{feedback.rating} | #{feedback.feedback_image}"
     end
   end
 end
