@@ -74,7 +74,7 @@ def create_tattoos
     2.times do
       tattoo = Tattoo.create(
         title: Faker::Games::WorldOfWarcraft.hero,
-        tag_list: Faker::Games::WorldOfWarcraft.class_name,
+        tag_list: Faker::Games::Witcher.school,
         master_id: master.id,
         tattoo_image: upload_random_image,
         user_id: master.user.id,

@@ -6,9 +6,11 @@
 
 <section class="flex flex-wrap gap-5">
   <% Tattoo.tag_counts_on(:tags).each do |tag| %>
-    <div class="p-2 border border-[#1095c1] flex gap-2 items-center group hover:border-white duration-200">
-      <mark class="bg-[#1095c1 group-hover:bg-white duration-200"><%= tag.name %></mark> <%= tag.taggings_count %>
-    </div>
+    <%= link_to tagged_tattoos_path(tag.name) do %>
+      <div class="p-2 border border-[#1095c1] flex gap-2 items-center group hover:border-white duration-200">
+        <mark class="bg-[#1095c1 group-hover:bg-white duration-200"><%= tag.name %></mark> <%= tag.taggings_count %>
+      </div>
+    <% end %>
   <% end %>
 </section>
 

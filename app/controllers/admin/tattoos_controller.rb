@@ -6,6 +6,12 @@ class Admin::TattoosController < Admin::ApplicationController
     @tattoos = Tattoo.all
   end
 
+  def by_tag
+    @tattoos = Tattoo.tagged_with(params[:tag])
+    @display_master = true
+    render :index
+  end
+
   # GET /tattoos/1 or /tattoos/1.json
   def show
     @master = @tattoo.master

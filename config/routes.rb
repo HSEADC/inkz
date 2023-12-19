@@ -21,7 +21,11 @@ Rails.application.routes.draw do
     end
 
     resources :masters
-    resources :tattoos
+    resources :tattoos do
+      collection do
+        get 'by_tag/:tag', to: 'tattoos#by_tag', as: "tagged"
+      end
+    end
     resources :subscriptions
     resources :feedbacks
   end
@@ -29,6 +33,12 @@ Rails.application.routes.draw do
   resources :masters do
     resources :tattoos
     resources :feedbacks
+  end
+
+  resources :tattoos do
+    collection do
+      get 'by_tag/:tag', to: 'tattoos#by_tag', as: "tagged"
+    end
   end
 
   resources :tattoos
