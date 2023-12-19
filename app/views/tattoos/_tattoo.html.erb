@@ -11,8 +11,18 @@
       <h4><%= link_to tattoo.master.nickname, master_path(tattoo.master) %></h4>
     <% end %>
 
+    <h6>Tags</h6>
+
     <% tattoo.tag_list.each do |tag| %>
       <mark><%= tag %></mark>
+    <% end %>
+
+    <hr class="my-2 mt-5">
+
+    <h6>Styles</h6>
+
+    <% tattoo.style_list.each do |style| %>
+      <mark><%= style %></mark>
     <% end %>
 
     <% if can_modify_tattoo?(tattoo) %>

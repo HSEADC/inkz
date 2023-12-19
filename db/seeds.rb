@@ -75,12 +75,13 @@ def create_tattoos
       tattoo = Tattoo.create(
         title: Faker::Games::WorldOfWarcraft.hero,
         tag_list: Faker::Games::Witcher.school,
+        style_list: Faker::Games::Witcher.sign,
         master_id: master.id,
         tattoo_image: upload_random_image,
         user_id: master.user.id,
       )
 
-      puts "Tattoo [#{tattoo.id}] for Master #{tattoo.master.id} just created. Title: #{tattoo.title}, Tags: #{tattoo.tag_list}"
+      puts "Tattoo [#{tattoo.id}] for Master #{tattoo.master.id} just created. Title: #{tattoo.title}, Tags: #{tattoo.tag_list} + #{tattoo.style_list}"
     end
   end
 end

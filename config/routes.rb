@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :tattoos do
       collection do
         get 'by_tag/:tag', to: 'tattoos#by_tag', as: "tagged"
+        get 'by_style/:style', to: 'tattoos#by_style', as: "stylized"
       end
     end
     resources :subscriptions
@@ -38,6 +39,7 @@ Rails.application.routes.draw do
   resources :tattoos do
     collection do
       get 'by_tag/:tag', to: 'tattoos#by_tag', as: "tagged"
+      get 'by_style/:style', to: 'tattoos#by_style', as: "stylized"
     end
   end
 

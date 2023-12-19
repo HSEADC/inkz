@@ -5,6 +5,7 @@ class Tattoo < ApplicationRecord
   mount_uploader :tattoo_image, TattooImageUploader
 
   acts_as_taggable_on :tags
+  acts_as_taggable_on :styles
 
   validates :title, :tattoo_image, presence: true
 end

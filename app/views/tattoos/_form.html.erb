@@ -22,6 +22,11 @@
   </div>
 
   <div>
+    <%= form.label :style_list, style: "display: block" %>
+    <%= form.text_field :style_list, value: tattoo.style_list.join(", ") %>
+  </div>
+
+  <div>
     <%= form.label :tattoo_image %>
     <%= form.file_field :tattoo_image, class: "form-control" %>
   </div>

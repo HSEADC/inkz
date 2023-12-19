@@ -10,6 +10,12 @@
     <% end %>
   </td>
 
+  <td>
+    <% tattoo.style_list.each do |style| %>
+      <mark><%= style %></mark>
+    <% end %>
+  </td>
+
   <td><%= tattoo.master.name %></td>
 
   <td><%= link_to tattoo.master.user.email, admin_master_path(tattoo.master) %></td>
