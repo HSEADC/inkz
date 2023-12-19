@@ -23,8 +23,8 @@ Rails.application.routes.draw do
     resources :masters
     resources :tattoos do
       collection do
-        get 'by_part/:part', to: 'tattoos#by_part', as: "partized"
-        get 'by_style/:style', to: 'tattoos#by_style', as: "stylized"
+        get 'by_part/:part', to: 'tattoos#by_part', as: "parted"
+        get 'by_style/:style', to: 'tattoos#by_style', as: "styled"
       end
     end
     resources :subscriptions
@@ -38,8 +38,8 @@ Rails.application.routes.draw do
 
   resources :tattoos do
     collection do
-      get 'by_part/:part', to: 'tattoos#by_part', as: "partized"
-      get 'by_style/:style', to: 'tattoos#by_style', as: "stylized"
+      get 'by_part/:part', to: 'tattoos#by_part', as: "parted"
+      get 'by_style/:style', to: 'tattoos#by_style', as: "styled"
     end
   end
 
