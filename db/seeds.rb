@@ -1,22 +1,9 @@
-@masters_data = [
-  { name: 'Максим Максимович', nickname: 'bozzhik' },
-  { name: 'Ярослав Ярославович', nickname: 'YaroslavTattoo' },
-  { name: 'Игорь Игоревич', nickname: 'IgorMaster' },
-  { name: 'Владимир Владимирович', nickname: 'VladInk' },
-  { name: 'Анна Андреевна', nickname: 'AnnaTribal' },
-  { name: 'Борис Борисович', nickname: 'BorisInkkk' },
-  { name: 'Святослав Святославович', nickname: 'SvetGeometric', },
-  { name: 'Святополк Святополкович', nickname: 'PolkGrey', },
-  { name: 'Мстислав Мстиславович', nickname: 'MstTattoo', },
-  { name: 'Вячеслав Вячеславович', nickname: 'SlavBio', },
-]
-
 def seed
   reset_db
-  create_users(14)
+  create_users(13)
   create_admin
 
-  create_masters(@masters_data)
+  create_masters(9)
   create_feedbacks
   create_tattoos
   create_subscriptions
@@ -32,8 +19,8 @@ def create_users(num_users)
   (1...num_users).map do |i|
     is_master = (i <= 10)
     user_data = {
-      email: "user#{i}@bozzhik.md",
-      password: 'bozzhik',
+      email: "user#{i}@inkz.ru",
+      password: 'inkzzz',
       is_master: is_master
     }
 
@@ -43,15 +30,22 @@ def create_users(num_users)
 end
 
 def create_admin
-  user = User.create!(email: "admin@bozzhik.md", password: 'bozzhik', is_admin: true)
+  user = User.create!(email: "admin@inkz.ru", password: 'inkzzz', is_admin: true)
   puts "Admin with #{user.email} created with id #{user.id}"
 end
 
-def create_masters(data)
+
+def create_masters(num_masters)
   users = User.where(is_master: true).to_a
-  data.each_with_index do |master_data, index|
-    user = users[index]
-    master = Master.create(name: master_data[:name], nickname: master_data[:nickname], specialization: master_data[:specialization], user_id: user.id)
+
+  num_masters.times do
+    user = users.sample
+    master = Master.create(
+      name: Faker::Name.name,
+      nickname: Faker::Internet.username(specifier: 5..10),
+      specialization: Faker::Games::WorldOfWarcraft.class_name,
+      user_id: user.id
+    )
     puts "Master with id #{master.id} just created"
   end
 end
@@ -69,7 +63,7 @@ def create_feedbacks(num_feedbacks = 2)
   masters.each do |master|
     num_feedbacks.times do |i|
       feedback_data = {
-        comment: Faker::Lorem.words(number: 25).join(' '),
+        comment: Faker::Movies::Lebowski.quote,
         rating: rand(0..5),
         user_id: user_9.id,
         master_id: master.id,
@@ -80,7 +74,7 @@ def create_feedbacks(num_feedbacks = 2)
       end
 
       feedback = Feedback.create!(feedback_data)
-      puts "Feedback with id #{feedback.id} for Master with id #{master.id} just created with rating #{feedback.rating} | #{feedback.feedback_image}"
+      puts "Feedback with id #{feedback.id} for Master with id #{master.id} just created with rating #{feedback.rating}"
     end
   end
 end
@@ -98,8 +92,8 @@ def create_tattoos(num_tattoos = 2)
   masters.each do |master|
     num_tattoos.times do
       tattoo = Tattoo.create(
-        title: Faker::Lorem.words(number: 2).join(' '),
-        specialization: Faker::Lorem.word,
+        title: Faker::Games::WorldOfWarcraft.hero,
+        specialization: Faker::Games::WorldOfWarcraft.class_name,
         master_id: master.id,
         tattoo_image: upload_random_image,
         user_id: master.user.id
