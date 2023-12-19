@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :masters
     resources :tattoos do
       collection do
-        get 'by_tag/:tag', to: 'tattoos#by_tag', as: "tagged"
+        get 'by_part/:part', to: 'tattoos#by_part', as: "partized"
         get 'by_style/:style', to: 'tattoos#by_style', as: "stylized"
       end
     end
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   resources :tattoos do
     collection do
-      get 'by_tag/:tag', to: 'tattoos#by_tag', as: "tagged"
+      get 'by_part/:part', to: 'tattoos#by_part', as: "partized"
       get 'by_style/:style', to: 'tattoos#by_style', as: "stylized"
     end
   end

@@ -11,10 +11,10 @@
       <h4><%= link_to tattoo.master.nickname, master_path(tattoo.master) %></h4>
     <% end %>
 
-    <h6>Tags</h6>
+    <h6>Parts</h6>
 
-    <% tattoo.tag_list.each do |tag| %>
-      <mark><%= tag %></mark>
+    <% tattoo.part_list.each do |part| %>
+      <mark><%= part %></mark>
     <% end %>
 
     <hr class="my-2 mt-5">
