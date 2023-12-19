@@ -1,9 +1,9 @@
 def seed
   reset_db
-  create_users(13)
+  create_users(14)
   create_admin
 
-  create_masters(9)
+  create_masters(10)
   create_feedbacks
   create_tattoos
   create_subscriptions
@@ -34,19 +34,20 @@ def create_admin
   puts "Admin with #{user.email} created with id #{user.id}"
 end
 
-
 def create_masters(num_masters)
   users = User.where(is_master: true).to_a
+  users = users.cycle
 
   num_masters.times do
-    user = users.sample
+    user = users.next
     master = Master.create(
       name: Faker::Name.name,
       nickname: Faker::Internet.username(specifier: 5..10),
       specialization: Faker::Games::WorldOfWarcraft.class_name,
       user_id: user.id
     )
-    puts "Master with id #{master.id} just created"
+
+    puts "Master with id #{master.id} just created for user #{user.id}"
   end
 end
 
