@@ -21,7 +21,12 @@ Rails.application.routes.draw do
     end
 
     resources :masters
-    resources :tattoos
+    resources :tattoos do
+      collection do
+        get 'by_part/:part', to: 'tattoos#by_part', as: "parted"
+        get 'by_style/:style', to: 'tattoos#by_style', as: "styled"
+      end
+    end
     resources :subscriptions
     resources :feedbacks
   end
@@ -29,6 +34,13 @@ Rails.application.routes.draw do
   resources :masters do
     resources :tattoos
     resources :feedbacks
+  end
+
+  resources :tattoos do
+    collection do
+      get 'by_part/:part', to: 'tattoos#by_part', as: "parted"
+      get 'by_style/:style', to: 'tattoos#by_style', as: "styled"
+    end
   end
 
   resources :tattoos
