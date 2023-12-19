@@ -36,7 +36,7 @@ class TattoosController < ApplicationController
   # POST /tattoos or /tattoos.json
   def create
     @master = Master.find(params[:master_id])
-    @tattoo = Tattoo.new(title: params[:tattoo][:title], specialization: params[:tattoo][:specialization], master_id: @master.id)
+    @tattoo = Tattoo.new(title: params[:tattoo][:title], tag_list: params[:tattoo][:tag_list], master_id: @master.id)
     @tattoo.user = current_user
 
 
@@ -91,6 +91,6 @@ class TattoosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tattoo_params
-      params.require(:tattoo).permit(:title, :specialization, :tattoo_image)
+      params.require(:tattoo).permit(:title, :specialization, :tattoo_image, :tag_list)
     end
 end

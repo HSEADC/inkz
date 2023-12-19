@@ -1,13 +1,27 @@
 <tr id="<%= dom_id tattoo %>">
+
   <td><%= image_tag tattoo.tattoo_image.url if tattoo.tattoo_image.url %></td>
+
   <td class="capitalize"><%= tattoo.title %></td>
+
+  <td>
+    <% tattoo.tag_list.each do |tag| %>
+      <mark><%= tag %></mark>
+    <% end %>
+  </td>
+
   <td><%= tattoo.master.name %></td>
+
   <td><%= link_to tattoo.master.user.email, admin_master_path(tattoo.master) %></td>
+
   <td><%= tattoo.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+
   <td><%= tattoo.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+
   <td class="flex flex-col gap-2">
     <%= link_to "View", admin_tattoo_path(tattoo) %>
     <%= link_to "Edit this tattoo", edit_admin_master_tattoo_path(tattoo.master, tattoo) %>
     <%= button_to "Destroy this tattoo", [:admin, tattoo], method: :delete %>
   </td>
+
 </tr>

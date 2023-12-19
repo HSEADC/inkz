@@ -1,4 +1,5 @@
-<%= form_with(model: [master, tattoo], url: (tattoo.persisted? ? admin_master_tattoo_path(master, tattoo) : admin_master_tattoos_path(master)), method: (tattoo.persisted? ? :patch : :post)) do |form| %>
+<%= form_with(model: [master, tattoo]) do |form| %>
+
   <% if tattoo.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(tattoo.errors.count, "error") %> prohibited this tattoo from being saved:</h2>
@@ -9,19 +10,22 @@
       </ul>
     </div>
   <% end %>
+
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
+
   <div>
-    <%= form.label :specialization, style: "display: block" %>
-    <%= form.text_field :specialization %>
+    <%= form.label :tag_list, style: "display: block" %>
+    <%= form.text_field :tag_list, value: tattoo.tag_list.join(", ") %>
   </div>
-  <!-- Add a file input field for the tattoo image -->
+
   <div>
     <%= form.label :tattoo_image %>
     <%= form.file_field :tattoo_image, class: "form-control" %>
   </div>
+
   <div>
     <%= form.submit %>
   </div>

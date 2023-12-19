@@ -1,19 +1,26 @@
 <div id="<%= dom_id tattoo %>">
   <article>
+
     <%= image_tag tattoo.tattoo_image.url if tattoo.tattoo_image.url %>
+
     <h4 class="capitalize">
       <%= tattoo.title %>
     </h4>
+
     <% if @display_master == true %>
       <h4><%= link_to tattoo.master.nickname, master_path(tattoo.master) %></h4>
     <% end %>
-    <mark class="capitalize"><%= tattoo.specialization %></mark>
+
+    <% tattoo.tag_list.each do |tag| %>
+      <mark><%= tag %></mark>
+    <% end %>
 
     <% if can_modify_tattoo?(tattoo) %>
-      <div>
+      <div class="mt-5">
         <%= link_to "Edit this tattoo", edit_master_tattoo_path(tattoo.master, tattoo) %>
         <%= button_to "Destroy this tattoo", tattoo, method: :delete %>
       </div>
     <% end %>
+
   </article>
 </div>

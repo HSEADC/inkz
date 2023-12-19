@@ -1,7 +1,17 @@
 <h1>Tattoos</h1>
+
 <% if notice.present? %>
   <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-slate-700', id: 'notice') %>
 <% end %>
+
+<section class="flex flex-wrap gap-5">
+  <% Tattoo.tag_counts_on(:tags).each do |tag| %>
+    <div class="p-2 border border-[#1095c1] flex gap-2 items-center group hover:border-white duration-200">
+      <mark class="bg-[#1095c1 group-hover:bg-white duration-200"><%= tag.name %></mark> <%= tag.taggings_count %>
+    </div>
+  <% end %>
+</section>
+
 <table>
   <thead>
     <tr>
@@ -14,6 +24,7 @@
       <th scope="col">Actions</th>
     </tr>
   </thead>
+
   <tbody>
     <div class="tattoos admin card">
       <% @tattoos.each do |tattoo| %>
