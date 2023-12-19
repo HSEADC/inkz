@@ -24,7 +24,7 @@ bundle install
 rails db:migrate
 ```
 
-6. Скачайте [изображения с тату](https://disk.yandex.ru/d/t0zdYm6sBbULlg) в `public/autoupload/tattoos` или сделайте это через `*CLI`
+6. Скачайте [изображения с тату](https://disk.yandex.ru/d/hM118Z8PeAgBJQ) в `public/autoupload/tattoos` + `public/autoupload/feedbacks` или сделайте это через `*CLI`
 
 7. Наполните сидами базу данных
 
@@ -47,33 +47,33 @@ bin/dev
 <br/>
 
 1. Установите пакет `unzip` для `Linux`
+
 ```ruby
 sudo apt-get install unzip
 ```
 
 для `MacOS`
+
 ```ruby
 brew install unzip
 ```
 
-2. Создайте папку `autoupload` в `/public`
+2. Загрузите `zip` архив с помощью gem `yadisk`
+
 ```bash
-mkdir public/autoupload
+yadisk https://disk.yandex.ru/d/hM118Z8PeAgBJQ public
 ```
 
-3. Загрузите `.zip` архив с помощью gem `yadisk`
+3. Извлеките данные из `zip` архива в `public`
+
 ```bash
-yadisk https://disk.yandex.ru/d/t0zdYm6sBbULlg public/autoupload
+unzip public/autoupload.zip -d public
 ```
 
-4. Извлеките данные из `.zip` архива в `public/autoupload`
-```bash
-unzip public/autoupload/tattoos.zip -d public/autoupload
-```
+4. Удалите `.zip` архив
 
-5. Удалите `.zip` архив
 ```bash
-rm public/autoupload/tattoos.zip
+rm public/autoupload.zip
 ```
 
 </details>
