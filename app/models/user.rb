@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :master, dependent: :destroy #? нужно для того, чтобы удалять мастера, если удаляется пользователь?
-  has_many :tattoos, dependent: :destroy #? нужно для того, чтобы удалять тату, если удаляется пользователь?
+  has_one :master, dependent: :destroy
+  has_many :tattoos, dependent: :destroy
 
   def is_master?
     is_master

@@ -1,0 +1,11 @@
+<tr id="<%= dom_id feedback %>">
+  <td class="truncate max-w-[15rem]">
+    <%= feedback.comment %>
+  </td>
+  <td><%= feedback.master.nickname %></td>
+  <td><%= feedback.user.email %></td>
+  <td><%= feedback.created_at.strftime("%B %d, %Y") %></td>
+  <td>
+    <%= button_to "Destroy", admin_feedback_path(feedback), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>

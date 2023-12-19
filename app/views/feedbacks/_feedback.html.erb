@@ -1,4 +1,7 @@
 <article id="<%= dom_id feedback %>">
+
+  <%= image_tag feedback.feedback_image.url, class: "w-20 rounded-xl" if feedback.feedback_image.url  %>
+
   <p class="my-5">
     <strong class="block mb-1 font-medium">Comment:</strong>
     <%= feedback.comment %>
@@ -14,18 +17,14 @@
 
     <p class="my-5">
       <strong class="block mb-1 font-medium">User:</strong>
-      <mark><%= feedback.user_id %></mark>
+      <mark><%= feedback.user.email %></mark>
     </p>
 
-    <p class="my-5">
-      <strong class="block mb-1 font-medium">Master:</strong>
-      <mark><%= feedback.master_id %></mark>
-    </p>
+    <%#= feedback.master.nickname %>
   </div>
 
   <% if can_modify_feedback?(feedback) %>
     <%= link_to "Edit this feedback", edit_feedback_path(feedback) %>
     <%= button_to "Destroy this feedback", feedback_path(feedback), method: :delete %>
   <% end %>
-
 </article>

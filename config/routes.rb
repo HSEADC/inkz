@@ -17,13 +17,13 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :masters do
       resources :tattoos
-      #? resources :feedbacks
+      resources :feedbacks, only: [ :index, :delete]
     end
 
     resources :masters
     resources :tattoos
     resources :subscriptions
-    #? resources :feedbacks, except: [:show]
+    resources :feedbacks
   end
 
   resources :masters do

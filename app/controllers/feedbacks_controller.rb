@@ -17,6 +17,12 @@ class FeedbacksController < ApplicationController
     @feedback = @master.feedbacks.new(feedback_params)
     @feedback.user = current_user if user_signed_in?
 
+    if params[:feedback][:feedback_image].present?
+      @feedback.feedback_image = params[:feedback][:feedback_image]
+    else
+      @feedback.feedback_image = nil # Use nil instead of an empty string
+    end
+
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to master_url(@master), notice: "Feedback was successfully created." }
@@ -27,6 +33,7 @@ class FeedbacksController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /feedbacks/1 or /feedbacks/1.json
  def update
@@ -59,7 +66,7 @@ class FeedbacksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def feedback_params
-      params.require(:feedback).permit(:comment, :rating, :user_id, :master_id)
+      params.require(:feedback).permit(:comment, :rating, :user_id, :master_id, :feedback_image)
     end
 
     def set_master

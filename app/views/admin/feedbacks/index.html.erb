@@ -1,0 +1,21 @@
+<h1>Feedbacks</h1>
+<% if notice.present? %>
+  <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-slate-700', id: 'notice') %>
+<% end %>
+
+<table role="grid">
+  <thead>
+    <tr>
+      <th scope="col">Text</th>
+      <th scope="col">Master</th>
+      <th scope="col">User</th>
+      <th scope="col">Date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @feedbacks.each do |feedback| %>
+      <%= render partial: 'feedback', locals: { feedback: feedback } %>
+    <% end %>
+  </tbody>
+</table>
