@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
+    <%# using gem `meta-data` and def `meta-data` from application controller %>
     <%= display_meta_tags(
-      title: meta_tags(@page_title, 'inkz'),
-      description: meta_tags(@page_description, 'inkz description'),
-      keywords: meta_tags(@page_keywords, 'inkz keywords')
+        title: custom_meta_tags(@page_title, default: 'inkz'),
+        description: custom_meta_tags(@page_description, default: 'inkz description'),
+        keywords: custom_meta_tags(@page_keywords, default: 'inkz keywords'),
+        
+        og: {
+          title: custom_meta_tags(@page_title, default: 'inkz'),
+          url: request.original_url + request.path,
+          image: request.original_url + "shared/seo.png",
+        }
     ) %>
 
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
