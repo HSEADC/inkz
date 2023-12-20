@@ -1,5 +1,6 @@
 def seed
   reset_db
+  clean_content_folders
   create('Admin') { create_admin }
   create('Users + Masters') { create_users_and_masters(14) }
   create('Tattoos') { create_tattoos }
@@ -16,6 +17,10 @@ def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].invoke
+end
+
+def clean_content_folders
+  FileUtils.rm_rf('public/uploads')
 end
 
 def create_admin

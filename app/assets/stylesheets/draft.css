@@ -1,13 +1,4 @@
-.nav_group {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav_group a:hover {
-  text-decoration: underline;
-}
-
-.master-card {
+a:hover {
   text-decoration: none;
 }
 
@@ -23,10 +14,6 @@ h4,
 h5,
 h6,
 p {
-  margin-bottom: 1rem;
-}
-
-img {
   margin-bottom: 1rem;
 }
 

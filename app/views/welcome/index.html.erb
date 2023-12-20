@@ -1,4 +1,13 @@
 <% if notice.present? %>
   <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-slate-700', id: 'notice') %>
 <% end %>
+
 <h1 class="mt-[25vh] text-center fond-bold uppercase text-4xl">Index page</h1>
+
+<div class="my-20 text-center">
+
+  <%= turbo_frame_tag dom_id(@subscription) do %>
+    <%= render 'subscriptions/form', subscription: @subscription%>
+  <% end %>
+
+</div>

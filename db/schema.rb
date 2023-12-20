@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_19_135341) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_20_022519) do
   create_table "feedbacks", force: :cascade do |t|
     t.text "comment"
     t.integer "rating"
@@ -21,6 +21,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_135341) do
     t.string "feedback_image"
     t.index ["master_id"], name: "index_feedbacks_on_master_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "masters", force: :cascade do |t|
@@ -77,7 +88,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_135341) do
     t.datetime "updated_at", null: false
     t.string "tattoo_image"
     t.integer "user_id"
+    t.string "slug"
     t.index ["master_id"], name: "index_tattoos_on_master_id"
+    t.index ["slug"], name: "index_tattoos_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|

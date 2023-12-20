@@ -70,6 +70,7 @@ GEM
       activerecord (>= 6.0, < 7.1)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
+    babosa (2.0.0)
     bcrypt (3.1.19)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -108,6 +109,8 @@ GEM
     faker (3.2.2)
       i18n (>= 1.8.11, < 2)
     ffi (1.16.2)
+    friendly_id (5.4.2)
+      activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     htmlbeautifier (1.4.2)
@@ -136,6 +139,8 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    meta-tags (2.19.0)
+      actionpack (>= 3.2.0, < 7.2)
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
@@ -260,6 +265,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 9.0)
+  babosa
   bootsnap
   cancancan
   capybara
@@ -267,9 +273,12 @@ DEPENDENCIES
   debug
   devise
   faker
+  friendly_id (~> 5.4.0)
   htmlbeautifier
   importmap-rails
   jbuilder
+  meta-tags
+  mini_magick
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.8)

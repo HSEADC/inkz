@@ -56,6 +56,11 @@ gem "htmlbeautifier"
 gem "rack-cors"
 gem "faker"
 gem "acts-as-taggable-on", "~> 9.0"
+gem "meta-tags"
+gem "mini_magick"
+# gem "russian", "~> 0.6.0"
+gem "friendly_id", "~> 5.4.0"
+gem "babosa"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

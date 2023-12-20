@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html class="scroll-smooth">
+<html class="scroll-smooth" lang="ru">
   <head>
-    <title>tatu</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <%# using gem `meta-data` and def `meta-data` from application controller %>
+    <%= display_meta_tags(
+        title: custom_meta_tags(@page_title, default: 'inkz'),
+        description: custom_meta_tags(@page_description, default: 'inkz description'),
+        keywords: custom_meta_tags(@page_keywords, default: 'inkz keywords'),
+        
+        og: {
+          title: custom_meta_tags(@page_title, default: 'inkz'),
+          url: request.original_url + request.path,
+          image: request.original_url + "shared/seo.png",
+        }
+    ) %>
+
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <%= javascript_importmap_tags %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%# if controller_name != 'welcome' %>
-    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" %>
-    <%# end %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
+
   <body class="font-sans">
     <div class="container">
       <%= render 'components/application/menubar' %>
