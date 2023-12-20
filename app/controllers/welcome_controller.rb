@@ -1,5 +1,11 @@
 class WelcomeController < ApplicationController
     def index
-        @subscription = Subscription.new
+
+    # META TAGS
+    @page_title = 'ГЛАВНАЯ'
+    @page_description = 'Привет! Это главная'
+    @page_keywords = 'инкз, inkz'
+
+    @subscription = Subscription.new
     end
 end
