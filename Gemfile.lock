@@ -273,6 +273,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   meta-tags
+  mini_magick
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.8)
