@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title><%= default_meta_content(@page_title, 'inkz') %></title>
-    <meta name="description" content="<%= default_meta_content(@page_description, 'inkz description') %>">
-    <meta name="keywords" content="<%= default_meta_content(@page_keywords, 'inkz keywords') %>">
+    <%= display_meta_tags(
+      title: meta_tags(@page_title, 'inkz'),
+      description: meta_tags(@page_description, 'inkz description'),
+      keywords: meta_tags(@page_keywords, 'inkz keywords')
+    ) %>
 
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" %>

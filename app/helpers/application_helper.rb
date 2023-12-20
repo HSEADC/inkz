@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def default_meta_content(content, default)
+  def meta_tags(content, default)
     content.blank? ? default : content
   end
 end
