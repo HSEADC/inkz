@@ -27,6 +27,8 @@ Rails.application.routes.draw do
         get 'by_style/:style', to: 'tattoos#by_style', as: "styled"
       end
     end
+
+    resources :tags, only: [:index]
     resources :subscriptions
     resources :feedbacks
   end
