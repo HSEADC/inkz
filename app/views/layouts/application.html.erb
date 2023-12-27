@@ -6,15 +6,19 @@
 
     <%# using gem `meta-data` and def `meta-data` from application controller %>
     <%= display_meta_tags(
+      title: custom_meta_tags(@page_title, default: 'inkz'),
+      description: custom_meta_tags(@page_description, default: 'inkz description'),
+      keywords: custom_meta_tags(@page_keywords, default: 'inkz keywords'),
+      
+      og: {
         title: custom_meta_tags(@page_title, default: 'inkz'),
-        description: custom_meta_tags(@page_description, default: 'inkz description'),
-        keywords: custom_meta_tags(@page_keywords, default: 'inkz keywords'),
-        
-        og: {
-          title: custom_meta_tags(@page_title, default: 'inkz'),
-          url: request.original_url + request.path,
-          image: request.original_url + "shared/seo.png",
-        }
+        url: if request.path == root_path
+              request.original_url
+            else
+              request.original_url + request.path
+            end,
+        image: request.original_url + "shared/seo.png",
+      }
     ) %>
 
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
