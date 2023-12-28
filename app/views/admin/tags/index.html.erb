@@ -1,0 +1,7 @@
+<h3>Parts</h3>
+<%= render partial: "admin/tags/tag_list", locals: { tag_list: Tattoo.tag_counts_on(:parts), tagged: :parted } %>
+
+<hr>
+
+<h3>Styles</h3>
+<%= render partial: "admin/tags/tag_list", locals: { tag_list: Tattoo.tag_counts_on(:styles), tagged: :styled } %>

@@ -2,10 +2,16 @@ Rails.application.routes.draw do
   resources :feedbacks
   namespace :api do
     namespace :v1 do
-
       resources :masters
-      resources :tattoos
+      resources :tattoos, only: [:index, :show] do
+        collection do
+          get 'by_part/:part', to: 'tattoos#by_part', as: 'parted'
+          get 'by_style/:style', to: 'tattoos#by_style', as: 'styled'
+          get 'tags', to: 'tattoos#tags'
+        end
+      end
 
+      # resources :tags, only: [:index, :show]
       resources :masters do
         resources :tattoos
       end
@@ -27,6 +33,8 @@ Rails.application.routes.draw do
         get 'by_style/:style', to: 'tattoos#by_style', as: "styled"
       end
     end
+
+    resources :tags, only: [:index]
     resources :subscriptions
     resources :feedbacks
   end
