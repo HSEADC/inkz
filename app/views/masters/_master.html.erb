@@ -1,12 +1,11 @@
-<div id="<%= dom_id master %>">
+<div id="<%= dom_id master %>" class="relative border-2 border-black rounded-[35px] px-8 py-9">
   <article>
     <%= master.user.email %>
     <h2>
       <%= master.name %>
     </h2>
-    <p>
-      <strong>Nickname:</strong>
+    <h4 class="text-3xl tracking-[-0.03em]">
       <%= master.nickname %>
-    </p>
+    </h4>
   </article>
 </div>

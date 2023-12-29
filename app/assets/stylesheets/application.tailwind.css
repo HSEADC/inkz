@@ -2,16 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply px-4 py-2 bg-blue-200;
-  }
+a:hover {
+  @apply underline
 }
 
-*/
-
-a:hover {
-  text-decoration: underline;
+input[type=submit] {
+  @apply bg-black px-4 py-2 text-white cursor-pointer
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="ru">
+<html class="h-full scroll-smooth" lang="ru">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -30,11 +30,13 @@
     <%= csp_meta_tag %>
   </head>
 
-  <body class="font-sans">
-    <%= render 'components/sections/header' %>
-    <main class="mx-auto w-container">
-      <%= yield %>
-    </main>
-    <%= render 'components/sections/footer' %>
+  <body class="h-full font-sans">
+    <div class="flex flex-col min-h-full ">
+      <%= render 'components/sections/header' %>
+      <main class="flex-auto mx-auto w-container ">
+        <%= yield %>
+      </main>
+      <%= render 'components/sections/footer' %>
+    </div>
   </body>
 </html>
