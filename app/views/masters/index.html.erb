@@ -1,6 +1,6 @@
 <h1>Masters</h1>
 <% if notice.present? %>
-  <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-slate-700', id: 'notice') %>
+  <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-black text-white', id: 'notice') %>
 <% end %>
 
 <% if current_user && current_user.is_master? && can?(:create, Master) && !@user_masters.present? %>
