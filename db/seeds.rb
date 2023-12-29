@@ -74,13 +74,18 @@ end
 
 def create_tattoos
   masters = Master.all
+  styles = ["Traditional", "Realism", "Watercolor", "Geometric", "Japanese", "Blackwork"]
+  parts = ["Forearm", "Back", "Wrist", "Ankle", "Ribcage", "Collarbone"]
 
   masters.each do |master|
     2.times do
+      style = styles.sample
+      part = parts.sample
+
       tattoo = Tattoo.create(
         title: Faker::Games::WorldOfWarcraft.hero,
-        part_list: Faker::Games::Witcher.school,
-        style_list: Faker::Games::Witcher.sign,
+        part_list: part,
+        style_list: style,
         master_id: master.id,
         tattoo_image: upload_random_image,
         user_id: master.user.id,
