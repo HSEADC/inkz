@@ -1,36 +1,38 @@
-<div id="<%= dom_id tattoo %>">
-  <article>
+<article id="<%= dom_id tattoo %>" class="relative bg-black rounded-[35px] px-8 pt-9 pb-16 text-white">
 
-    <%= image_tag tattoo.tattoo_image.url if tattoo.tattoo_image.url %>
+  <%= link_to tattoo do %>
+    <%= image_tag tattoo.tattoo_image.url, class: "object-cover rounded-[20px] h-[40vh] w-full"%>
+  <% end %>
 
-    <h4 class="capitalize">
+  <div class="flex flex-col gap-1 mt-4">
+    <h4 class="text-3xl tracking-[-0.03em]">
       <%= tattoo.title %>
     </h4>
 
     <% if @display_master == true %>
-      <h4><%= link_to tattoo.master.nickname, master_path(tattoo.master) %></h4>
+      <h4 class="text-xl tracking-[-0.02em]">
+        <%= link_to tattoo.master.nickname, master_path(tattoo.master) %>
+      </h4>
     <% end %>
+  </div>
 
-    <h6>Parts</h6>
+  <% if can_modify_tattoo?(tattoo) %>
+    <div class="mt-5">
+      <%= link_to "Edit this tattoo", edit_master_tattoo_path(tattoo.master, tattoo) %>
+      <%= button_to "Destroy this tattoo", tattoo, method: :delete %>
+    </div>
+  <% end %>
 
-    <% tattoo.part_list.each do |part| %>
-      <mark><%= part %></mark>
-    <% end %>
+  <% if false %>
+    <div class="absolute bottom-0 right-0 mt-1">
+      <% tattoo.part_list.each do |part| %>
+        <mark class="px-1 py-[2px] bg-white"><%= part %></mark>
+      <% end %>
 
-    <hr class="my-2 mt-5">
+      <% tattoo.style_list.each do |style| %>
+        <mark class="bg-[#8d8d8d] px-1 py-[2px]"><%= style %></mark>
+      <% end %>
+    </div>
+  <% end %>
 
-    <h6>Styles</h6>
-
-    <% tattoo.style_list.each do |style| %>
-      <mark><%= style %></mark>
-    <% end %>
-
-    <% if can_modify_tattoo?(tattoo) %>
-      <div class="mt-5">
-        <%= link_to "Edit this tattoo", edit_master_tattoo_path(tattoo.master, tattoo) %>
-        <%= button_to "Destroy this tattoo", tattoo, method: :delete %>
-      </div>
-    <% end %>
-
-  </article>
-</div>
+</article>
