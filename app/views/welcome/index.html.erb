@@ -2,117 +2,114 @@
   <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-slate-700', id: 'notice') %>
 <% end %>
 
-<%#= turbo_frame_tag dom_id(@subscription) do %>
-  <%#= render 'subscriptions/form', subscription: @subscription%>
-  <%# end %>
-
-  <section data-section="HERO" class="relative mt-20">
-    <div class="ml-16 bg-white px-9 s-fit">
-      <h1 class="tracking-[-0.03em] text-[60px] leading-[1.10]">
-        Команда INKZ поможет вам <br />
-        не&nbsp;ошибиться в&nbsp;выборе тату мастера
-      </h1>
+<section data-section="HERO" class="relative mt-20">
+  <div class="ml-16 bg-white px-9 s-fit">
+    <h1 class="tracking-[-0.03em] text-[60px] leading-[1.10]">
+      Команда INKZ поможет вам <br />
+      не&nbsp;ошибиться в&nbsp;выборе тату мастера
+    </h1>
+  </div>
+  <div class="flex flex-col gap-6 ml-12">
+    <h2 class="text-4xl tracking-[-0.03em] leading-[1.10] mt-[35vh]">Подпишитесь на&nbsp;рассылку, <br />
+      чтобы не&nbsp;пропустить запуск приложения!</h2>
+    <div class="pb-12">
+      <%= turbo_frame_tag dom_id(@subscription) do %>
+        <%= render 'subscriptions/form', subscription: @subscription%>
+      <% end %>
     </div>
-    <div class="flex flex-col gap-6 ml-12">
-      <h2 class="text-4xl tracking-[-0.03em] leading-[1.10] mt-[35vh]">Подпишитесь на&nbsp;рассылку, <br />
-        чтобы не&nbsp;пропустить запуск приложения!</h2>
-      <div class="pb-12">
-        <input class="px-5 py-3 text-xl border-2 border-black rounded-xl placeholder:text-black" type="text" placeholder="Введите почту" />
-        <button class="px-10 py-3 ml-4 text-2xl text-white bg-black rounded-xl">Подписаться</button>
-      </div>
-    </div>
+  </div>
 
-    <%= image_tag('index/iphone.png', class: 'absolute -z-10 bottom-0 object-contain h-[75%] right-20', alt: 'Пустой айфон') %>
-    <div class="absolute bottom-0 -z-10 left-0 w-full h-[95%] border-2 border-black rounded-[35px]"></div>
-  </section>
+  <%= image_tag('index/iphone.png', class: 'absolute -z-10 bottom-0 object-contain h-[75%] right-20', alt: 'Пустой айфон') %>
+  <div class="absolute bottom-0 -z-10 left-0 w-full h-[95%] border-2 border-black rounded-[35px]"></div>
+</section>
 
-  <section data-section="WHO" class="flex gap-28 mt-[12.5vh]">
-    <h2 class="text-4xl tracking-[-0.03em] leading-[1.10]">Кто мы?</h2>
-    <h1 class="tracking-[-0.03em] text-[60px] leading-[1.10]">Мы&nbsp;&mdash; медиа-сервис, который объединяет <br />
-      тату-мастеров и&nbsp;людей, которые хотят <br />
-      сделать татуировку или найти идеи для эскизов</h1>
-  </section>
+<section data-section="WHO" class="flex gap-28 mt-[12.5vh]">
+  <h2 class="text-4xl tracking-[-0.03em] leading-[1.10]">Кто мы?</h2>
+  <h1 class="tracking-[-0.03em] text-[60px] leading-[1.10]">Мы&nbsp;&mdash; медиа-сервис, который объединяет <br />
+    тату-мастеров и&nbsp;людей, которые хотят <br />
+    сделать татуировку или найти идеи для эскизов</h1>
+</section>
 
-  <section data-section="WHAT" class="mt-[12.5vh]">
-    <h1 class="tracking-[-0.03em] text-[60px] leading-[1.10]">Что мы предлагаем?</h1>
+<section data-section="WHAT" class="mt-[12.5vh]">
+  <h1 class="tracking-[-0.03em] text-[60px] leading-[1.10]">Что мы предлагаем?</h1>
 
-    <div class="flex justify-between mt-20 gap-7">
-      <div class="flex flex-col justify-center rounded-[35px] border-2 border-black p-9">
-        <h2 class="text-4xl tracking-[-0.03em] leading-[1.10]">Экономия времени <br />
-          от начала и до конца</h2>
-        <%= image_tag('index/cards/1.png', class: 's-[70%] self-end py-10 object-contain', alt: '') %>
-        <h3 class="text-2xl self-start tracking-[-0.03em] leading-[1.10]">В&nbsp;ленте можно идеи для будущих татуировок и&nbsp;добавить их&nbsp;в&nbsp;избранное, чтобы не&nbsp;потерять</h3>
-      </div>
-
-      <div class="flex flex-col items-center justify-center rounded-[35px] border-2 border-black p-9">
-        <h2 class="text-4xl tracking-[-0.03em] leading-[1.10]">Идеи эскизов для себя и работы</h2>
-        <%= image_tag('index/cards/2.png', class: 's-[70%] self-end py-10 object-contain', alt: '') %>
-        <h3 class="text-2xl self-start tracking-[-0.03em] leading-[1.10]">Мы&nbsp;предусмотрели удобную фильтрацию по&nbsp;мастерам и&nbsp;работам, чтобы вы&nbsp;не&nbsp;тратили свое время</h3>
-      </div>
-
-      <div class="flex flex-col items-center justify-center rounded-[35px] border-2 border-black p-9">
-        <h2 class="text-4xl tracking-[-0.03em] leading-[1.10]">Профили нацеленные на клиентов</h2>
-        <%= image_tag('index/cards/3.png', class: 's-[70%] self-end py-10 object-contain', alt: '') %>
-        <h3 class="text-2xl self-start tracking-[-0.03em] leading-[1.10]">Наша команда создала специальные анкеты для мастеров, на&nbsp;основе ваших желаний</h3>
-      </div>
-    </div>
-  </section>
-
-  <section data-section="POPULAR" class="relative flex justify-end mt-[12.5vh] h-[17vh]">
-    <div class="mr-16 bg-white px-9 s-fit">
-      <h1 class="tracking-[-0.03em] text-[60px] leading-[1.10]">Популярное</h1>
+  <div class="flex justify-between mt-20 gap-7">
+    <div class="flex flex-col justify-center rounded-[35px] border-2 border-black p-9">
+      <h2 class="text-4xl tracking-[-0.03em] leading-[1.10]">Экономия времени <br />
+        от начала и до конца</h2>
+      <%= image_tag('index/cards/1.png', class: 's-[70%] self-end py-10 object-contain', alt: '') %>
+      <h3 class="text-2xl self-start tracking-[-0.03em] leading-[1.10]">В&nbsp;ленте можно идеи для будущих татуировок и&nbsp;добавить их&nbsp;в&nbsp;избранное, чтобы не&nbsp;потерять</h3>
     </div>
 
-    <div class="absolute bottom-0 -z-10 left-0 w-full h-[80%] border-2 border-black rounded-[35px]"></div>
-  </section>
+    <div class="flex flex-col items-center justify-center rounded-[35px] border-2 border-black p-9">
+      <h2 class="text-4xl tracking-[-0.03em] leading-[1.10]">Идеи эскизов для себя и работы</h2>
+      <%= image_tag('index/cards/2.png', class: 's-[70%] self-end py-10 object-contain', alt: '') %>
+      <h3 class="text-2xl self-start tracking-[-0.03em] leading-[1.10]">Мы&nbsp;предусмотрели удобную фильтрацию по&nbsp;мастерам и&nbsp;работам, чтобы вы&nbsp;не&nbsp;тратили свое время</h3>
+    </div>
 
-  <section data-section="POPULAR_GRID" class="mt-[7vh] text-white flex flex-col items-center">
-    <div class="grid grid-cols-4 gap-7">
-      <div class="bg-black rounded-[35px] px-8 pt-9 pb-16">
-        <%= image_tag('tattoo.jpg', class: 'object-cover rounded-[20px]', alt: '') %>
+    <div class="flex flex-col items-center justify-center rounded-[35px] border-2 border-black p-9">
+      <h2 class="text-4xl tracking-[-0.03em] leading-[1.10]">Профили нацеленные на клиентов</h2>
+      <%= image_tag('index/cards/3.png', class: 's-[70%] self-end py-10 object-contain', alt: '') %>
+      <h3 class="text-2xl self-start tracking-[-0.03em] leading-[1.10]">Наша команда создала специальные анкеты для мастеров, на&nbsp;основе ваших желаний</h3>
+    </div>
+  </div>
+</section>
 
-        <div class="flex flex-col gap-1 mt-4">
-          <h1 class="text-3xl tracking-[-0.03em]">Череп с глазками</h1>
-          <h2 class="text-xl tracking-[-0.02em]">lunarwhisper</h2>
-        </div>
-      </div>
+<section data-section="POPULAR" class="relative flex justify-end mt-[12.5vh] h-[17vh]">
+  <div class="mr-16 bg-white px-9 s-fit">
+    <h1 class="tracking-[-0.03em] text-[60px] leading-[1.10]">Популярное</h1>
+  </div>
 
-      <div class="bg-black rounded-[35px] px-8 pt-9 pb-16">
-        <%= image_tag('tattoo.jpg', class: 'object-cover rounded-[20px]', alt: '') %>
+  <div class="absolute bottom-0 -z-10 left-0 w-full h-[80%] border-2 border-black rounded-[35px]"></div>
+</section>
 
-        <div class="flex flex-col gap-1 mt-4">
-          <h1 class="text-3xl tracking-[-0.03em]">Череп с глазками</h1>
-          <h2 class="text-xl tracking-[-0.02em]">lunarwhisper</h2>
-        </div>
-      </div>
+<section data-section="POPULAR_GRID" class="mt-[7vh] text-white flex flex-col items-center">
+  <div class="grid grid-cols-4 gap-7">
+    <div class="bg-black rounded-[35px] px-8 pt-9 pb-16">
+      <%= image_tag('tattoo.jpg', class: 'object-cover rounded-[20px]', alt: '') %>
 
-      <div class="bg-black rounded-[35px] px-8 pt-9 pb-16">
-        <%= image_tag('tattoo.jpg', class: 'object-cover rounded-[20px]', alt: '') %>
-
-        <div class="flex flex-col gap-1 mt-4">
-          <h1 class="text-3xl tracking-[-0.03em]">Череп с глазками</h1>
-          <h2 class="text-xl tracking-[-0.02em]">lunarwhisper</h2>
-        </div>
-      </div>
-
-      <div class="bg-black rounded-[35px] px-8 pt-9 pb-16">
-        <%= image_tag('tattoo.jpg', class: 'object-cover rounded-[20px]', alt: '') %>
-
-        <div class="flex flex-col gap-1 mt-4">
-          <h1 class="text-3xl tracking-[-0.03em]">Череп с глазками</h1>
-          <h2 class="text-xl tracking-[-0.02em]">lunarwhisper</h2>
-        </div>
+      <div class="flex flex-col gap-1 mt-4">
+        <h1 class="text-3xl tracking-[-0.03em]">Череп с глазками</h1>
+        <h2 class="text-xl tracking-[-0.02em]">lunarwhisper</h2>
       </div>
     </div>
 
-    <%= link_to "Перейти к татуировкам", tattoos_url, class: "bg-black hover:bg-black/85 duration-200 my-20 mx-auto text-3xl rounded-[15px] px-32 py-5" %>
-  </section>
+    <div class="bg-black rounded-[35px] px-8 pt-9 pb-16">
+      <%= image_tag('tattoo.jpg', class: 'object-cover rounded-[20px]', alt: '') %>
 
-  <section data-section="VALUE" class="relative h-[20vh]">
-    <div class="ml-16 bg-white px-9 s-fit">
-      <h1 class="tracking-[-0.03em] text-[60px] leading-[1.10]">Главная ценность нашего <br />
-        сервиса&nbsp;&mdash; это прозрачность</h1>
+      <div class="flex flex-col gap-1 mt-4">
+        <h1 class="text-3xl tracking-[-0.03em]">Череп с глазками</h1>
+        <h2 class="text-xl tracking-[-0.02em]">lunarwhisper</h2>
+      </div>
     </div>
 
-    <div class="absolute bottom-0 -z-10 left-0 w-full h-[83%] border-2 border-black rounded-[35px]"></div>
-  </section>
+    <div class="bg-black rounded-[35px] px-8 pt-9 pb-16">
+      <%= image_tag('tattoo.jpg', class: 'object-cover rounded-[20px]', alt: '') %>
+
+      <div class="flex flex-col gap-1 mt-4">
+        <h1 class="text-3xl tracking-[-0.03em]">Череп с глазками</h1>
+        <h2 class="text-xl tracking-[-0.02em]">lunarwhisper</h2>
+      </div>
+    </div>
+
+    <div class="bg-black rounded-[35px] px-8 pt-9 pb-16">
+      <%= image_tag('tattoo.jpg', class: 'object-cover rounded-[20px]', alt: '') %>
+
+      <div class="flex flex-col gap-1 mt-4">
+        <h1 class="text-3xl tracking-[-0.03em]">Череп с глазками</h1>
+        <h2 class="text-xl tracking-[-0.02em]">lunarwhisper</h2>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to "Перейти к татуировкам", tattoos_url, class: "bg-black hover:bg-black/85 duration-200 my-20 mx-auto text-3xl rounded-[15px] px-32 py-5" %>
+</section>
+
+<section data-section="VALUE" class="relative h-[20vh]">
+  <div class="ml-16 bg-white px-9 s-fit">
+    <h1 class="tracking-[-0.03em] text-[60px] leading-[1.10]">Главная ценность нашего <br />
+      сервиса&nbsp;&mdash; это прозрачность</h1>
+  </div>
+
+  <div class="absolute bottom-0 -z-10 left-0 w-full h-[83%] border-2 border-black rounded-[35px]"></div>
+</section>

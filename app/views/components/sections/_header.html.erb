@@ -22,9 +22,7 @@
 
   <ul class="flex items-center sm:w-full sm:justify-between gap-7 md:gap-5">
     <input class="py-3 lg:py-2 md:py-1 sm:py-2 text-xl lg:text-lg md:text-base border-2 border-black placeholder:text-black w-[20vw] sm:w-[45vw] rounded-xl xl:rounded-lg focus:border-black ring-" type="text" placeholder="Поиск">
-
     <li>
-
       <% if user_signed_in? %>
         <div class="flex gap-3 sm:flex-col sm:gap-0">
           <%= link_to current_user.email, edit_user_registration_path %>

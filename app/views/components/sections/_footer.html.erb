@@ -4,8 +4,9 @@
     <div class="flex flex-col gap-6">
       <h2 class="text-3xl tracking-[-0.03em] leading-[1.10]">Подписывайтесь на рассылку</h2>
       <div class="pb-12">
-        <input class="px-5 py-3 text-xl bg-transparent border-2 border-white rounded-xl placeholder:text-white" type="text" placeholder="Введите почту" />
-        <button class="px-10 py-3 ml-4 text-2xl text-black duration-200 bg-white hover:bg-white/85 rounded-xl">Подписаться</button>
+        <%= turbo_frame_tag dom_id(@subscription) do %>
+          <%= render 'subscriptions/footer', subscription: @subscription%>
+        <% end %>
       </div>
     </div>
     <div class="flex items-end justify-between">
