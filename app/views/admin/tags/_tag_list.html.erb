@@ -1,0 +1,24 @@
+<table role="grid">
+  <thead>
+    <tr>
+      <th scope="col">Tag</th>
+      <th scope="col">Taggings Count</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% tag_list.each do |tag| %>
+      <tr>
+        <td>
+          <%= link_to send("#{tagged}_admin_tattoos_path", tag.name) do %>
+            <div class="p-2 w-fit border border-[#1095c1] flex gap-2 items-center group hover:border-white duration-200">
+              <mark class="bg-[#1095c1 group-hover:bg-white duration-200"><%= tag.name %></mark>
+            </div>
+          <% end %>
+        </td>
+        <td><%= tag.taggings_count %></td>
+        <td><%= link_to send("#{tagged}_admin_tattoos_path", tag.name) do %>View<% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
