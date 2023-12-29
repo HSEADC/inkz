@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         sans: ['SuisseIntl', ...defaultTheme.fontFamily.sans],
       },
+      width: {
+        container: '88vw'
+      },
       letterSpacing: {
         small: '-0.75px',
       }
