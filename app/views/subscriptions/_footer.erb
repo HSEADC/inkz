@@ -14,8 +14,8 @@
   <% end %>
 
   <div class="flex gap-4">
-    <%= form.email_field :email, class: 'px-5 py-3 text-xl border-2 border-black rounded-xl placeholder:text-black', placeholder: 'Введите почту' %>
-    <%= form.submit 'Подписаться', class: 'px-10 py-3 text-2xl text-white bg-black rounded-xl' %>
+    <%= form.email_field :email, class: 'px-5 py-3 text-xl bg-transparent border-2 border-white rounded-xl placeholder:text-white', placeholder: 'Введите почту' %>
+    <%= form.submit 'Подписаться', class: 'px-10 py-3 ml-4 text-2xl text-black duration-200 bg-white hover:bg-white/85 rounded-xl' %>
   </div>
 
 <% end %>

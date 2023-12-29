@@ -7,18 +7,20 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['SuisseIntl', ...defaultTheme.fontFamily.sans],
       },
-      colors: {
-        custom: {
-          gray: '#A8A8A8',
-        },
+      width: {
+        container: '88vw'
       },
+      letterSpacing: {
+        small: '-0.75px',
+      }
     },
     screens: {
       xl: {max: '1536px'},
-      sm: {max: '768px'},
-      xs: {max: '350px'},
+      lg: {max: '1280px'},
+      md: {max: '810px'},
+      sm: {max: '428px'},
     },
   },
   plugins: [
@@ -26,6 +28,7 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
+
     plugin(function sizePlugin(api) {
       api.matchUtilities({s: (value) => ({width: value, height: value})}, {values: api.theme('width')})
     }),

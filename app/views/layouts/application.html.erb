@@ -22,7 +22,7 @@
     ) %>
 
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" %>
+    <%#= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
     <%= javascript_importmap_tags %>
@@ -31,9 +31,10 @@
   </head>
 
   <body class="font-sans">
-    <div class="container">
-      <%= render 'components/application/menubar' %>
+    <%= render 'components/sections/header' %>
+    <main class="mx-auto w-container">
       <%= yield %>
-    </div>
+    </main>
+    <%= render 'components/sections/footer' %>
   </body>
 </html>
