@@ -31,11 +31,14 @@
       <%= link_to "New feedback", new_master_feedback_path(@master) %>
     <% end %>
 
-    <% @master.feedbacks.each do |feedback| %>
-      <div class="feedback-card">
-        <%= render partial: "feedbacks/feedback", locals: { master: @master, feedback: feedback } %>
-      </div>
-    <% end %>
+    <div class="flex flex-col mt-2 gap-7">
+      <% @master.feedbacks.each do |feedback| %>
+        <div class="feedback-card">
+          <%= render partial: "feedbacks/feedback", locals: { master: @master, feedback: feedback } %>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 
 </div>

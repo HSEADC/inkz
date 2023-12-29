@@ -1,27 +1,24 @@
-<article id="<%= dom_id feedback %>">
+<article id="<%= dom_id feedback %>" class="border-2 border-black rounded-[35px] px-8 py-9">
 
-  <%= image_tag feedback.feedback_image.url, class: "w-20 rounded-xl" if feedback.feedback_image.url  %>
-
-  <p class="my-5">
-    <strong class="block mb-1 font-medium">Comment:</strong>
-    <%= feedback.comment %>
-  </p>
-
-  <hr class="mt-6">
+  <%= image_tag feedback.feedback_image.url, class: "w-36 mb-5 rounded-xl" if feedback.feedback_image.url  %>
 
   <div class="flex gap-5">
-    <p class="my-5">
-      <strong class="block mb-1 font-medium">Rating:</strong>
-      <mark><%= feedback.rating %></mark>
+
+    <p class="text-xl tracking-[-0.02em]">
+      <%= feedback.user.email %>
     </p>
 
-    <p class="my-5">
-      <strong class="block mb-1 font-medium">User:</strong>
-      <mark><%= feedback.user.email %></mark>
+    <p class="text-xl tracking-[-0.02em] flex gap-2 items-center">
+      Rating:
+      <mark class="px-2 text-white bg-black"><%= feedback.rating %></mark>
     </p>
 
     <%#= feedback.master.nickname %>
   </div>
+
+  <p class="text-3xl tracking-[-0.03em] my-2">
+    <%= feedback.comment %>
+  </p>
 
   <% if can_modify_feedback?(feedback) %>
     <%= link_to "Edit this feedback", edit_feedback_path(feedback) %>
