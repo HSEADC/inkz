@@ -1,24 +1,27 @@
-<h1>Masters</h1>
 <% if notice.present? %>
   <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-black text-white', id: 'notice') %>
 <% end %>
 
-<% if current_user && current_user.is_master? && can?(:create, Master) && !@user_masters.present? %>
-  <%= link_to "New master", new_master_path %>
-<% end %>
-<% if current_user && current_user.is_master? && @user_masters.present? %>
-  <hr>
-  <div id="user_masters">
-    <p>Your Master</p>
-    <% @user_masters.each do |master| %>
-      <%= link_to render(master), master_path(master) %>
+<section class="w-[70%] mx-auto">
+  <% if current_user && current_user.is_master? && can?(:create, Master) && !@user_masters.present? %>
+    <%= link_to "New master", new_master_path %>
+  <% end %>
+
+  <% if current_user && current_user.is_master? && @user_masters.present? %>
+
+    <div id="user_masters" class="mt-10">
+      <p class="text-xl tracking-[-0.02em] mb-3">Твой мастер</p>
+      <% @user_masters.each do |master| %>
+        <%= link_to(render(master), master_path(master), class: "hover:no-underline") %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <p class="text-xl tracking-[-0.02em] mt-16 mb-3">Все мастера</p>
+  <div id="other_masters" class="grid grid-cols-2 gap-5">
+    <% @other_masters.each do |master| %>
+      <%= link_to(render(master), master_path(master), class: "hover:no-underline") %>
     <% end %>
   </div>
-<% end %>
-<div id="other_masters">
-  <hr>
-  <p>All Masters</p>
-  <% @other_masters.each do |master| %>
-    <%= link_to render(master), master_path(master) %>
-  <% end %>
-</div>
+
+</section>
