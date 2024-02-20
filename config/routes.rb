@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'support/request_support'
+
   resources :feedbacks
   namespace :api do
     namespace :v1 do
