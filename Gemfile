@@ -61,6 +61,7 @@ gem "mini_magick"
 gem "russian", "~> 0.6.0"
 gem "friendly_id", "~> 5.4.0"
 gem "babosa"
+gem "devise-jwt"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
