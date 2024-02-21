@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'support/request_support'
+  post 'support/request_support'
 
   resources :feedbacks
   namespace :api do
