@@ -218,6 +218,8 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
+    russian (0.6.0)
+      i18n (>= 0.5.0)
     selenium-webdriver (4.13.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -289,6 +291,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.8)
   redis (~> 4.0)
+  russian (~> 0.6.0)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)

@@ -1,0 +1,18 @@
+ru:
+  activerecord:
+    models:
+      user:
+        one: 'пользователь'
+        few: 'пользователя'
+        many: 'пользователей'
+        other: 'пользователя'
+      support: 'обращение в поддержку'
+    attributes:
+      user:
+        email: 'электронная почта'
+        password: 'пароль'
+        password_confirmation: 'подтверждение пароля'
+      support:
+        email: 'электронная почта'
+        comment: 'ваше обращение'
+  inkz: 'инкз'
