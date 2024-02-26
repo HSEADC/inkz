@@ -11,8 +11,7 @@ class Api::V1::MastersController < Api::V1::ApplicationController
   end
 
   def create
-    jti = request.headers["Authorization"]
-    @user = User.find_by_jti(jti)
+    @user = User.find_by_jti(decrypt_payload[0]['jti'])
     @master = @user.master.new(master_params)
 
     if @master.save
