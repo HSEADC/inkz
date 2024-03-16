@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :masters
-      resources :tattoos, only: [:index, :show] do
+      resources :tattoos do
         collection do
           get 'by_part/:part', to: 'tattoos#by_part', as: 'parted'
           get 'by_style/:style', to: 'tattoos#by_style', as: 'styled'

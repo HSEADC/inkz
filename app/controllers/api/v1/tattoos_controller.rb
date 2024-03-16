@@ -3,7 +3,7 @@ class Api::V1::TattoosController < Api::V1::ApplicationController
 
   def index
     @tattoos = Tattoo.all
-    render json: @tattoos
+    @new_tattoo_url = new_api_v1_master_tattoo_url(master_id: 1)
   end
 
   def show
