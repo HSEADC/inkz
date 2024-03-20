@@ -10,5 +10,5 @@ class Tattoo < ApplicationRecord
   acts_as_taggable_on :parts
   acts_as_taggable_on :styles
 
-  validates :title, :tattoo_image, presence: true
+  validates :title, presence: true
 end

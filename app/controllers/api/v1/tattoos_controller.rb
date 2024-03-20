@@ -24,11 +24,13 @@ class Api::V1::TattoosController < Api::V1::ApplicationController
       @master = @user.master
 
       @tattoo = @master.tattoos.new(title: params[:tattoo][:title], master_id: params[:tattoo][:master_id])
-      @tattoo.user = current_user
+      @tattoo.user_id = @user.id
 
       if params[:tattoo][:tattoo_image].present?
         @tattoo.tattoo_image.attach(params[:tattoo][:tattoo_image])
       end
+
+      puts @tattoo.to_json
 
       if @tattoo.save
         render json: @tattoo.as_json, status: :created
