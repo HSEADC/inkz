@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       # resources :subscriptions
 
       devise_scope :user do
-        # post "sign_up", to: "registrations#create"
+        post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"
         post "sign_out", to: "sessions#destroy"
       end
