@@ -1,6 +1,7 @@
 def seed
   reset_db
   clean_content_folders
+
   create('Admin') { create_admin }
   create('Users + Masters') { create_users_and_masters(14) }
   create('Tattoos') { create_tattoos }
@@ -9,7 +10,7 @@ def seed
 end
 
 def create(model)
-  puts("-----[#{model}]-----")
+  puts "\e[1;35m----------[#{model}]\e[0m"
   yield
 end
 
@@ -17,6 +18,9 @@ def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].invoke
+
+  puts "\e[1;31m[Generate data]\e[0m"
+  puts ""
 end
 
 def clean_content_folders
