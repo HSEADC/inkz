@@ -9,8 +9,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
       render json: {
         messages: "Sign Up Successfully",
         is_success: true,
-        data: {user: user}
-        # jwt: encrypt_payload
+        jwt: encrypt_payload
       }, status: :ok
     else
       render json: {
@@ -27,8 +26,8 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
-  # def encrypt_payload
-  #   payload = @user.as_json(only: [:email, :jti])
-  #   token = JWT.encode payload, Rails.application.credentials.devise_jwt_secret_key!, 'HS256'
-  # end
+  def encrypt_payload
+    payload = @user.as_json(only: [:email, :jti])
+    token = JWT.encode payload, Rails.application.credentials.devise_jwt_secret_key!, 'HS256'
+  end
 end
