@@ -37,6 +37,9 @@ class MastersController < ApplicationController
 
     respond_to do |format|
       if @master.save
+
+        WaitAndMakeJob.perform_later(@master, current_user)
+
         format.html { redirect_to master_url(@master), notice: "Master was successfully created." }
         format.json { render :show, status: :created, location: @master }
       else

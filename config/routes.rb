@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'resque/server'
+  mount Resque::Server, at: '/jobs'
+
   post 'support/request_support'
 
   resources :feedbacks
