@@ -69,10 +69,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'welcome/index'
-  get 'welcome/about'
 
-  get 'about', to: 'welcome#about'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'assistance', to: 'welcome#assistance'
 
   # Defines the root path route ("/")
   root "welcome#index"
