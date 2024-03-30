@@ -1,8 +1,0 @@
-<%= turbo_stream.remove "spinner" %>
-<%= turbo_stream.append "tattoos" do %>
-  <%= render @tattoos %>
-
-  <% if @tattoos.page(@page.to_i + 1).out_of_range? %>
-    <span class="hidden" data-pagination-target="noRecords"></span>
-  <% end %>
-<% end %>

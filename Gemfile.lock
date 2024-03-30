@@ -144,18 +144,6 @@ GEM
       activesupport (>= 5.0.0)
     jwt (2.8.0)
       base64
-    kaminari (1.2.2)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.2)
-      kaminari-activerecord (= 1.2.2)
-      kaminari-core (= 1.2.2)
-    kaminari-actionview (1.2.2)
-      actionview
-      kaminari-core (= 1.2.2)
-    kaminari-activerecord (1.2.2)
-      activerecord
-      kaminari-core (= 1.2.2)
-    kaminari-core (1.2.2)
     launchy (2.5.2)
       addressable (~> 2.8)
     letter_opener (1.9.0)
@@ -313,6 +301,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (4.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yadisk (0.2.0)
@@ -338,7 +327,6 @@ DEPENDENCIES
   htmlbeautifier
   importmap-rails
   jbuilder
-  kaminari
   letter_opener
   meta-tags
   mini_magick
@@ -356,6 +344,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  will_paginate
   yadisk
 
 RUBY VERSION

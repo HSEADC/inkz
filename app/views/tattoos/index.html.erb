@@ -20,14 +20,12 @@
   <% end %>
 </section>
 
-<div id="tattoos" class="grid grid-cols-4 gap-7"
-  data-controller="pagination"
-  data-pagination-target="tattoos"
-  data-pagination-url-value="<%= tattoos_url %> "
-  data-pagination-page-value="<%= 2 %>">
-
+<div class="grid grid-cols-4 gap-7">
   <% @tattoos.each do |tattoo| %>
     <% master = tattoo.master %>
     <%= render partial: 'tattoos/tattoo', locals: { master: master, tattoo: tattoo } %>
   <% end %>
 </div>
+
+Resolving dependencies...
+<%= will_paginate @tattoos %>
