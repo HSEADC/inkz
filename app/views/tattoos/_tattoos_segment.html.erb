@@ -1,0 +1,6 @@
+<div class="grid grid-cols-4 gap-7">
+  <% tattoos.each do |tattoo| %>
+    <% master = tattoo.master %>
+    <%= render partial: 'tattoos/tattoo', locals: { master: master, tattoo: tattoo } %>
+  <% end %>
+</div>

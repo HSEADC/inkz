@@ -1,0 +1,5 @@
+<%= turbo_frame_tag 'tattoos_pagination' do %>
+  <% if tattoos.next_page %>
+    <%= link_to 'еще татушки', tattoos_url(page: tattoos.next_page), data: {turbo_stream: true, tattoos_target: 'nextButton'} %>
+  <% end %>
+<% end %>

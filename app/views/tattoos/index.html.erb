@@ -2,30 +2,30 @@
   <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-black text-white', id: 'notice') %>
 <% end %>
 
-<section class="flex flex-wrap gap-3 mx-auto mt-10 text-xl mb-7 w-fit">
-  <% Tattoo.tag_counts_on(:parts).each do |part| %>
-    <%= link_to parted_tattoos_path(part.name) do %>
-      <div class="flex items-center gap-2 px-4 py-2 text-white duration-300 bg-black border-2 border-black rounded-lg hover:scale-105">
-        <%= part.name %> <%#= part.taggings_count %>
-      </div>
+<section data-controller="tattoos">
+
+  <section class="flex flex-wrap gap-3 mx-auto mt-10 text-xl mb-7 w-fit">
+    <% Tattoo.tag_counts_on(:parts).each do |part| %>
+      <%= link_to parted_tattoos_path(part.name) do %>
+        <div class="flex items-center gap-2 px-4 py-2 text-white duration-300 bg-black border-2 border-black rounded-lg hover:scale-105">
+          <%= part.name %> <%#= part.taggings_count %>
+        </div>
+      <% end %>
     <% end %>
+
+    <% Tattoo.tag_counts_on(:styles).each do |style| %>
+      <%= link_to styled_tattoos_path(style.name), class: "hover:no-underline" do %>
+        <div class="flex items-center gap-2 px-4 py-2 duration-300 border-2 border-black rounded-lg hover:scale-105">
+          <%= style.name %> <%#= style.taggings_count %>
+        </div>
+      <% end %>
+    <% end %>
+  </section>
+
+  <%= turbo_frame_tag 'tattoos', class: 'space-y-7' do %>
+    <%= render partial: 'tattoos_segment', locals: { tattoos: @tattoos }  %>
   <% end %>
 
-  <% Tattoo.tag_counts_on(:styles).each do |style| %>
-    <%= link_to styled_tattoos_path(style.name), class: "hover:no-underline" do %>
-      <div class="flex items-center gap-2 px-4 py-2 duration-300 border-2 border-black rounded-lg hover:scale-105">
-        <%= style.name %> <%#= style.taggings_count %>
-      </div>
-    <% end %>
-  <% end %>
+  <%= render partial: 'tattoos_next_button', locals: { tattoos: @tattoos }  %>
+
 </section>
-
-<div class="grid grid-cols-4 gap-7">
-  <% @tattoos.each do |tattoo| %>
-    <% master = tattoo.master %>
-    <%= render partial: 'tattoos/tattoo', locals: { master: master, tattoo: tattoo } %>
-  <% end %>
-</div>
-
-Resolving dependencies...
-<%= will_paginate @tattoos %>
