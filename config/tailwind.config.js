@@ -9,6 +9,11 @@ module.exports = {
       fontFamily: {
         sans: ['SuisseIntl', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        custom: {
+          gray: '#ECECEC'
+        },
+      },
       width: {
         container: '88vw'
       },

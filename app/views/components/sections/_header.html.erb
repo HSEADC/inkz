@@ -1,7 +1,7 @@
 <header class="flex items-center justify-between mx-auto text-2xl sm:flex-col sm:gap-5 w-container mt-7 lg:text-xl md:text-base sm:text-xl tracking-small">
   <nav class="flex items-center sm:w-full sm:justify-between gap-7 md:gap-5">
     <%= link_to(root_path, class: 's-16 lg:s-12 sm:s-12') do %>
-      <%= image_tag('logo.svg', class: 'hover:scale-[107%] duration-300', alt: 'Логотип INKZ') %>
+      <%= image_tag('logo.png', class: 'hover:scale-[107%] duration-300', alt: 'Логотип INKZ') %>
     <% end %>
 
     <% if current_user&.is_admin? %>
