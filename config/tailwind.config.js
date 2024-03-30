@@ -11,7 +11,8 @@ module.exports = {
       },
       colors: {
         custom: {
-          gray: '#ECECEC'
+          gray: '#ECECEC',
+          'gray-dark': '#DCDCDC'
         },
       },
       width: {
