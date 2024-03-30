@@ -4,7 +4,7 @@
 
 <section data-controller="tattoos">
 
-  <section class="flex flex-wrap gap-3 mx-auto mt-10 text-xl mb-7 w-fit">
+  <section class="flex flex-wrap gap-3 mx-auto mt-10 text-xl w-fit">
     <% Tattoo.tag_counts_on(:parts).each do |part| %>
       <%= link_to parted_tattoos_path(part.name) do %>
         <div class="flex items-center gap-2 px-4 py-1.5 text-white duration-300 bg-black border-2 border-black rounded-lg hover:scale-105">
@@ -22,7 +22,7 @@
     <% end %>
   </section>
 
-  <div class="grid grid-cols-4 xl:grid-cols-3 sm:grid-cols-1 gap-7">
+  <div class="grid grid-cols-4 mt-10 xl:grid-cols-3 sm:grid-cols-1 gap-7">
     <% @tattoos.each do |tattoo| %>
       <% master = tattoo.master %>
       <%= render partial: 'tattoos/tattoo', locals: { master: master, tattoo: tattoo } %>
