@@ -18,6 +18,8 @@ class Ability
     can :read, Tattoo
     can :read, Feedback # Add this line to allow all users to read feedbacks
 
+    can :toggle_favourite, Tattoo
+
     return unless user.present?
     can :create, Master
     can :manage, Master, user_id: user.id
