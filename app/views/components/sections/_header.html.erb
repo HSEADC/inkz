@@ -1,18 +1,18 @@
-<header class="flex items-center justify-between mx-auto text-2xl sm:flex-col sm:gap-5 w-container mt-7 lg:text-xl md:text-base sm:text-xl tracking-small">
-  <nav class="flex items-center sm:w-full sm:justify-between gap-7 md:gap-5">
-    <%= link_to(root_path, class: 's-16 lg:s-12 sm:s-12') do %>
+<header class="flex items-center justify-between mx-auto text-2xl sm:gap-5 w-container mt-7 lg:text-xl md:text-base sm:text-xl tracking-small">
+  <nav class="flex items-center sm:justify-between gap-7 md:gap-5 sm:w-full">
+    <%= link_to(root_path, class: 's-16 lg:s-12 sm:s-10') do %>
       <%= image_tag('logo.png', class: 'hover:scale-[107%] duration-300', alt: 'Логотип INKZ') %>
     <% end %>
 
     <% if current_user&.is_admin? %>
-      <ul class="flex gap-5 sm:flex-wrap md:gap-2 sm:gap-x-2 sm:gap-y-0 sm:justify-end">
+      <ul class="flex gap-5 md:gap-2">
         <li><%= link_to "Татуировки", admin_tattoos_url %></li>
         <li><%= link_to "Мастера", admin_masters_url %></li>
         <li><%= link_to "Отзывы", admin_feedbacks_url %></li>
         <li><%= link_to "Почты", admin_subscriptions_url %></li>
       </ul>
     <% else %>
-      <ul class="flex gap-5 md:gap-2">
+      <ul class="flex gap-5 md:gap-3">
         <li><%= link_to "Татуировки", tattoos_url %></li>
         <li><%= link_to "Мастера", masters_url %></li>
       </ul>
@@ -20,8 +20,8 @@
 
   </nav>
 
-  <ul class="flex items-center sm:w-full sm:justify-between gap-7 md:gap-5">
-    <input class="py-3 lg:py-2 md:py-1 sm:py-2 text-xl lg:text-lg md:text-base border-2 border-black placeholder:text-black w-[20vw] sm:w-[45vw] rounded-xl xl:rounded-lg focus:border-black ring-" type="text" placeholder="Поиск">
+  <ul class="flex items-center sm:hidden sm:w-full sm:justify-between gap-7 md:gap-5">
+    <input class=" py-3 lg:py-2 md:py-1 sm:py-2 text-xl lg:text-lg md:text-base border-2 border-black placeholder:text-black w-[20vw] sm:w-[45vw] rounded-xl xl:rounded-lg focus:border-black ring-" type="text" placeholder="Поиск">
     <li>
       <% if user_signed_in? %>
         <div class="flex gap-5 sm:flex-col sm:gap-0">
