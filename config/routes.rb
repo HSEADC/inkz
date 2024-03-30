@@ -60,6 +60,10 @@ Rails.application.routes.draw do
       get 'by_part/:part', to: 'tattoos#by_part', as: "parted"
       get 'by_style/:style', to: 'tattoos#by_style', as: "styled"
     end
+
+    member do
+      get 'toggle_favourite', to: 'tattoos#toggle_favourite', as: 'toggle_favourite'
+    end
   end
 
   resources :tattoos

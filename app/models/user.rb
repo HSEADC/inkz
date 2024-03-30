@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_one :master, dependent: :destroy
   has_many :tattoos, dependent: :destroy
 
+  has_many :favourites
+  has_many :tattoos_i_favourited, through: :favourites, source: 'tattoo'
+
   def is_master?
     is_master
   end
