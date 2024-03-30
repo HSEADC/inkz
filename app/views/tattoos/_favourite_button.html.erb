@@ -13,7 +13,7 @@
 %>
 
 <%= turbo_frame_tag dom_id(tattoo) do %>
-  <div class="absolute px-1 py-0.5 text-4xl bottom-8 right-7">
+  <div class="absolute px-1 py-0.5 text-4xl bottom-5 right-7">
     <%= link_to favourite_icon, toggle_favourite_tattoo_path(tattoo), class: 'hover:no-underline' %>
   </div>
 <% end %>
