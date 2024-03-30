@@ -15,5 +15,5 @@ class Tattoo < ApplicationRecord
 
   validates :title, presence: true
 
-  self.per_page = 28
+  # self.per_page = 28
 end

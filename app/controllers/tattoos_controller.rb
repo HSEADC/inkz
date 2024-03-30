@@ -5,7 +5,8 @@ class TattoosController < ApplicationController
 
   # GET /tattoos or /tattoos.json
   def index
-    @tattoos = Tattoo.paginate(page: params[:page])
+    # @tattoos = Tattoo.paginate(page: params[:page])
+    @tattoos = Tattoo.all
     @display_master = true
 
     if user_signed_in?  # Check if the user is signed in using your authentication logic
