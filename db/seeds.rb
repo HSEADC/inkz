@@ -82,7 +82,7 @@ def create_tattoos
   parts = ["Forearm", "Back", "Wrist", "Ankle", "Ribcage", "Collarbone"]
 
   masters.each do |master|
-    2.times do
+    10.times do
       style = styles.sample
       part = parts.sample
 
