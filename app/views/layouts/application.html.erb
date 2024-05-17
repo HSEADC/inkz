@@ -29,18 +29,17 @@
     <%= csp_meta_tag %>
   </head>
 
-  <body class="h-full font-sans bg-custom-gray">
+  <body class="h-full font-sans tracking-[-0.03em] bg-custom-white">
     <div class="flex flex-col min-h-full">
 
-      <%= render "components/sections/header" %>
-      <%= render "components/search_form" %>
+      <%= render "components/global/container" do %>
+        <%= render "components/global/header" %>
+        <%= render "components/search_form" %>
 
-      <main class="flex-auto mx-auto w-[88vw] sm:w-[95vw]">
         <%= yield %>
-      </main>
+      <% end %>
 
-      <%= render "components/sections/footer" %>
-
+      <%= render "components/global/footer" %>
     </div>
   </body>
 </html>
