@@ -3,7 +3,7 @@ const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   jit: true,
-  content: ['./public/*.html', './app/helpers/**/*.rb', './app/javascript/**/*.js', './app/views/**/*.{erb,haml,html,slim}'],
+  content: ['./public/*.html', './app/helpers/**/*.rb', './app/javascript/**/*.js', './app/views/**/*.{erb,haml,html,slim}', './app/views/**/**/*.{erb,haml,html,slim}',],
   theme: {
     extend: {
       fontFamily: {
@@ -11,16 +11,15 @@ module.exports = {
       },
       colors: {
         custom: {
-          gray: '#ECECEC',
-          'gray-dark': '#DCDCDC'
+          white: '#FDFDFD',
+          black: '#050505',
+          gray: '#E5E5E5',
+          'gray-dark': '#686868'
         },
       },
       width: {
-        container: '88vw'
+        container: '90vw'
       },
-      letterSpacing: {
-        small: '-0.75px',
-      }
     },
     screens: {
       xl: {max: '1536px'},
