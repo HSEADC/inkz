@@ -3,6 +3,7 @@
 <%# end %>
 
 <section data-controller="tattoos">
+  <%= render "components/search_form" %>
 
   <section class="flex flex-wrap gap-3 mx-auto mt-10 text-xl w-fit">
     <% Tattoo.tag_counts_on(:parts).each do |part| %>

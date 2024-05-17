@@ -1,5 +1,5 @@
 <div data-controller="search">
-  <%= form_with url: welcome_search_path, method: :get, data: { search_target: 'searchForm' }, class: "mx-auto w-fit mt-10" do |f| %>
+  <%= form_with url: tattoos_search_path, method: :get, data: { search_target: 'searchForm' }, class: "mx-auto w-fit mt-10" do |f| %>
     <%= f.text_field :search, data: { search_target: 'searchField', action: 'input->search#search' }, class: "mx-auto w-fit" %>
     <%= f.submit "Поиск", data: { search_target: 'submitButton', turbo_stream: true } %>
   <% end %>

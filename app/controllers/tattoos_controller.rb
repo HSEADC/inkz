@@ -17,6 +17,10 @@ class TattoosController < ApplicationController
     end
   end
 
+  def search
+      @items = PgSearch.multisearch(params['search'])
+  end
+
   def by_part
     @tattoos = Tattoo.tagged_with(params[:part])
     @display_master = true

@@ -8,8 +8,4 @@ class WelcomeController < ApplicationController
 
     @subscription = Subscription.new
     end
-
-    def search
-        @items = PgSearch.multisearch(params['search'])
-    end
 end
