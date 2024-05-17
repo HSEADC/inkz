@@ -1,7 +1,7 @@
 <header class="flex items-center justify-between mx-auto text-2xl sm:gap-5 w-container mt-7 lg:text-xl md:text-base sm:text-xl tracking-small">
-  <nav class="flex items-center sm:justify-between gap-7 md:gap-5 sm:w-full">
-    <%= link_to(root_path, class: 's-16 lg:s-12 sm:s-10') do %>
-      <%= image_tag('logo.png', class: 'hover:scale-[107%] duration-300', alt: 'Логотип INKZ') %>
+  <nav class="flex items-end sm:justify-between gap-7 md:gap-5 sm:w-full">
+    <%= link_to(root_path, class: 'h-10') do %>
+      <%= image_tag('logo.png', class: 'hover:scale-105 duration-300 s-full', alt: 'Логотип INKZ') %>
     <% end %>
 
     <% if current_user&.is_admin? %>
@@ -11,29 +11,20 @@
         <li><%= link_to "Отзывы", admin_feedbacks_url %></li>
         <li><%= link_to "Почты", admin_subscriptions_url %></li>
       </ul>
-    <% else %>
-      <ul class="flex gap-5 md:gap-3">
-        <li><%= link_to "Татуировки", tattoos_url %></li>
-        <li><%= link_to "Мастера", masters_url %></li>
-      </ul>
     <% end %>
-
   </nav>
 
-  <ul class="flex items-center sm:hidden sm:w-full sm:justify-between gap-7 md:gap-5">
-    <input class=" py-3 lg:py-2 md:py-1 sm:py-2 text-xl lg:text-lg md:text-base border-2 border-black placeholder:text-black w-[20vw] sm:w-[45vw] rounded-xl xl:rounded-lg focus:border-black ring-" type="text" placeholder="Поиск">
-    <li>
-      <% if user_signed_in? %>
-        <div class="flex gap-5 sm:flex-col sm:gap-0">
-          <%= link_to current_user.email, edit_user_registration_path %>
-          <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
-        </div>
-      <% else %>
-        <div class="flex gap-3">
-          <%= link_to "Войти", new_user_session_path %>
-          <%= link_to "Регистрация", new_user_registration_path %>
-        </div>
-      <% end %>
-    </li>
-  </ul>
+  <% if user_signed_in? %>
+    <div class="flex gap-4 sm:flex-col sm:gap-0">
+      <%= link_to current_user.email, edit_user_registration_path %>
+      <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
+    </div>
+
+  <% else %>
+    <div class="flex gap-4">
+      <%= link_to "Войти", new_user_session_path %>
+      <%= link_to "Регистрация", new_user_registration_path %>
+    </div>
+  <% end %>
+
 </header>
