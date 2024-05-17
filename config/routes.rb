@@ -77,5 +77,5 @@ Rails.application.routes.draw do
   get 'welcome/assistance'
 
   # Defines the root path route ("/")
-  root "welcome#index"
+  root "tattoos#index"
 end
