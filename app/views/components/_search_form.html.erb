@@ -1,0 +1,10 @@
+<div data-controller="search">
+  <%= form_with url: welcome_search_path, method: :get, data: { search_target: 'searchForm' }, class: "mx-auto w-fit mt-10" do |f| %>
+    <%= f.text_field :search, data: { search_target: 'searchField', action: 'input->search#search' }, class: "mx-auto w-fit" %>
+    <%= f.submit "Поиск", data: { search_target: 'submitButton', turbo_stream: true } %>
+  <% end %>
+</div>
+
+<div class="grid grid-cols-4 mt-10 xl:grid-cols-3 sm:grid-cols-1 gap-7" id="search_preview">
+
+</div>

@@ -73,8 +73,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'welcome/index'
-
-  get 'assistance', to: 'welcome#assistance'
+  get 'welcome/search'
+  get 'welcome/assistance'
 
   # Defines the root path route ("/")
   root "welcome#index"

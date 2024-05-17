@@ -1,4 +1,7 @@
 class Tattoo < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: [:title]
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 
