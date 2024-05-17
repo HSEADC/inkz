@@ -184,6 +184,7 @@ GEM
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.5.6)
     psych (5.1.0)
       stringio
     public_suffix (5.0.3)
@@ -266,8 +267,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.6-arm64-darwin)
-    sqlite3 (1.6.6-x86_64-linux)
     ssrf_filter (1.1.2)
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
@@ -330,6 +329,7 @@ DEPENDENCIES
   letter_opener
   meta-tags
   mini_magick
+  pg
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.8)
@@ -338,7 +338,6 @@ DEPENDENCIES
   russian (~> 0.6.0)
   selenium-webdriver
   sprockets-rails
-  sqlite3 (~> 1.4)
   stimulus-rails
   tailwindcss-rails (~> 2.0)
   turbo-rails

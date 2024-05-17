@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_03_30_031809) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "favourites", force: :cascade do |t|
     t.integer "tattoo_id"
     t.integer "user_id"
@@ -22,8 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_30_031809) do
     t.text "comment"
     t.integer "rating"
     t.string "feedback_image"
-    t.integer "user_id", null: false
-    t.integer "master_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "master_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["master_id"], name: "index_feedbacks_on_master_id"
@@ -64,11 +67,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_30_031809) do
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id"
+    t.bigint "tag_id"
     t.string "taggable_type"
-    t.integer "taggable_id"
+    t.bigint "taggable_id"
     t.string "tagger_type"
-    t.integer "tagger_id"
+    t.bigint "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at", precision: nil
     t.string "tenant", limit: 128
@@ -100,7 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_30_031809) do
     t.string "tattoo_image"
     t.integer "user_id"
     t.string "slug"
-    t.integer "master_id", null: false
+    t.bigint "master_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["master_id"], name: "index_tattoos_on_master_id"
