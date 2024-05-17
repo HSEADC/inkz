@@ -5,15 +5,15 @@
     tattoo_user_ids << user.id
   end
 
-  if current_user
-    favourite_icon = tattoo_user_ids.include?(current_user.id) ? '+' : '-'
-  else
-    favourite_icon = '+'
-  end
+  # if current_user
+  #   favourite_icon = tattoo_user_ids.include?(current_user.id) ? '+' : '-'
+  # else
+  #   favourite_icon = ''
+  # end
 %>
 
 <%= turbo_frame_tag dom_id(tattoo) do %>
   <div class="absolute px-4 pt-0 pb-1 text-4xl text-white duration-150 bg-black opacity-0 bottom-5 right-7 group-hover:opacity-100">
-    <%= link_to favourite_icon, toggle_favourite_tattoo_path(tattoo), class: 'hover:no-underline leading-[1.5]' %>
+    <%= link_to "+", toggle_favourite_tattoo_path(tattoo), class: 'hover:no-underline leading-[1.5]' %>
   </div>
 <% end %>
