@@ -78,8 +78,9 @@ end
 
 def create_tattoos
   masters = Master.all
-  styles = ["Traditional", "Realism", "Watercolor", "Geometric", "Japanese", "Blackwork"]
-  parts = ["Forearm", "Back", "Wrist", "Ankle", "Ribcage", "Collarbone"]
+  styles = ["Черный", "Белый", "Красный", "Синий", "Зеленый", "Желтый", "Оранжевый", "Фиолетовый", "Коричневый", "Серый", "Другие"]
+  parts = ["Рука", "Нога", "Спина", "Грудь", "Шея", "Плечо", "Запястье", "Щиколотка", "Палец", "Ребра"]
+
 
   masters.each do |master|
     10.times do

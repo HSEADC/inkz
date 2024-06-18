@@ -16,7 +16,6 @@ Rails.application.routes.draw do
         end
       end
 
-      # resources :tags, only: [:index, :show]
       resources :masters do
         resources :tattoos
       end
