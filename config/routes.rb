@@ -71,7 +71,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'welcome/index'
+  get '/promo', to: 'welcome#index'
   get 'welcome/search'
   get 'welcome/assistance'
 
