@@ -9,5 +9,9 @@
       <%= render(Ui::ButtonComponent.new(className: 'sm:w-full', href: '/tattoos', text: 'Открыть ленту')) %>
       <%= render(Ui::ButtonComponent.new(className: 'sm:w-full', href: '/masters', variant: 'secondary', text: 'Стать мастером')) %>
     </div>
+
+    <div class="flex justify-center mt-28 gap-7 xl:mt-20 sm:mt-12 sm:flex-col">
+      <%= render Views::Welcome::Index::MinTattooCardComponent.new(image: 'path/to/image.jpg', nickname: 'Nickname', className: 'sm:w-full') %>
+    </div>
   </div>
 </section>
