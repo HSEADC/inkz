@@ -1,8 +1,7 @@
-<div data-tattoo="card" class="card purple relative p-5 pb-7 s-72 xl:s-60 sm:s-[90vw] rounded-xl transform-3d <%= @className %>">
+<div data-tattoo="card" class="card relative p-5 pb-7 s-72 xl:s-60 sm:s-[90vw] rounded-xl transform-3d <%= @className %>">
   <div data-tattoo="sketch" class="relative h-full cursor-pointer transform-3d">
-    <img data-tattoo="sketch-image" class="absolute object-contain opacity-100 pointer-events-none aspect-square s-full sneakers transform-3d" src="<%= @image %>" />
+    <%= image_tag(@image, class: 'absolute object-contain opacity-100 pointer-events-none aspect-square s-full sneakers transform-3d', alt: 'Трайбл', data: { tattoo: 'sketch-image' }) %>
   </div>
   <div data-tattoo="nickname" class="absolute bottom-0 text-white h-9 transform-3d"><%= @nickname %></div>
-
-  <img class="absolute inset-0 z-20 w-full h-full" src="/card_noise.png" alt="" />
+  <%= image_tag('index/card_noise.png', class: 'absolute inset-0 z-20 w-full h-full', alt: 'Фон-шум для карточки') %>
 </div>

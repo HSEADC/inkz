@@ -1,3 +1,5 @@
+# min_tattoo_card.css
+
 class Views::Welcome::Index::MinTattooCardComponent < ViewComponent::Base
   def initialize(image:, nickname:, className: '')
     @image = image
