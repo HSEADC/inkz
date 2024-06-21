@@ -12,6 +12,12 @@ module.exports = {
       fontWeight: {
         book: '450',
       },
+      colors: {
+        custom: {
+          gray: '#737373',
+          'dark-gray': '#333'
+        },
+      },
       borderRadius: {
         10: '10px',
       },

@@ -3,9 +3,5 @@
 @tailwind utilities;
 
 a:hover {
-  @apply underline
-}
-
-input[type=submit] {
-  @apply bg-black px-4 py-2 text-white cursor-pointer
+  @apply duration-200 opacity-80;
 }

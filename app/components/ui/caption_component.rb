@@ -4,7 +4,7 @@ class Ui::CaptionComponent < ViewComponent::Base
   ERB
 
   def initialize(text:, **className)
-    defaultStyles = 'text-2xl sm:text-lg tracking-tight leading-none sm:leading-tight text-neutral-500'
+    defaultStyles = 'text-2xl sm:text-lg tracking-tight leading-none sm:leading-tight text-custom-gray'
     @className = [defaultStyles, *className.values].compact.join(' ')
     @text = text
   end
