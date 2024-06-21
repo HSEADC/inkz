@@ -4,7 +4,7 @@ class Ui::HeadingComponent < ViewComponent::Base
   ERB
 
   def initialize(text:, **className)
-    defaultStyles = 'text-5xl font-medium text-center'
+    defaultStyles = 'text-5xl font-medium tracking-tight'
     @className = [defaultStyles, *className.values].compact.join(' ')
     @text = text
   end
