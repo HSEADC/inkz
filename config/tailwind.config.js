@@ -12,6 +12,9 @@ module.exports = {
       fontWeight: {
         book: '450',
       },
+      borderRadius: {
+        10: '10px',
+      },
     },
     screens: {
       xl: {max: '1536px'},
