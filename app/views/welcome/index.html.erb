@@ -2,4 +2,4 @@
   <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-black text-white', id: 'notice') %>
 <% end %>
 
-<%= render(Ui::HeadingComponent.new(className: '', text: "Привет <span class='underline'>inkz</span>")) %>
+<%= render(Views::Welcome::Index::HeroComponent.new) %>
