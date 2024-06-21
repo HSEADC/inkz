@@ -9,16 +9,8 @@ module.exports = {
       fontFamily: {
         sans: ['SuisseIntl', ...defaultTheme.fontFamily.sans],
       },
-      colors: {
-        custom: {
-          white: '#FDFDFD',
-          black: '#050505',
-          gray: '#E5E5E5',
-          'gray-dark': '#686868'
-        },
-      },
-      width: {
-        container: '90vw'
+      fontWeight: {
+        book: '450',
       },
     },
     screens: {
