@@ -3,7 +3,7 @@ const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   jit: true,
-  content: ['./public/*.html', './app/helpers/**/*.rb', './app/javascript/**/*.js', './app/views/**/*.{erb,haml,html,slim}', './app/views/**/**/*.{erb,haml,html,slim}', './app/components/**/*.{erb,rb,haml,html,slim}',],
+  content: ['./public/*.html', './app/helpers/**/*.rb', './app/javascript/**/*.js', './app/views/**/*.{erb,haml,html,slim}', './app/views/**/**/*.{erb,haml,html,slim}', './app/components/**/*.{erb,rb,haml,html,slim}', './app/components/constants.rb'],
   theme: {
     extend: {
       fontFamily: {

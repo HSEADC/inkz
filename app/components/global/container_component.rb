@@ -4,6 +4,6 @@ class Global::ContainerComponent < ViewComponent::Base
   ERB
 
   def initialize()
-    @className = 'w-[90vw] mx-auto'
+    @className = "#{Constants::WEBSITE_WIDTH} pt-10"
   end
 end

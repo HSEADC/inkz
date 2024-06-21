@@ -1,4 +1,4 @@
-<header class="flex items-center justify-between text-2xl my-7 lg:text-xl tracking-small">
+<header class="<%= Constants::WEBSITE_WIDTH %> flex items-center justify-between text-2xl mt-7 lg:text-xl tracking-small">
 
   <nav class="flex items-end gap-7">
     <%= link_to(root_path, class: 'h-10') do %>
@@ -26,4 +26,5 @@
       <%= link_to "Регистрация", new_user_registration_path %>
     </div>
   <% end %>
+
 </header>
