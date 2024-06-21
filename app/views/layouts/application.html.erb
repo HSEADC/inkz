@@ -35,7 +35,7 @@
   <body class="font-sans">
 
     <%= render "components/global/container" do %>
-      <%= render "components/global/header" %>
+      <%= render(Global::HeaderComponent.new(current_user: current_user)) %>
       <%= yield %>
     <% end %>
   </body>
