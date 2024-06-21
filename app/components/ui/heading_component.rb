@@ -3,8 +3,9 @@ class Ui::HeadingComponent < ViewComponent::Base
     <h1 class="<%= @className %>"><%= raw @text %></h1>
   ERB
 
-  def initialize(text:, className:)
+  def initialize(text:, **className)
+    defaultStyles = 'text-5xl font-medium text-center'
+    @className = [defaultStyles, *className.values].compact.join(' ')
     @text = text
-    @className = className
   end
 end
