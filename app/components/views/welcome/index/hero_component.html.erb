@@ -1,8 +1,13 @@
-<section data-section="HERO" class="mt-16 xl:mt-10 sm:mt-14 space-y-52 sm:space-y-20">
-  <div class="space-y-7">
-    <div class="space-y-4">
+<section data-section="HERO" class="mt-16 xl:mt-12 sm:mt-7 space-y-52 sm:space-y-20">
+  <div class="space-y-6 sm:space-y-4">
+    <div class="space-y-4 sm:space-y-3">
       <%= render(Ui::HeadingComponent.new(className: 'text-center', text: @heading_text)) %>
       <%= render(Ui::CaptionComponent.new(className: 'text-center', text: @caption_text)) %>
+    </div>
+
+    <div class="flex justify-center gap-3 sm:flex-col sm:gap-2">
+      <%= render(Ui::ButtonComponent.new(className: 'sm:w-full', href: '/tattoos', text: 'Открыть ленту')) %>
+      <%= render(Ui::ButtonComponent.new(className: 'sm:w-full', href: '/masters', variant: 'secondary', text: 'Стать мастером')) %>
     </div>
   </div>
 </section>

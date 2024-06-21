@@ -1,7 +1,7 @@
-<header class="<%= Constants::WEBSITE_WIDTH %> flex items-center justify-between text-2xl mt-7 lg:text-xl tracking-small">
+<header class="<%= Constants::WEBSITE_WIDTH %> flex items-center justify-between text-2xl mt-7 sm:mt-5 lg:text-xl tracking-small">
 
   <nav class="flex items-end gap-7">
-    <%= link_to(root_path, class: 'h-10') do %>
+    <%= link_to(root_path, class: 'h-10 sm:h-7') do %>
       <%= image_tag('logo.png', class: 'hover:scale-105 duration-300 s-full', alt: 'Логотип inkz') %>
     <% end %>
 
@@ -16,12 +16,12 @@
   </nav>
 
   <% if user_signed_in? %>
-    <div class="flex gap-4 sm:flex-col sm:gap-0">
+    <div class="flex gap-4 sm:gap-2 sm:flex-col">
       <%= link_to @current_user.email, edit_user_registration_path %>
       <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
     </div>
   <% else %>
-    <div class="flex gap-4">
+    <div class="flex gap-4 sm:gap-2">
       <%= link_to "Войти", new_user_session_path %>
       <%= link_to "Регистрация", new_user_registration_path %>
     </div>
