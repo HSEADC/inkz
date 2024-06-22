@@ -1,8 +1,6 @@
 <section data-section="COMMUNITY">
   <div class="space-y-7 sm:space-y-5">
-    <div class="space-y-4 text-center">
-      <%= render(Ui::HeadingComponent.new(className: 'sm:text-3xl sm:leading-tighter', text: @heading_text)) %>
-    </div>
+    <%= render(Ui::HeadingComponent.new(className: 'text-center sm:text-3xl sm:leading-tighter', text: @heading_text)) %>
 
     <div class="flex justify-center gap-3">
       <% @socials.each do |key, value| %>

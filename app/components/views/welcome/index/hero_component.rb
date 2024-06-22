@@ -1,7 +1,8 @@
 class Views::Welcome::Index::HeroComponent < ViewComponent::Base
   def initialize()
     @heading_text = 'команда <span class="underline">inkz</span> поможет вам <br /> не&nbsp;ошибиться в&nbsp;выборе тату мастера'
-    @caption_text = 'подпишитесь на рассылку, чтобы не пропустить <br class="sm:hidden" />запуск нашей платформы'
+    @heading_text_mobile = 'команда <span class="underline">inkz</span> поможет вам <br /> выбрать тату мастера'
+    @caption_text = 'мы&nbsp;отобрали лучших мастеров&nbsp;&mdash; ознакомьтесь <br class="sm:hidden" /> с&nbsp;их&nbsp;работами и&nbsp;отзывами в&nbsp;профиле'
 
     @tattoo_block = {
       last: '-mt-14 sm:mt-0',

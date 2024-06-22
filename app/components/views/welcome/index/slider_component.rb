@@ -3,6 +3,7 @@ class Views::Welcome::Index::SliderComponent < ViewComponent::Base
 
   def initialize()
     @tattoos = Tattoo.all
+    @heading_text = 'открой для себя <br class="sm:hidden" /> новый мир <span class="underline">татуировок</span>'
   end
 
   def get_random_tattoo_data

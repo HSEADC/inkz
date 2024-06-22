@@ -1,11 +1,21 @@
-<section class="embla">
-  <div class="embla__viewport">
-    <div class="embla__container">
-      <% Views::Welcome::Index::SliderComponent::SLIDES_COUNT.times do %>
-        <div class="embla__slide">
-          <%= render Views::Tattoos::TattooCardComponent.new(tattoo: get_random_tattoo_data.sample, show_tags: false, preview_mode: true) %>
+<section data-section="SLIDER">
+  <div class="space-y-7 sm:space-y-5">
+    <%= render(Ui::HeadingComponent.new(className: 'text-center sm:hidden', text: @heading_text)) %>
+
+    <div class="space-y-2">
+      <div class="embla">
+        <div class="embla__viewport">
+          <div class="embla__container">
+            <% Views::Welcome::Index::SliderComponent::SLIDES_COUNT.times do %>
+              <div class="embla__slide">
+                <%= render Views::Tattoos::TattooCardComponent.new(tattoo: get_random_tattoo_data.sample, show_tags: false, preview_mode: true) %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      <% end %>
+      </div>
+      <%= render(Ui::ButtonComponent.new(className: 'w-full text-xl xl:text-lg', href: '/tattoos', text: 'открыть ленту')) %>
     </div>
+
   </div>
 </section>
