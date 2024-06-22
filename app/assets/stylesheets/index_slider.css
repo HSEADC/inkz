@@ -7,6 +7,12 @@
   --slide-spacing: 1rem;
   --slide-size: 28%;
 }
+@media (max-width: 810px) {
+  .embla {
+    --slide-spacing: 0.5rem;
+    --slide-size: 85%;
+  }
+}
 .embla__viewport {
   overflow: hidden;
 }

@@ -1,4 +1,4 @@
-<article id="<%= dom_id @tattoo %>" class="relative aspect-square h-[45vh] group">
+<article id="<%= dom_id @tattoo %>" class="relative aspect-square h-[45vh] group <%= className %>">
 
   <%= link_to @tattoo do %>
     <%= image_tag @tattoo.tattoo_image.url, class: "object-cover s-full" %>
@@ -16,8 +16,10 @@
     </div>
   <% end %>
 
-  <%= link_to tattoos_path do %>
-    <%= image_tag "icons/add.svg", class: "object-cover s-14 absolute hidden p-4 duration-300 bg-black bottom-3 right-3 group-hover:block hover:bg-opacity-70" %>
+  <% if @preview_mode == false %>
+    <%= link_to tattoos_path do %>
+      <%= image_tag "icons/add.svg", class: "object-cover s-14 absolute hidden p-4 duration-300 bg-black bottom-3 right-3 group-hover:block hover:bg-opacity-70" %>
+    <% end %>
   <% end %>
 
 </article>
