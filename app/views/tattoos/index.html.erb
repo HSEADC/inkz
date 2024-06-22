@@ -1,8 +1,3 @@
 <section data-controller="tattoos">
-  <masonry-layout cols="5" gap="20" maxcolwidth="200">
-    <% @tattoos.each do |tattoo| %>
-      <% master = tattoo.master %>
-      <%= render Views::Tattoos::TattooCardComponent.new(tattoo: tattoo, show_tags: false, preview_mode: :disabled) %>
-    <% end %>
-  </masonry-layout>
+  <%= render Views::Tattoos::TattoosGridComponent.new(tattoos: @tattoos, className: '') %>
 </section>
