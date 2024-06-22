@@ -3,22 +3,23 @@ const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   jit: true,
-  content: ['./public/*.html', './app/helpers/**/*.rb', './app/javascript/**/*.js', './app/views/**/*.{erb,haml,html,slim}', './app/views/**/**/*.{erb,haml,html,slim}',],
+  content: ['./public/*.html', './app/helpers/**/*.rb', './app/javascript/**/*.js', './app/views/**/*.{erb,haml,html,slim}', './app/views/**/**/*.{erb,haml,html,slim}', './app/components/**/*.{erb,rb,haml,html,slim}', './app/components/constants.rb'],
   theme: {
     extend: {
       fontFamily: {
         sans: ['SuisseIntl', ...defaultTheme.fontFamily.sans],
       },
+      fontWeight: {
+        book: '450',
+      },
       colors: {
         custom: {
-          white: '#FDFDFD',
-          black: '#050505',
-          gray: '#E5E5E5',
-          'gray-dark': '#686868'
+          gray: '#737373',
+          'dark-gray': '#333'
         },
       },
-      width: {
-        container: '90vw'
+      borderRadius: {
+        10: '10px',
       },
     },
     screens: {

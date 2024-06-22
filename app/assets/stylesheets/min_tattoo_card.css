@@ -1,0 +1,19 @@
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+  [data-tattoo='card'] {
+    background: linear-gradient(135deg, #444, #000);
+  }
+
+  [data-tattoo='sketch-image'] {
+    transform: translate3d(0%, 0%, 0);
+  }
+
+  [data-tattoo='card']:hover [data-tattoo='sketch-image'] {
+    transform: translateZ(40px);
+    opacity: 0.85;
+  }
+
+  [data-tattoo='card']:hover [data-tattoo='nickname'] {
+    transform: translateZ(20px);
+  }

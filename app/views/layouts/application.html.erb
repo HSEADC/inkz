@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html class="h-full scroll-smooth" lang="ru">
+<html class="scroll-smooth" lang="ru">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <%# using gem `meta-data` and def `meta-data` from application controller %>
+    <%= favicon_link_tag 'favicon.ico', type: 'image/x-icon', media: '(prefers-color-scheme: light)' %>
+    <%= favicon_link_tag 'favicon-dark.ico', type: 'image/x-icon', media: '(prefers-color-scheme: dark)' %>
+
+    <%# gem `meta-data` and def `meta-data` in application controller %>
     <%= display_meta_tags(
       title: custom_meta_tags(@page_title, default: 'inkz'),
       description: custom_meta_tags(@page_description, default: 'inkz description'),
@@ -29,15 +32,10 @@
     <%= csp_meta_tag %>
   </head>
 
-  <body class="h-full font-sans tracking-[-0.03em] bg-custom-white">
-    <div class="flex flex-col min-h-full">
-
-      <%= render "components/global/container" do %>
-        <%= render "components/global/header" %>
-        <%= render "components/search_form" %>
-
-        <%= yield %>
-      <% end %>
-    </div>
+  <body class="font-sans">
+    <%= render(Global::HeaderComponent.new(current_user: current_user)) %>
+    <%= render(Global::ContainerComponent.new) do %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

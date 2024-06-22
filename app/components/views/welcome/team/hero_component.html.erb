@@ -1,0 +1,26 @@
+<section data-section="HERO" class="grid w-full h-[65vh] xl:h-[62.5vh] sm:h-[75vh] sm place-items-center">
+  <div class="space-y-7 sm:space-y-4">
+    <div class="space-y-2 text-center sm:space-y-2">
+      <%= render(Ui::HeadingComponent.new(className: 'sm:text-3xl', text: @heading_text)) %>
+      <%= render(Ui::CaptionComponent.new(className: ' leading-none max-w-[40ch] sm:hidden', text: @caption_text)) %>
+      <%= render(Ui::CaptionComponent.new(className: 'sm:text-lg leading-none sm:leading-tight max-w-[40ch] hidden sm:inline-block', text: @caption_text_mobile)) %>
+    </div>
+
+    <div class="flex flex-row-reverse mx-auto w-fit">
+      <% @aboutData.reverse_each do |key, value| %>
+        <a href="<%= value[:link] %>" target="_blank" class="<%= avatar_styles[:wrapper] %> sm:hidden">
+          <%= image_tag(value[:image], class: avatar_styles[:image], alt: "#{key} #{value[:caption]}") %>
+          <div class="<%= avatar_styles[:caption] %>"><%= value[:caption] %></div>
+        </a>
+
+        <div class="<%= avatar_styles[:wrapper] %> hidden sm:block">
+          <%= image_tag(value[:image], class: avatar_styles[:image], alt: "#{key} #{value[:caption]}") %>
+          <div onclick="window.location.href = '<%= value[:link] %>';" class="<%= avatar_styles[:caption] %>">
+            <%= value[:caption] %>
+            <h1 class="mt-1.5 sm:underline">Ссылка</h1>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

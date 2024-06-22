@@ -1,0 +1,13 @@
+<section data-section="COMMUNITY">
+  <div class="space-y-7 sm:space-y-5">
+    <%= render(Ui::HeadingComponent.new(className: 'text-center sm:text-3xl sm:leading-tighter', text: @heading_text)) %>
+
+    <div class="flex justify-center gap-3">
+      <% @socials.each do |key, value| %>
+        <a target="_blank" href="<%= value[:link] %>" class="duration-200 bg-black hover:bg-opacity-80 rounded-[12px]">
+          <img class="object-contain s-16 sm:s-14 <%= key.to_s == 'inst' ? 'blur-[2.5px]' : '' %>" src="<%= asset_path(value[:content]) %>" alt="социальные сети inkz" />
+        </a>
+      <% end %>
+    </div>
+  </div>
+</section>

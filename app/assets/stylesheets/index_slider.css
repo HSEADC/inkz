@@ -1,0 +1,29 @@
+.embla {
+  margin: auto;
+  /* background-color: black;
+  padding: 1rem; */
+  overflow: hidden;
+  border-radius: 10px;
+  --slide-spacing: 1rem;
+  --slide-size: 28%;
+}
+@media (max-width: 810px) {
+  .embla {
+    --slide-spacing: 0.5rem;
+    --slide-size: 85%;
+  }
+}
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  backface-visibility: hidden;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide {
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  flex: 0 0 var(--slide-size);
+}
