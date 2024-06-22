@@ -1,0 +1,11 @@
+<section class="embla">
+  <div class="embla__viewport">
+    <div class="embla__container">
+      <% Views::Welcome::Index::SliderComponent::SLIDES_COUNT.times do %>
+        <div class="embla__slide">
+          <%= render Views::Tattoos::TattooCardComponent.new(tattoo: get_random_tattoo_data.sample, show_tags: false) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

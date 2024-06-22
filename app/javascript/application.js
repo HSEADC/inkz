@@ -3,3 +3,4 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 import "./snippets/min_tattoo_card"
+import "./snippets/index_slider"
