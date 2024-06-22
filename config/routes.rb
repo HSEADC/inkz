@@ -72,9 +72,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/promo', to: 'welcome#index'
-  get 'welcome/search'
-  get 'welcome/assistance'
+  get '/team', to: 'welcome#team'
+  # get 'welcome/search'
+  # get 'welcome/assistance'
 
-  # Defines the root path route ("/")
   root "tattoos#index"
 end
