@@ -1,0 +1,14 @@
+<section data-section="OVERVIEW">
+  <div class="flex items-center justify-between sm:flex-col-reverse sm:gap-5">
+    <div class="space-y-5">
+      <div class="space-y-3 text-left">
+        <%= render(Ui::HeadingComponent.new(className: '', text: @heading_text)) %>
+        <%= render(Ui::CaptionComponent.new(className: 'max-w-[50ch] xl:max-w-[40ch] ', text: @caption_text)) %>
+      </div>
+
+      <%= render(Ui::ButtonComponent.new(className: 'sm:w-fit', href: '/about', text: 'о нашей команде')) %>
+    </div>
+
+    <%= image_tag('index/overview.jpg', class: 'object-contain w-[40%] sm:w-full rounded-[10px]', alt: 'Тату мастер inkz') %>
+  </div>
+</section>
