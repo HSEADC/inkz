@@ -8,7 +8,7 @@
           <div class="embla__container">
             <% Views::Welcome::Index::SliderComponent::SLIDES_COUNT.times do %>
               <div class="embla__slide">
-                <%= render Views::Tattoos::TattooCardComponent.new(tattoo: get_random_tattoo_data.sample, show_tags: false, preview_mode: true) %>
+                <%= render Views::Tattoos::TattooCardComponent.new(tattoo: get_random_tattoo_data.sample, show_tags: false, preview_mode: :enabled) %>
               </div>
             <% end %>
           </div>

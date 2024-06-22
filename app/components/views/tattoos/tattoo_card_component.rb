@@ -1,10 +1,10 @@
 class Views::Tattoos::TattooCardComponent < ViewComponent::Base
   PREVIEW_MODE_STYLES = {
-    true: "aspect-square h-[45vh]",
-    false: "h-auto"
+    :enabled => "aspect-square h-[45vh] hover:opacity-80 duration-300 overflow-hidden",
+    :disabled => "h-auto"
   }.freeze
 
-  def initialize(tattoo:, show_tags: false, preview_mode: false)
+  def initialize(tattoo:, show_tags: false, preview_mode: :disabled)
     @tattoo = tattoo
     @show_tags = show_tags
     @preview_mode = preview_mode
@@ -15,6 +15,6 @@ class Views::Tattoos::TattooCardComponent < ViewComponent::Base
   end
 
   def className
-    "#{PREVIEW_MODE_STYLES[@preview_mode]} relative group"
+    ["relative group", PREVIEW_MODE_STYLES[@preview_mode]].join(" ")
   end
 end
