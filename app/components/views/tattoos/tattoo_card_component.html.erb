@@ -1,7 +1,7 @@
 <article id="<%= dom_id @tattoo %>" class="<%= className %>">
 
   <%= link_to @tattoo do %>
-    <%= image_tag @tattoo.tattoo_image.url, class: "object-cover s-full #{@preview_mode ? 'group-hover:scale-105 duration-300' : ''}" %>
+    <%= image_tag @tattoo.tattoo_image.url, class: "object-cover s-full #{@preview_mode == :enabled ? 'group-hover:scale-105 duration-300' : ''}" %>
   <% end %>
 
   <% if @show_tags %>
@@ -16,7 +16,7 @@
     </div>
   <% end %>
 
-  <% if @preview_mode == false %>
+  <% if @preview_mode == :disabled %>
     <%= link_to tattoos_path do %>
       <%= image_tag "icons/add.svg", class: "object-cover s-12 absolute hidden p-3.5 duration-300 bg-black bottom-3 right-3 group-hover:block hover:bg-opacity-70" %>
     <% end %>
