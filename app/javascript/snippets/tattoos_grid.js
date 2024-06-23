@@ -5,5 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (masonryGrid) {
     masonryGrid.layout()
     // masonryGrid.gap = 50
+    window.addEventListener('resize', () => {
+      masonryGrid.layout()
+    })
   }
 })
