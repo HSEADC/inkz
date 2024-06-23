@@ -1,3 +1,4 @@
 <section data-section="tattoo-index">
+  <%= render Views::Tattoos::TattoosConfigComponent.new() %>
   <%= render Views::Tattoos::TattoosGridComponent.new(tattoos: @tattoos, className: '') %>
 </section>
