@@ -1,4 +1,4 @@
-<article id="<%= dom_id @tattoo %>" class="<%= className %>">
+<article id="<%= dom_id @tattoo %>" class="<%= classes %>">
 
   <%= link_to @tattoo do %>
     <%= image_tag @tattoo.tattoo_image.url, class: "object-cover s-full #{@preview_mode == :enabled ? 'group-hover:scale-105 duration-300' : ''}" %>

@@ -1,13 +1,15 @@
 class Views::Tattoos::TattoosGridComponent < ViewComponent::Base
   erb_template <<-ERB
-    <div class="<%= @className %>">
+    <div class="MASONRY_GRID <%= @className %>">
       <% @tattoos_data.each do |tattoo| %>
-        <%= render Views::Tattoos::TattooCardComponent.new(tattoo: tattoo, show_tags: false, preview_mode: :disabled) %>
+        <%= render Views::Tattoos::TattooCardComponent.new(tattoo: tattoo, show_tags: false, preview_mode: :disabled, className: "MASONRY_GRID_EL") %>
+        <div class="gutter-sizer"></div>
       <% end %>
+    </div>
   ERB
 
   def initialize(tattoos:, **className)
-    defaultStyles = 'grid grid-cols-5 border-2 border-black p-2'
+    defaultStyles = 'border-2 border-black'
     @className = [defaultStyles, *className.values].compact.join(' ')
     @tattoos_data = tattoos
   end

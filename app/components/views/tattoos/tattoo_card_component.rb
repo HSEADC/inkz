@@ -4,17 +4,18 @@ class Views::Tattoos::TattooCardComponent < ViewComponent::Base
     :disabled => "h-auto"
   }.freeze
 
-  def initialize(tattoo:, show_tags: false, preview_mode: :disabled)
+  def initialize(tattoo:, show_tags: false, preview_mode: :disabled, className: '')
     @tattoo = tattoo
     @show_tags = show_tags
     @preview_mode = preview_mode
+    @className = className
   end
 
   def render?
     @tattoo.present?
   end
 
-  def className
-    ["relative group", PREVIEW_MODE_STYLES[@preview_mode]].join(" ")
+  def classes
+    ["relative group", @className, PREVIEW_MODE_STYLES[@preview_mode]].join(" ")
   end
 end

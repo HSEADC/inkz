@@ -1,0 +1,5 @@
+.MASONRY_GRID_EL {
+	width: 350px;
+	margin-bottom: 10px;
+	transition: width 0.4s, height 0.4s;
+}
