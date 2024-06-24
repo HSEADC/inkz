@@ -1,23 +1,30 @@
-<article id="<%= dom_id tattoo %>" class="relative group">
+<%= link_to "javascript:history.back()", class: "group" do %>
+  <h3 class="text-lg">← <span class="duration-300 group-hover:ml-1">Назад</span></h3>
+<% end %>
 
-  <% if tattoo.tattoo_image.present? %>
-    <%= link_to tattoo do %>
-      <%= image_tag tattoo.tattoo_image.url, class: "object-cover h-[40vh] w-full" %>
-    <% end %>
-  <% end %>
+<section data-section="tattoo-show" class="grid mt-7 grid-cols-2 gap-7 h-full items-center <%= Constants::TATTOO_PAGE_WIDTH %>" id="<%= dom_id tattoo %>">
+  <%= image_tag tattoo.tattoo_image.url, class: "object-cover block w-full h-auto max-h-[60vh] prevent-dragging" %>
 
-  <% if false %>
-    <div class="absolute bottom-0 right-0 mt-1">
-      <% tattoo.part_list.each do |part| %>
-        <mark class="px-1 py-[2px] bg-white"><%= part %></mark>
-      <% end %>
+  <div class="flex flex-col justify-between h-full gap-5">
+    <div class="space-y-3">
+      <div>
+        <%= render(Ui::HeadingComponent.new(className: '', text: tattoo.title)) %>
+        <%= link_to(master_path(@master), class: "") do %>
+          <%= render(Ui::CaptionComponent.new(className: 'hover:underline', text: @master.nickname)) %>
+        <% end %>
+      </div>
 
-      <% tattoo.style_list.each do |style| %>
-        <mark class="bg-[#8d8d8d] px-1 py-[2px]"><%= style %></mark>
-      <% end %>
+      <div>
+        <% @tattoo.part_list.each do |part| %>
+          <%= render(Ui::MarkComponent.new(text: part, className: 'bg-black text-white')) %>
+        <% end %>
+
+        <% @tattoo.style_list.each do |style| %>
+          <%= render(Ui::MarkComponent.new(text: style, className: 'bg-neutral-300')) %>
+        <% end %>
+      </div>
     </div>
-  <% end %>
 
-  <%= render 'tattoos/favourite_button', tattoo: tattoo %>
-
-</article>
+    <%= render(Ui::ButtonComponent.new(className: 'w-full', href: '/tattoos', text: 'Добавить в избранное')) %>
+  </div>
+</section>
