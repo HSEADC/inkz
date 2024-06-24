@@ -32,7 +32,7 @@
     <%= csp_meta_tag %>
   </head>
 
-  <body class="font-sans">
+  <body class="font-sans lowercase">
     <%= render(Global::HeaderComponent.new(current_user: current_user)) %>
     <%= render(Global::ContainerComponent.new) do %>
       <%= yield %>
