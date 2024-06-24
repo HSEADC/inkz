@@ -49,6 +49,10 @@ class TattoosController < ApplicationController
   def show
     @display_master = true
     @master = @tattoo.master
+
+    @tattoos = Tattoo.tagged_with(@tattoo.part_list, any: true)
+                    .tagged_with(@tattoo.style_list, any: true)
+                    .where.not(id: @tattoo.id)
   end
 
   # GET /tattoos/new
