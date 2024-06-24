@@ -2,6 +2,9 @@
   <%= content_tag(:p, notice, class: 'inline-block px-3 py-2 mb-5 font-medium bg-black text-white', id: 'notice') %>
 <% end %>
 
-<div class="mt-10 mx-auto w-[70%]">
-  <%= render partial: 'tattoos/tattoo', locals: { tattoo: @tattoo, master: @master } %>
-</div>
+<%= render Views::Tattoos::TattooComponent.new(tattoo: @tattoo, master: @master ) %>
+
+<section  data-section="tattoo-show" class="mt-10 space-y-5 <%= Constants::TATTOO_PAGE_WIDTH %>" class="">
+  <%= render(Ui::HeadingComponent.new(className: '', text: 'Похожие татуировки')) %>
+  <%= render Views::Tattoos::TattoosGridComponent.new(tattoos: @tattoos, className: '') %>
+</section>
