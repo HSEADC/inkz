@@ -83,7 +83,7 @@ def create_tattoos
 
 
   masters.each do |master|
-    10.times do
+    50.times do
       style = styles.sample
       part = parts.sample
 
