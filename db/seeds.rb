@@ -49,7 +49,13 @@ def create_users_and_masters(num_users)
       master_data = {
         name: Faker::Name.name,
         nickname: Faker::Internet.username(specifier: 5..10),
-        # specialization: Faker::Games::WorldOfWarcraft.class_name,
+        description: Faker::Lorem.paragraph,
+        experience: Faker::Number.between(from: 1, to: 20),
+        price_zone: %w[cheap medium expensive].sample,
+        city: Faker::Address.city,
+        inst: Faker::Internet.username,
+        vk: Faker::Internet.username,
+        tg: Faker::Internet.username,
         user_id: user.id
       }
 
@@ -62,6 +68,7 @@ def create_users_and_masters(num_users)
 
   users
 end
+
 
 # ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
 def upload_random_image

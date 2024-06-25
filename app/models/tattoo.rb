@@ -16,11 +16,8 @@ class Tattoo < ApplicationRecord
   acts_as_taggable_on :parts
   acts_as_taggable_on :styles
 
-  validates :title, presence: true, uniqueness: true, length: { maximum: 255 }
+  validates :title, presence: true
   validates :tattoo_image, presence: true
-  validates :slug, presence: true, uniqueness: true
-  validates :user_id, numericality: { only_integer: true }, allow_nil: true
-  validates :master_id, presence: true
 
   # self.per_page = 28
 end
