@@ -17,7 +17,7 @@ class TattoosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tattoo" do
     assert_difference("Tattoo.count") do
-      post tattoos_url, params: { tattoo: { master_id: @tattoo.master_id, specialization: @tattoo.specialization, title: @tattoo.title } }
+      post tattoos_url, params: { tattoo: { master_id: @tattoo.master_id, title: @tattoo.title } }
     end
 
     assert_redirected_to tattoo_url(Tattoo.last)
@@ -34,7 +34,7 @@ class TattoosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tattoo" do
-    patch tattoo_url(@tattoo), params: { tattoo: { master_id: @tattoo.master_id, specialization: @tattoo.specialization, title: @tattoo.title } }
+    patch tattoo_url(@tattoo), params: { tattoo: { master_id: @tattoo.master_id, title: @tattoo.title } }
     assert_redirected_to tattoo_url(@tattoo)
   end
 

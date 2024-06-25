@@ -63,7 +63,7 @@ class Api::V1::TattoosController < Api::V1::ApplicationController
 
   # Only allow a list of trusted parameters through.
   # def tattoo_params
-  #   params.require(:tattoo).permit(:title, :specialization, :tattoo_image, :part_list, :style_list)
+  #   params.require(:tattoo).permit(:title, :tattoo_image, :part_list, :style_list)
   # end
 
   def tattoo_params

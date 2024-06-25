@@ -81,7 +81,7 @@ class Admin::MastersController < Admin::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def master_params
-      params.require(:master).permit(:name, :nickname, :specialization, :user_id)
+      params.require(:master).permit(:name, :nickname, :user_id)
     end
 
     def authorize_admin

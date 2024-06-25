@@ -17,7 +17,7 @@ class MastersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create master" do
     assert_difference("Master.count") do
-      post masters_url, params: { master: { name: @master.name, nickname: @master.nickname, specialization: @master.specialization } }
+      post masters_url, params: { master: { name: @master.name, nickname: @master.nickname } }
     end
 
     assert_redirected_to master_url(Master.last)
@@ -34,7 +34,7 @@ class MastersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update master" do
-    patch master_url(@master), params: { master: { name: @master.name, nickname: @master.nickname, specialization: @master.specialization } }
+    patch master_url(@master), params: { master: { name: @master.name, nickname: @master.nickname } }
     assert_redirected_to master_url(@master)
   end
 

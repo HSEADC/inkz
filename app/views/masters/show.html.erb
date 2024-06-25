@@ -16,15 +16,9 @@
     <%= link_to "New tattoo", new_master_tattoo_path(@master) %>
   <% end %>
 
-  <div class="grid grid-cols-2 mt-10 gap-7">
-    <% @tattoos.each do |tattoo| %>
-      <div class="tattoo-card">
-        <%= link_to tattoo_path(tattoo) do %>
-          <%= render partial: "tattoos/tattoo", locals: { master: @master, tattoo: tattoo } %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <%#= @master.tattoos.size %>
+
+  <%= render Views::Tattoos::TattoosGridComponent.new(tattoos: @master_tattoos, className: '') %>
 
   <div class="mt-10">
     <% if user_signed_in? && can?(:create, Feedback) %>

@@ -17,6 +17,7 @@ class Tattoo < ApplicationRecord
   acts_as_taggable_on :styles
 
   validates :title, presence: true
+  validates :tattoo_image, presence: true
 
   # self.per_page = 28
 end

@@ -1,4 +1,4 @@
-json.extract! tattoo, :title, :specialization, :created_at
+json.extract! tattoo, :title, :created_at
 if tattoo.tattoo_image.present?
   json.tattoo_image request.base_url + tattoo.tattoo_image.url
 end

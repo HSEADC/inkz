@@ -2,10 +2,8 @@
 
 one:
   title: MyString
-  specialization: MyString
   master: one
 
 two:
   title: MyString
-  specialization: MyString
   master: two

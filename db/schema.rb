@@ -47,8 +47,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_031722) do
   create_table "masters", force: :cascade do |t|
     t.string "name"
     t.string "nickname"
-    t.string "specialization"
     t.string "user_id"
+    t.text "description"
+    t.integer "experience"
+    t.string "price_zone"
+    t.string "city"
+    t.string "inst"
+    t.string "vk"
+    t.string "tg"
+    t.string "master_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -108,7 +115,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_031722) do
 
   create_table "tattoos", force: :cascade do |t|
     t.string "title"
-    t.string "specialization"
     t.string "tattoo_image"
     t.integer "user_id"
     t.string "slug"
@@ -128,6 +134,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_031722) do
     t.string "jti", null: false
     t.boolean "is_master", default: false
     t.boolean "is_admin", default: false
+    t.string "avatar_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -37,6 +37,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.boolean :is_master, default: false
       t.boolean :is_admin, default: false
 
+      # Add avatar_image column
+      t.string :avatar_image
+
       t.timestamps null: false
     end
 
@@ -46,6 +49,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
     # add_index :users, :unlock_token,         unique: true
     add_index :users, :jti,                  unique: true
 
+    # Set jti for existing users
     User.all.each { |user| user.update_column(:jti, SecureRandom.uuid) }
   end
 end
