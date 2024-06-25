@@ -25,6 +25,15 @@
       </div>
     </div>
 
-    <%= render(Ui::ButtonComponent.new(className: 'w-full', href: '/tattoos', text: 'Добавить в избранное')) %>
+    <div class="space-y-2">
+      <%= render(Ui::ButtonComponent.new(className: 'w-full', href: '/tattoos', text: 'Добавить в избранное')) %>
+
+      <% if can_modify_tattoo?(@tattoo) %>
+        <div class="grid items-center grid-cols-2 gap-2">
+          <%= render(Ui::ButtonComponent.new(className: 'w-full', variant: 'secondary', href: edit_tattoo_path(@tattoo), text: 'редактировать')) %>
+          <%= button_to "удалить", @tattoo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'block w-full px-5 py-2.5 text-lg text-center font-book border-2 duration-200 rounded-10 bg-transparent text-black border-black hover:border-custom-dark-gray hover:text-custom-dark-gray hover:opacity-[85%]' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </section>
