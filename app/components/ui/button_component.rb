@@ -14,7 +14,7 @@ class Ui::ButtonComponent < ViewComponent::Base
 
   def call
     link_to @href, class: @className, **@options do
-      @text
+      raw @text
     end
   end
 end

@@ -1,8 +1,8 @@
-<%= link_to "javascript:history.back()", class: "group block #{Constants::TATTOO_PAGE_WIDTH}" do %>
-  <h3 class="text-lg">← <span class="duration-300 group-hover:ml-1">Назад</span></h3>
+<%= link_to "javascript:history.back()", class: "group block sm:mt-2 #{Constants::TATTOO_PAGE_WIDTH}" do %>
+  <h3 class="text-lg">← <span class="duration-300 group-hover:ml-1 sm:ml-1 group-hover:sm:ml-2">Назад</span></h3>
 <% end %>
 
-<section data-section="tattoo-show" class="grid mt-3 grid-cols-2 gap-7 h-full items-center <%= Constants::TATTOO_PAGE_WIDTH %>" id="<%= dom_id @tattoo %>">
+<section data-section="tattoo-show" class="grid mt-3 sm:mt-4 grid-cols-2 sm:grid-cols-1 gap-7 sm:gap-5 h-full items-center <%= Constants::TATTOO_PAGE_WIDTH %>" id="<%= dom_id @tattoo %>">
   <%= image_tag @tattoo.tattoo_image.url, class: "object-cover block w-full h-auto max-h-[60vh] prevent-dragging" %>
 
   <div class="flex flex-col justify-between h-full gap-5">
@@ -10,7 +10,7 @@
       <div class="-mt-2">
         <%= render(Ui::HeadingComponent.new(className: '', text: @tattoo.title)) %>
         <%= link_to(master_path(@master), class: "") do %>
-          <%= render(Ui::CaptionComponent.new(className: 'hover:underline', text: @master.nickname)) %>
+          <%= render(Ui::CaptionComponent.new(className: 'hover:underline sm:!text-2xl', text: @master.nickname)) %>
         <% end %>
       </div>
 
@@ -30,7 +30,7 @@
 
       <% if can_modify_tattoo?(@tattoo) %>
         <div class="grid items-center grid-cols-2 gap-2">
-          <%= render(Ui::ButtonComponent.new(className: 'w-full', variant: 'secondary', href: edit_tattoo_path(@tattoo), text: 'редактировать')) %>
+          <%= render(Ui::ButtonComponent.new(className: 'w-full', variant: 'secondary', href: edit_tattoo_path(@tattoo), text: '<span class="sm:hidden">редактировать</span><span class="hidden sm:inline">изменить</span>' )) %>
           <%= button_to "удалить", @tattoo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'block w-full px-5 py-2.5 text-lg text-center font-book border-2 duration-200 rounded-10 bg-transparent text-black border-black hover:border-custom-dark-gray hover:text-custom-dark-gray hover:opacity-[85%]' %>
         </div>
       <% end %>
