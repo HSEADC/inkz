@@ -18,7 +18,7 @@
 
   <% if @preview_mode == :disabled %>
     <%= link_to tattoos_path do %>
-      <%= image_tag "icons/add.svg", class: "object-cover s-12 absolute hidden p-3.5 duration-300 bg-black bottom-3 right-3 group-hover:block hover:bg-opacity-70" %>
+      <%= image_tag "icons/add.svg", class: "object-cover s-12 sm:s-10 absolute hidden p-3.5 sm:p-3 duration-300 bg-black bottom-3 right-3 group-hover:block hover:bg-opacity-70 sm:active:bg-opacity-80 sm:hover:bg-opacity-100" %>
     <% end %>
   <% end %>
 
