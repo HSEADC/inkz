@@ -1,20 +1,59 @@
-<% if current_user && current_user.is_master? && can?(:create, Master) && !@user_masters.present? %>
-  <%= link_to "New master", new_master_path %>
-<% end %>
+<section data-section="masters-show" class="space-y-5">
+  <% if current_user && current_user.is_master? && @user_masters.present? %>
+    <div class="space-y-2">
+      <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: 'твой мастер')) %>
 
-<% if current_user && current_user.is_master? && @user_masters.present? %>
-  <div id="user_masters" class="mt-10">
-    <p class="text-xl tracking-[-0.02em] mb-3">Твой мастер</p>
-    <% @user_masters.each do |master| %>
-      <%= link_to(render(master), master_path(master), class: "hover:no-underline") %>
-      <%= image_tag(master.master_image.url, class: 's-20', alt: 'Логотип inkz') %>
+      <% @user_masters.each do |master| %>
+        <article id="<%= dom_id master %>" class="relative grid items-center grid-cols-10 gap-10 p-5 bg-neutral-100 rounded-10">
+
+          <div class="flex items-center col-span-3 gap-5">
+            <%= image_tag(master.master_image.url, class: 's-36 rounded-10', alt: 'Логотип inkz') %>
+
+            <div class="flex flex-col">
+              <%= link_to master_path(master) do %>
+                <%= render(Ui::HeadingComponent.new(className: '', text: master.nickname)) %>
+              <% end %>
+              <%= render(Ui::CaptionComponent.new(className: '', text: master.name)) %>
+            </div>
+          </div>
+
+          <div class="flex col-span-7 gap-2 overflow-hidden rounded-10">
+            <% master.tattoos.shuffle.first(9).each do |tattoo| %>
+              <%= link_to tattoo_path(tattoo), class: 'group overflow-hidden' do %>
+                <%= image_tag(tattoo.tattoo_image.url, class: 's-36 group-hover:scale-105 duration-300', alt: tattoo.title) %>
+              <% end %>
+            <% end %>
+          </div>
+
+        </article>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="space-y-2">
+    <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: 'Все мастера')) %>
+
+    <% @other_masters.each do |master| %>
+      <article id="<%= dom_id master %>" class="relative grid items-center grid-cols-10 gap-10 p-5 bg-neutral-100 rounded-10">
+
+        <div class="flex items-center col-span-3 gap-5">
+          <%= image_tag(master.master_image.url, class: 's-36 rounded-10', alt: 'Логотип inkz') %>
+
+          <div class="flex flex-col">
+            <%= render(Ui::HeadingComponent.new(className: '', text: master.nickname)) %>
+            <%= master.name %>
+          </div>
+        </div>
+
+        <div class="flex col-span-7 gap-2 overflow-hidden rounded-10">
+          <% master.tattoos.shuffle.first(9).each do |tattoo| %>
+            <%= link_to tattoo_path(tattoo) do %>
+              <%= image_tag(tattoo.tattoo_image.url, class: 's-36', alt: tattoo.title) %>
+            <% end %>
+          <% end %>
+        </div>
+
+      </article>
     <% end %>
   </div>
-<% end %>
-
-<p class="text-xl tracking-[-0.02em] mt-16 mb-3">Все мастера</p>
-<div id="other_masters" class="grid grid-cols-3 gap-5 sm:grid-cols-1">
-  <% @other_masters.each do |master| %>
-    <%= link_to(render(master), master_path(master), class: "hover:no-underline") %>
-  <% end %>
-</div>
+</section>
