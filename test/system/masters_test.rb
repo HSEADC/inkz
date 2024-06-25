@@ -16,7 +16,6 @@ class MastersTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @master.name
     fill_in "Nickname", with: @master.nickname
-    fill_in "Specialization", with: @master.specialization
     click_on "Create Master"
 
     assert_text "Master was successfully created"
@@ -29,7 +28,6 @@ class MastersTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @master.name
     fill_in "Nickname", with: @master.nickname
-    fill_in "Specialization", with: @master.specialization
     click_on "Update Master"
 
     assert_text "Master was successfully updated"

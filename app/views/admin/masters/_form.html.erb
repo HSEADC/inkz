@@ -17,10 +17,6 @@
     <%= form.label :nickname, style: "display: block" %>
     <%= form.text_field :nickname %>
   </div>
-  <div>
-    <%= form.label :specialization, style: "display: block" %>
-    <%= form.text_field :specialization %>
-  </div>
   <div class="field">
     <%= form.label :user_id, "Select User" %>
     <%= form.collection_select :user_id, @users, :id, :email, include_blank: true %>

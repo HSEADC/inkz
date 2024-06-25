@@ -24,6 +24,6 @@ class Api::V1::MastersController < Api::V1::ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def master_params
-      params.require(:master).permit(:name, :nickname, :specialization)
+      params.require(:master).permit(:name, :nickname)
     end
 end

@@ -18,7 +18,7 @@ class MastersController < ApplicationController
 
   # GET /masters/1 or /masters/1.json
   def show
-    @tattoos = @master.tattoos
+    @master_tattoos = @master.tattoos
   end
 
   # GET /masters/new
@@ -80,6 +80,6 @@ class MastersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def master_params
-      params.require(:master).permit(:name, :nickname, :specialization).merge(user_id: current_user.id)
+      params.require(:master).permit(:name, :nickname).merge(user_id: current_user.id)
     end
 end
