@@ -49,7 +49,7 @@ def create_users_and_masters(num_users)
       master_data = {
         name: Faker::Name.name,
         nickname: Faker::Internet.username(specifier: 5..10),
-        specialization: Faker::Games::WorldOfWarcraft.class_name,
+        # specialization: Faker::Games::WorldOfWarcraft.class_name,
         user_id: user.id
       }
 
