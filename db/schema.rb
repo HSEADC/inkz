@@ -133,6 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_031722) do
     t.string "jti", null: false
     t.boolean "is_master", default: false
     t.boolean "is_admin", default: false
+    t.string "avatar_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

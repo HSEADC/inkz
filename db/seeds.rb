@@ -27,6 +27,26 @@ def clean_content_folders
   FileUtils.rm_rf('public/uploads')
 end
 
+# uploaders
+# ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
+def upload_random_image
+  uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
+  uploader
+end
+
+def upload_random_feedback_image
+  uploader = FeedbackImageUploader.new(Feedback.new, :feedback_image)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
+  uploader
+end
+
+def upload_random_avatar_image
+  uploader = AvatarImageUploader.new(User.new, :avatar_image)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/avatars', '*')).sample))
+  uploader
+end
+
 def create_admin
   user = User.create!(email: "admin@inkz.ru", password: 'inkzzz', is_admin: true)
   puts "Admin with #{user.email} created with id #{user.id}"
@@ -39,7 +59,8 @@ def create_users_and_masters(num_users)
     user_data = {
       email: "user#{i}@inkz.ru",
       password: 'inkzzz',
-      is_master: is_master
+      is_master: is_master,
+      avatar_image: upload_random_avatar_image,  # Assign random avatar image
     }
 
     user = User.create!(user_data)
@@ -67,20 +88,6 @@ def create_users_and_masters(num_users)
   end
 
   users
-end
-
-
-# ссылка на изображения tattoos // https://disk.yandex.ru/d/PTdfE03I45aN2w
-def upload_random_image
-  uploader = TattooImageUploader.new(Tattoo.new, :tattoo_image)
-  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
-  uploader
-end
-
-def upload_random_feedback_image
-  uploader = FeedbackImageUploader.new(Feedback.new, :feedback_image)
-  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/tattoos', '*')).sample))
-  uploader
 end
 
 def create_tattoos
