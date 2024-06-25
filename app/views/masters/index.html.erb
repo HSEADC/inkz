@@ -1,4 +1,4 @@
-<section data-section="masters-show" class="space-y-5 sm:mt-2">
+<section data-section="masters-index" class="space-y-5 sm:mt-2">
   <% if current_user && current_user.is_master? && @user_masters.present? %>
     <div class="space-y-2">
       <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: 'Твой мастер')) %>
@@ -12,8 +12,10 @@
   <div class="space-y-2">
     <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: 'Все мастера')) %>
 
-    <% @other_masters.each do |master| %>
-      <%= render Views::Masters::MasterCardComponent.new(master: master) %>
-    <% end %>
+    <div class="flex flex-col gap-3">
+      <% @other_masters.each do |master| %>
+        <%= render Views::Masters::MasterCardComponent.new(master: master) %>
+      <% end %>
+    </div>
   </div>
 </section>

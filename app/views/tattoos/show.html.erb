@@ -4,7 +4,7 @@
 
 <%= render Views::Tattoos::TattooComponent.new(tattoo: @tattoo, master: @master ) %>
 
-<section  data-section="tattoo-show" class="mt-12 sm:mt-10 space-y-3 <%= Constants::TATTOO_PAGE_WIDTH %>" class="">
+<section data-section="tattoo-show" class="mt-12 sm:mt-10 space-y-3 <%= Constants::TATTOO_PAGE_WIDTH %>" class="">
   <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: 'Похожие татуировки')) %>
   <%= render Views::Tattoos::TattoosGridComponent.new(tattoos: @tattoos, className: '') %>
 </section>
