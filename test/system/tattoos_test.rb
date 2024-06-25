@@ -15,7 +15,6 @@ class TattoosTest < ApplicationSystemTestCase
     click_on "New tattoo"
 
     fill_in "Master", with: @tattoo.master_id
-    fill_in "Specialization", with: @tattoo.specialization
     fill_in "Title", with: @tattoo.title
     click_on "Create Tattoo"
 
@@ -28,7 +27,6 @@ class TattoosTest < ApplicationSystemTestCase
     click_on "Edit this tattoo", match: :first
 
     fill_in "Master", with: @tattoo.master_id
-    fill_in "Specialization", with: @tattoo.specialization
     fill_in "Title", with: @tattoo.title
     click_on "Update Tattoo"
 
