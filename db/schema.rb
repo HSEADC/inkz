@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_031722) do
     t.string "inst"
     t.string "vk"
     t.string "tg"
+    t.string "master_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

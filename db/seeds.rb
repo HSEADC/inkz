@@ -47,6 +47,12 @@ def upload_random_avatar_image
   uploader
 end
 
+def upload_random_master_image
+  uploader = MasterImageUploader.new(Master.new, :master_image)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/avatars', '*')).sample))
+  uploader
+end
+
 def create_admin
   user = User.create!(email: "admin@inkz.ru", password: 'inkzzz', is_admin: true)
   puts "Admin with #{user.email} created with id #{user.id}"
@@ -60,7 +66,7 @@ def create_users_and_masters(num_users)
       email: "user#{i}@inkz.ru",
       password: 'inkzzz',
       is_master: is_master,
-      avatar_image: upload_random_avatar_image,  # Assign random avatar image
+      avatar_image: upload_random_avatar_image,
     }
 
     user = User.create!(user_data)
@@ -77,7 +83,8 @@ def create_users_and_masters(num_users)
         inst: Faker::Internet.username,
         vk: Faker::Internet.username,
         tg: Faker::Internet.username,
-        user_id: user.id
+        user_id: user.id,
+        master_image: upload_random_master_image, # Corrected placement of comma
       }
 
       master = Master.create!(master_data)

@@ -11,6 +11,7 @@ class CreateMasters < ActiveRecord::Migration[7.0]
       t.string :inst
       t.string :vk
       t.string :tg
+      t.string :master_image
 
       t.timestamps
     end

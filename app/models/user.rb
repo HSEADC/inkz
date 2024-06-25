@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :favourites
   has_many :tattoos_i_favourited, through: :favourites, source: 'tattoo'
 
+  # Mount the uploader for avatar_image
+  mount_uploader :avatar_image, AvatarImageUploader
+
   def is_master?
     is_master
   end
