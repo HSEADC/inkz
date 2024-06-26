@@ -73,7 +73,7 @@ Rails.application.routes.draw do
 
   get '/promo', to: 'welcome#index'
   get '/team', to: 'welcome#team'
-  # get 'welcome/search'
+  get 'welcome/search'
   # get 'welcome/assistance'
 
   root "tattoos#index"

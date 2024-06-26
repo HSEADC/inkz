@@ -1,6 +1,10 @@
+<section data-section="tattoo-search" class="mt-12 sm:mt-10 space-y-3 <%= Constants::WEBSITE_WIDTH %>" class="">
+  <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: 'результаты поиска')) %>
 
-<div class="grid grid-cols-4 mt-10 xl:grid-cols-3 sm:grid-cols-1 gap-7" id="search_preview">
-  <% items.each do |item| %>
-    <%= render item.searchable %>
-  <% end %>
-</div>
+  <masonry-layout cols="auto" gap="20" maxcolwidth="400" class="" id="search_preview">
+    <% items.each do |item| %>
+      <%= render Views::Tattoos::TattooCardComponent.new(tattoo: item.searchable, show_tags: false, preview_mode: :disabled) %>
+    <% end %>
+  </masonry-layout>
+  <hr>
+</section>

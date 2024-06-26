@@ -34,6 +34,9 @@
 
   <body class="font-sans lowercase">
     <%= render(Global::HeaderComponent.new(current_user: current_user)) %>
+    <% if controller_name == 'tattoos' && action_name == 'index' %>
+      <%= render 'components/search_form' %>
+    <% end %>
     <%= render(Global::ContainerComponent.new) do %>
       <%= yield %>
     <% end %>

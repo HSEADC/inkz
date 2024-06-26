@@ -66,6 +66,10 @@ class TattoosController < ApplicationController
     @master = @tattoo.master
   end
 
+ def search
+      @items = PgSearch.multisearch(params['search'])
+  end
+
   # POST /tattoos or /tattoos.json
   def create
     @master = Master.find(params[:master_id])
