@@ -1,8 +1,7 @@
 <header class="<%= Constants::WEBSITE_WIDTH %> flex items-center justify-between text-2xl mt-7 sm:mt-5 lg:text-xl tracking-small">
-
-  <nav class="flex items-end gap-7">
+  <nav class="flex items-end gap-6">
     <%= link_to(root_path, class: "h-10 sm:h-7 #{@link_styles}") do %>
-      <%= image_tag('logo.png', class: 'hover:scale-105 duration-300 s-full', alt: 'Логотип inkz') %>
+      <%= image_tag('logo.png', class: 'hover:scale-105 duration-300 h-full object-contain', alt: 'Логотип inkz') %>
     <% end %>
 
     <% if admin? %>
@@ -14,13 +13,25 @@
       </ul>
     <% end %>
 
+    <div class="flex gap-4">
+      <div class="flex items-center gap-3 overflow-visible">
+        <%= link_to "Мастера", masters_url, class: @link_styles %>
+      </div>
+      <div class="flex items-center gap-3 overflow-visible">
+        <%= link_to "сохраненное", tattoos_url, class: @link_styles %>
+      </div>
+
+      <div id="RESIZE_BTN" class="cursor-pointer">
+        изменить сетку
+      </div>
+    </div>
   </nav>
 
-  <div class="flex gap-4 sm:gap-2">
-    <%= link_to "Мастера", masters_url, class: @link_styles %>
-
+  <div class="flex items-center gap-3">
     <% if user_signed_in? %>
-      <%= link_to @current_user.email, edit_user_registration_path, class: @link_styles %>
+      <%= link_to edit_user_registration_path, class: @link_styles do %>
+        <%= image_tag @current_user.avatar_image.url, class: 'h-10 sm:h-7 border-2 border-black rounded-md', alt: 'User Avatar' %>
+      <% end %>
       <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: @link_styles %>
     <% else %>
 
