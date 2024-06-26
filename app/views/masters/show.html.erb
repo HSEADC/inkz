@@ -1,38 +1,30 @@
 <section data-section="masters-show" class="mt-10 space-y-3 overflow-visible <%= Constants::TATTOO_PAGE_WIDTH %>" class="">
   <%= render Views::Masters::MasterComponent.new(master: @master) %>
 
+  <div>
+    <div class="flex justify-between">
+      <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: 'отзывы')) %>
+      <% if user_signed_in? && can?(:create, Feedback) %>
+        <%= link_to new_master_feedback_path(@master), class: 'sm:!text-2xl underline hover:no-underline', title: 'оставить отзыв' do %>
+          <%= render(Ui::CaptionComponent.new(class: '!text-black', text: 'оставить отзыв')) %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="grid grid-cols-3 gap-5 sm:grid-cols-1">
+      <% @master.feedbacks.first(3).each do |feedback| %>
+        <div class="feedback-card">
+          <%= render partial: "feedbacks/feedback", locals: { master: @master, feedback: feedback } %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
   <div class="flex justify-between">
     <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: 'работы мастера')) %>
     <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: @master.tattoos.size)) %>
   </div>
 
   <%= render Views::Tattoos::TattoosGridComponent.new(tattoos: @master_tattoos, className: '') %>
-
-  <div>
-
-    <% if can? :manage, @master %>
-      <div>
-        <%= link_to "Edit this master", edit_master_path(@master) %>
-        <%= button_to "Destroy this master", @master, method: :delete %>
-      </div>
-    <% end %>
-
-    <% if current_user && @master.user == current_user %>
-      <%= link_to "New tattoo", new_master_tattoo_path(@master) %>
-    <% end %>
-  </div>
-
-  <div class="mt-10">
-    <% if user_signed_in? && can?(:create, Feedback) %>
-      <%= link_to "New feedback", new_master_feedback_path(@master) %>
-    <% end %>
-
-    <div class="flex flex-col mt-2 gap-7">
-      <% @master.feedbacks.each do |feedback| %>
-        <div class="feedback-card">
-          <%= render partial: "feedbacks/feedback", locals: { master: @master, feedback: feedback } %>
-        </div>
-      <% end %>
-    </div>
-  </div>
 </section>
