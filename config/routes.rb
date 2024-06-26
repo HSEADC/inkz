@@ -49,6 +49,10 @@ Rails.application.routes.draw do
     resources :feedbacks
   end
 
+  resources :users do
+    get 'favorite_tattoos', to: 'users#favorite_tattoos', on: :member
+  end
+
   resources :masters do
     resources :tattoos
     resources :feedbacks
@@ -60,9 +64,11 @@ Rails.application.routes.draw do
       get 'by_style/:style', to: 'tattoos#by_style', as: "styled"
     end
 
-    member do
-      get 'toggle_favourite', to: 'tattoos#toggle_favourite', as: 'toggle_favourite'
-    end
+    # member do
+    #   get 'toggle_favourite', to: 'tattoos#toggle_favourite', as: 'toggle_favourite'
+    # end
+
+    post 'toggle_favorite', on: :member
   end
 
   resources :tattoos

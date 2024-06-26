@@ -2,6 +2,7 @@ class TattoosController < ApplicationController
   include TattoosHelper
   load_and_authorize_resource
   before_action :set_tattoo, only: %i[ show edit update destroy toggle_favourite ]
+  before_action :authenticate_user!, only: [:toggle_favorite]
 
   # GET /tattoos or /tattoos.json
   def index
@@ -29,20 +30,15 @@ class TattoosController < ApplicationController
     render :index
   end
 
-  def toggle_favourite
-    tattoo_user_ids = []
-
-    @tattoo.users_who_favourited.each do |user|
-      tattoo_user_ids << user.id
-    end
-
-    if tattoo_user_ids.include?(current_user.id)
-      current_user.tattoos_i_favourited.destroy(@tattoo)
+  def toggle_favorite
+    @tattoo = Tattoo.find(params[:id])
+    if current_user.favorite_tattoos.exists?(@tattoo.id)
+      current_user.favorite_tattoos.delete(@tattoo)
+      render json: { status: 'removed' }
     else
-      current_user.tattoos_i_favourited << @tattoo
+      current_user.favorite_tattoos << @tattoo
+      render json: { status: 'added' }
     end
-
-    set_tattoo
   end
 
   # GET /tattoos/1 or /tattoos/1.json

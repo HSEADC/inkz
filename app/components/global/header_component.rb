@@ -1,4 +1,7 @@
 class Global::HeaderComponent < ViewComponent::Base
+  include Devise::Controllers::Helpers
+  include CanCan::ControllerAdditions
+
   def initialize(current_user:)
     @current_user = current_user
     @link_styles = 'hover:opacity-80 duration-200'

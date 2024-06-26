@@ -1,0 +1,19 @@
+<h1>Favorite Tattoos</h1>
+
+<% @favorite_tattoos.each do |tattoo| %>
+  <article id="<%= dom_id tattoo %>" class="<%= className %>">
+    <%= link_to tattoo do %>
+      <%= image_tag tattoo.tattoo_image.url, class: "object-cover s-full" %>
+    <% end %>
+
+    <div class="absolute mt-1 bottom-3 left-3">
+      <% tattoo.part_list.each do |part| %>
+        <%= render(Ui::MarkComponent.new(text: part, className: 'bg-black text-white')) %>
+      <% end %>
+
+      <% tattoo.style_list.each do |style| %>
+        <%= render(Ui::MarkComponent.new(text: style, className: 'bg-white')) %>
+      <% end %>
+    </div>
+  </article>
+<% end %>

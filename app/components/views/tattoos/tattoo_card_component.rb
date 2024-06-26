@@ -1,4 +1,7 @@
 class Views::Tattoos::TattooCardComponent < ViewComponent::Base
+  include Devise::Controllers::Helpers
+  include CanCan::ControllerAdditions
+  
   PREVIEW_MODE_STYLES = {
     :enabled => "aspect-square h-[45vh] hover:opacity-80 duration-300 overflow-hidden",
     :disabled => "h-auto"

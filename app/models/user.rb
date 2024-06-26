@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :favourites
   has_many :tattoos_i_favourited, through: :favourites, source: 'tattoo'
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_tattoos, through: :favorites, source: :tattoo
+
   # Mount the uploader for avatar_image
   mount_uploader :avatar_image, AvatarImageUploader
 

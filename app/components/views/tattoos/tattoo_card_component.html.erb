@@ -1,5 +1,4 @@
 <article id="<%= dom_id @tattoo %>" class="<%= className %>">
-
   <%= link_to @tattoo do %>
     <%= image_tag @tattoo.tattoo_image.url, class: "object-cover s-full #{@preview_mode == :enabled ? 'group-hover:scale-105 duration-300' : ''}" %>
   <% end %>
@@ -17,9 +16,14 @@
   <% end %>
 
   <% if @preview_mode == :disabled %>
-    <%= link_to tattoos_path do %>
-      <%= image_tag "icons/add.svg", class: "object-cover s-12 sm:s-10 absolute hidden p-3.5 sm:p-3 duration-300 bg-black bottom-3 right-3 group-hover:block hover:bg-opacity-70 sm:active:bg-opacity-80 sm:hover:bg-opacity-100" %>
+    <% if current_user && current_user.favorite_tattoos.exists?(@tattoo.id) %>
+      <%= link_to toggle_favorite_tattoo_path(@tattoo), method: :post, class: "favorite-button favorited" do %>
+        <%= image_tag "icons/remove.svg", class: "object-cover s-12 sm:s-10 absolute p-3.5 sm:p-3 duration-300 bg-black bottom-3 right-3 group-hover:block hover:bg-opacity-70 sm:active:bg-opacity-80 sm:hover:bg-opacity-100" %>
+      <% end %>
+    <% else %>
+      <%= link_to toggle_favorite_tattoo_path(@tattoo), method: :post, class: "favorite-button" do %>
+        <%= image_tag "icons/add.svg", class: "object-cover s-12 sm:s-10 absolute p-3.5 sm:p-3 duration-300 bg-black bottom-3 right-3 group-hover:block hover:bg-opacity-70 sm:active:bg-opacity-80 sm:hover:bg-opacity-100" %>
+      <% end %>
     <% end %>
   <% end %>
-
 </article>

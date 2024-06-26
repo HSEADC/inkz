@@ -18,7 +18,7 @@
         <%= link_to "Мастера", masters_url, class: @link_styles %>
       </div>
       <div class="flex items-center gap-3 overflow-visible">
-        <%= link_to "сохраненное", tattoos_url, class: @link_styles %>
+        <%= link_to "сохраненное", favorite_tattoos_user_path(current_user), class: @link_styles %>
       </div>
 
       <div id="GRID_CONFIG_BTN" class="cursor-pointer sm:hidden">
