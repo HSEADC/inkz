@@ -1,37 +1,38 @@
-<%= form_with(model: [master, tattoo]) do |form| %>
+<section class="grid w-full place-items-center">
+  <%= form_with(model: [master, tattoo], class: 'w-full space-y-2') do |form| %>
 
-  <% if tattoo.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(tattoo.errors.count, "error") %> prohibited this tattoo from being saved:</h2>
-      <ul>
-        <% tattoo.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <% if tattoo.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(tattoo.errors.count, "error") %> prohibited this tattoo from being saved:</h2>
+        <ul>
+          <% tattoo.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="w-full">
+      <%= form.label :title, style: "display: block" %>
+      <%= form.text_field :title, class: "w-full" %>
+    </div>
+
+    <div class="w-full">
+      <%= form.label :part_list, style: "display: block" %>
+      <%= form.text_field :part_list, value: tattoo.part_list.join(", "), class: "w-full" %>
+    </div>
+
+    <div class="w-full">
+      <%= form.label :style_list, style: "display: block" %>
+      <%= form.text_field :style_list, value: tattoo.style_list.join(", "), class: "w-full" %>
+    </div>
+
+    <div class="w-full">
+      <%= form.file_field :tattoo_image, class: "form-control", class: "w-full space-x-2" %>
+    </div >
+
+    <div class="w-full">
+      <%= form.submit class: 'block w-full !mt-3 px-5 py-2.5 text-lg text-center font-book border-2 duration-200 rounded-10 bg-black text-white border-transparent hover:opacity-[85%]' %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :part_list, style: "display: block" %>
-    <%= form.text_field :part_list, value: tattoo.part_list.join(", ") %>
-  </div>
-
-  <div>
-    <%= form.label :style_list, style: "display: block" %>
-    <%= form.text_field :style_list, value: tattoo.style_list.join(", ") %>
-  </div>
-
-  <div>
-    <%= form.label :tattoo_image %>
-    <%= form.file_field :tattoo_image, class: "form-control" %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</section>

@@ -1,6 +1,4 @@
-<h1>New tattoo</h1>
-<%= render "form", master: @master, tattoo: @tattoo %>
-<br>
-<div>
-  <%= link_to "Back to tattoos", tattoos_path %>
-</div>
+<section data-section="tattoo-show" class="mt-12 sm:mt-10 space-y-3 <%= Constants::TATTOO_PAGE_WIDTH %>" class="">
+  <%= render(Ui::HeadingComponent.new(className: 'sm:!text-2xl', text: 'Новая татуировка')) %>
+  <%= render "form", master: @master, tattoo: @tattoo %>
+</section>
