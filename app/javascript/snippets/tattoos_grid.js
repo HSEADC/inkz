@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.innerWidth <= 768) {
         masonryGrid.cols = 2
         masonryGrid.gap = 7
-      } else {
-        masonryGrid.cols = CUSTOM_DEFAULT_COLS
       }
     }
 
@@ -18,26 +16,43 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', layoutMasonry)
   }
 
+  const gridConfigBlock = document.querySelector('#masnory-config')
+  const gridConfigButton = document.querySelector('#GRID_CONFIG_BTN')
+
   const colCountButton = document.querySelector('#col_count_button')
   const gapButton = document.querySelector('#gap_button')
-  const maxColWidthButton = document.querySelector('#max_col_width_button')
+  const resetButton = document.querySelector('#reset_button')
+  const closeButton = document.querySelector('#close_button')
 
-  const CUSTOM_DEFAULT_MAX_COL_WIDTH = 400
   const CUSTOM_DEFAULT_COLS = 'auto'
   const GAP_PX = 20
 
   colCountButton?.addEventListener('click', () => {
-    const res = prompt(`Enter the amount of columns (default value is '${CUSTOM_DEFAULT_COLS}')`) || ''
+    const res = prompt(`Введите количество колонок (по умолчанию: '${CUSTOM_DEFAULT_COLS}')`) || ''
     masonryGrid.cols = isNaN(res) ? CUSTOM_DEFAULT_COLS : Math.max(0, Math.min(parseInt(res), 30))
   })
 
   gapButton?.addEventListener('click', () => {
-    const res = prompt(`Enter the gap size in pixels (default value is '${GAP_PX}')`) || ''
+    const res = prompt(`Введите размер промежутков (по умолчанию: '${GAP_PX}')`) || ''
     masonryGrid.gap = isNaN(res) ? GAP_PX : parseInt(res)
   })
 
-  maxColWidthButton?.addEventListener('click', () => {
-    const res = prompt(`Enter the max col width in pixels (default value is '${CUSTOM_DEFAULT_MAX_COL_WIDTH}')`) || ''
-    masonryGrid.maxColWidth = isNaN(res) ? CUSTOM_DEFAULT_MAX_COL_WIDTH : parseInt(res)
+  resetButton?.addEventListener('click', () => {
+    masonryGrid.gap = GAP_PX
+    masonryGrid.cols = CUSTOM_DEFAULT_COLS
+  })
+
+  gridConfigButton?.addEventListener('click', () => {
+    gridConfigBlock.classList.remove('translate-y-20')
+    gridConfigBlock.querySelectorAll('.translate-y-20').forEach((element) => {
+      element.classList.remove('translate-y-20')
+    })
+  })
+
+  closeButton?.addEventListener('click', () => {
+    gridConfigBlock.classList.add('translate-y-20')
+    gridConfigBlock.querySelectorAll('.bg-black.text-white.rounded-md').forEach((element) => {
+      element.classList.add('translate-y-20')
+    })
   })
 })
