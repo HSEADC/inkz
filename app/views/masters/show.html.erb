@@ -1,11 +1,14 @@
-<section data-section="masters-show" class="mt-12 sm:mt-10 space-y-3 <%= Constants::TATTOO_PAGE_WIDTH %>" class="">
-  <%= render Views::Masters::MasterCardComponent.new(master: @master) %>
+<section data-section="masters-show" class="mt-10 space-y-3 overflow-visible <%= Constants::TATTOO_PAGE_WIDTH %>" class="">
+  <%= render Views::Masters::MasterComponent.new(master: @master) %>
 
-  <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: 'работы мастера')) %>
+  <div class="flex justify-between">
+    <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: 'работы мастера')) %>
+    <%= render(Ui::CaptionComponent.new(className: 'sm:!text-2xl', text: @master.tattoos.size)) %>
+  </div>
+
   <%= render Views::Tattoos::TattoosGridComponent.new(tattoos: @master_tattoos, className: '') %>
 
   <div>
-    <%= @master.tattoos.size %>
 
     <% if can? :manage, @master %>
       <div>

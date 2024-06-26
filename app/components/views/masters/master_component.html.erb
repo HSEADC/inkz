@@ -1,0 +1,32 @@
+<div id="<%= dom_id(@master) %>" class="relative flex flex-col items-center gap-2 p-5 sm:p-2 sm:w-full bg-neutral-100 rounded-10">
+  <div class="grid w-full grid-cols-3">
+
+    <div class="flex gap-2 h-fit">
+      <% { tg: "https://t.me", vk: "https://vk.com", inst: "https://www.instagram.com" }.each do |platform, base_url| %>
+        <% social_handle = @master.send(platform) %>
+        <% if social_handle.present? %>
+          <%= render(Ui::SocialComponent.new(social: platform, link: "#{base_url}/#{social_handle}", className: '', classNameIcon: '!s-12 group')) %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="-mt-12 overflow-hidden border-2 justify-self-center s-36 sm:s-14 rounded-10 border-neutral-100">
+      <%= image_tag(@master.master_image.url, class: 'group-hover:scale-105 duration-500', alt: "Аватарка #{@master.nickname}") %>
+    </div>
+
+    <div></div>
+  </div>
+
+  <div class="space-y-1">
+    <div class="flex flex-col sm:-space-y-1">
+      <%= render(Ui::HeadingComponent.new(className: 'text-center sm:!text-3xl group-hover:opacity-[70%] duration-500', text: @master.nickname)) %>
+      <%= render(Ui::CaptionComponent.new(className: 'text-center sm:!text-base', text: @master.name)) %>
+    </div>
+
+  </div>
+
+  <div class="grid w-full grid-cols-2 gap-2 mt-3">
+    <%= render(Ui::ButtonComponent.new(className: 'w-full', variant: 'secondary', href: edit_master_path(@master), text: 'изменить' )) %>
+    <%= button_to "удалить", @master, method: :delete, data: { confirm: 'Are you sure?' }, class: 'block w-full px-5 py-2.5 text-lg text-center font-book border-2 duration-200 rounded-10 bg-transparent text-black border-black hover:border-custom-dark-gray hover:text-custom-dark-gray hover:opacity-[85%]' %>
+  </div>
+</div>
