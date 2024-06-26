@@ -17,13 +17,14 @@
 
   <% if @preview_mode == :disabled %>
     <% if current_user && current_user.favorite_tattoos.exists?(@tattoo.id) %>
-      <%= link_to toggle_favorite_tattoo_path(@tattoo), method: :post, class: "favorite-button favorited" do %>
+      <%= link_to "javascript:void(0);", class: "favorite-button favorited", data: { tattoo_id: @tattoo.id, tattoo_title: @tattoo.title, tattoo_image_url: @tattoo.tattoo_image.url } do %>
         <%= image_tag "icons/remove.svg", class: "object-cover s-12 sm:s-10 absolute p-3.5 sm:p-3 duration-300 bg-black bottom-3 right-3 group-hover:block hover:bg-opacity-70 sm:active:bg-opacity-80 sm:hover:bg-opacity-100" %>
       <% end %>
     <% else %>
-      <%= link_to toggle_favorite_tattoo_path(@tattoo), method: :post, class: "favorite-button" do %>
+      <%= link_to "javascript:void(0);", class: "favorite-button", data: { tattoo_id: @tattoo.id, tattoo_title: @tattoo.title, tattoo_image_url: @tattoo.tattoo_image.url } do %>
         <%= image_tag "icons/add.svg", class: "object-cover s-12 sm:s-10 absolute p-3.5 sm:p-3 duration-300 bg-black bottom-3 right-3 group-hover:block hover:bg-opacity-70 sm:active:bg-opacity-80 sm:hover:bg-opacity-100" %>
       <% end %>
     <% end %>
   <% end %>
+
 </article>
