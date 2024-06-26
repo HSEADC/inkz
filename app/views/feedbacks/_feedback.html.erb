@@ -1,27 +1,30 @@
-<article id="<%= dom_id feedback %>" class="border-2 border-black rounded-[35px] px-8 py-9">
+<article id="<%= dom_id feedback %>" class="p-5 space-y-3 rounded-10 bg-neutral-100">
+  <div>
+    <%= image_tag feedback.feedback_image.url, class: "w-36 mb-5 rounded-xl" if feedback.feedback_image.url  %>
 
-  <%= image_tag feedback.feedback_image.url, class: "w-36 mb-5 rounded-xl" if feedback.feedback_image.url  %>
+    <div class="flex gap-5">
 
-  <div class="flex gap-5">
+      <p class="text-xl">
+        <%= feedback.user.email %>
+      </p>
 
-    <p class="text-xl tracking-[-0.02em]">
-      <%= feedback.user.email %>
+      <p class="flex items-center gap-2 text-xl">
+        оценка:
+        <mark class="px-2 text-white bg-black rounded-md"><%= feedback.rating %></mark>
+      </p>
+
+      <%#= feedback.master.nickname %>
+    </div>
+
+    <p class="text-3xl tracking-[-0.03em] my-2">
+      <%= feedback.comment %>
     </p>
-
-    <p class="text-xl tracking-[-0.02em] flex gap-2 items-center">
-      Rating:
-      <mark class="px-2 text-white bg-black"><%= feedback.rating %></mark>
-    </p>
-
-    <%#= feedback.master.nickname %>
   </div>
 
-  <p class="text-3xl tracking-[-0.03em] my-2">
-    <%= feedback.comment %>
-  </p>
-
   <% if can_modify_feedback?(feedback) %>
-    <%= link_to "Edit this feedback", edit_feedback_path(feedback) %>
-    <%= button_to "Destroy this feedback", feedback_path(feedback), method: :delete %>
+    <div class="flex gap-4">
+      <%= render(Ui::ButtonComponent.new(className: '!p-0 border-none hover:underline', variant: 'secondary', href: edit_feedback_path(feedback), text: 'изменить' )) %>
+      <%= button_to "удалить", @feedback, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-lg font-book duration-200 hover:opacity-[85%] hover:underline' %>
+    </div>
   <% end %>
 </article>

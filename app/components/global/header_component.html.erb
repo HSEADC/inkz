@@ -16,16 +16,17 @@
 
   </nav>
 
-  <% if user_signed_in? %>
-    <div class="flex gap-4 sm:gap-2 sm:flex-col">
+  <div class="flex gap-4 sm:gap-2">
+    <%= link_to "Мастера", masters_url, class: @link_styles %>
+
+    <% if user_signed_in? %>
       <%= link_to @current_user.email, edit_user_registration_path, class: @link_styles %>
       <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: @link_styles %>
-    </div>
-  <% else %>
-    <div class="flex gap-4 sm:gap-2">
+    <% else %>
+
       <%= link_to "Войти", new_user_session_path, class: @link_styles %>
       <%= link_to "Регистрация", new_user_registration_path, class: @link_styles %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
 </header>

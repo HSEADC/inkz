@@ -74,11 +74,11 @@ def create_users_and_masters(num_users)
 
     if is_master
       master_data = {
-        name: Faker::Name.name,
+        name: "#{Faker::Name.male_first_name} #{Faker::Name.male_last_name}",
         nickname: Faker::Internet.username(specifier: 5..10),
         description: Faker::Lorem.paragraph,
-        experience: Faker::Number.between(from: 1, to: 20),
-        price_zone: %w[cheap medium expensive].sample,
+        experience: Faker::Number.between(from: 2, to: 3),
+        price_zone: %w[дешевый средний дорогой].sample,
         city: Faker::Address.city,
         inst: Faker::Internet.username,
         vk: Faker::Internet.username,
