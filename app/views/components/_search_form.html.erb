@@ -1,8 +1,31 @@
-<div data-controller="search" class="mt-3">
-  <%= form_with url: welcome_search_path, method: :get, data: { search_target: 'searchForm' }, class: "mx-auto w-fit" do |f| %>
-    <%= f.text_field :search, data: { search_target: 'searchField', action: 'input->search#search' }, class: "mx-auto w-fit" %>
-    <%= f.submit "Поиск", data: { search_target: 'submitButton', turbo_stream: true } %>
+<div data-controller="search" class="mt-3 <%= Constants::WEBSITE_WIDTH %>">
+  <%= form_with url: welcome_search_path, method: :get, data: { search_target: 'searchForm' }, class: "mx-auto w-fit flex gap-2 items-center" do |f| %>
+    <%= f.text_field :search, data: { search_target: 'searchField', action: 'input->search#search' }, placeholder: 'введите запрос', class: "px-3 py-2 text-lg text-black placeholder:text-black border-2 border-black rounded-10" %>
+    <%= f.submit "найти", data: { search_target: 'submitButton', turbo_stream: true }, class: 'block w-fit px-5 py-2 text-lg text-center font-book border-2 duration-200 rounded-10 bg-black text-white border-transparent hover:opacity-[85%]' %>
+
+    <div id="TATTOO_FILTERS_BTN" class="cursor-pointer ml-2 text-custom-gray text-lg text-center font-book duration-200 hover:opacity-[85%]">
+      фильтры
+    </div>
   <% end %>
+
+  <section id="TATTOO_FILTERS" class="hidden mb-5 space-y-8">
+    <div class="flex gap-2 mx-auto mt-10 text-xl w-fit">
+      <% Tattoo.tag_counts_on(:parts).each do |part| %>
+        <%= link_to parted_tattoos_path(part.name) do %>
+          <%= render(Ui::MarkComponent.new(text: part, className: 'bg-black text-white text-xl !px-6 !py-3')) %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="flex gap-2 mx-auto mt-10 text-xl w-fit">
+      <% Tattoo.tag_counts_on(:styles).each do |style| %>
+        <%= link_to styled_tattoos_path(style.name), class: "hover:no-underline" do %>
+          <%= render(Ui::MarkComponent.new(text: style, className: 'bg-white border-2 border-black text-black text-xl !px-6 !py-3')) %>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
 </div>
 
 <div id="search_preview">

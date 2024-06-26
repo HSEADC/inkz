@@ -14,15 +14,20 @@
         <% end %>
       </div>
 
-      <div>
+      <div class="space-x-1">
         <% @tattoo.part_list.each do |part| %>
-          <%= render(Ui::MarkComponent.new(text: part, className: 'bg-black text-white')) %>
+          <%= link_to parted_tattoos_path(part) do %>
+            <%= render(Ui::MarkComponent.new(text: part, className: 'bg-black text-white')) %>
+          <% end %>
         <% end %>
 
         <% @tattoo.style_list.each do |style| %>
-          <%= render(Ui::MarkComponent.new(text: style, className: 'bg-neutral-300')) %>
+          <%= link_to styled_tattoos_path(style) do %>
+            <%= render(Ui::MarkComponent.new(text: style, className: 'bg-neutral-300')) %>
+          <% end %>
         <% end %>
       </div>
+
     </div>
 
     <div class="space-y-2">
